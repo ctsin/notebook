@@ -1,3 +1,10 @@
+# Faster app with JSON.parse()
+https://www.youtube.com/watch?v=ff4fgQxPaO0
+
+Why the JSON.parse() is faster than JavaScript literal?
+- JSON.parse accept string only, JS literal will consider the types.
+- Different on how to deal with `{`. In parse(), `{` neans aN object ONLY. But JS need work much harder to guess if it's other syntax.
+
 # npm Commands and Features You Should Know
 https://alligator.io/nodejs/npm-commands-you-should-know
 
