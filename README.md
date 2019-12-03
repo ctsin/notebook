@@ -1,3 +1,7 @@
+# Chrome ProTips
+Chrome can print live expression on Console
+[Live Demostration](https://twitter.com/i/status/1201219613779869696)
+
 # Faster app with JSON.parse()
 https://www.youtube.com/watch?v=ff4fgQxPaO0
 
