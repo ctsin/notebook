@@ -1,3 +1,12 @@
+# How-to print check mark and corss in GitHub README.md
+https://github.com/jaredpalmer/formik/blob/master/SECURITY.md
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 2.x.x     | :white_check_mark: |
+| 1.5.x   | :white_check_mark:   |
+| < 1.4   | :x:               |
+
 # Chrome ProTips
 Chrome can print live expression on Console
 [Live Demostration](https://twitter.com/i/status/1201219613779869696)
