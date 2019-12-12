@@ -1,6 +1,7 @@
 https://github.com/ctsin/notebook/new/master
 
 **Title**
+
 ```js
 import { Title } from "@angular/common"@Component({
     ...
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
 ```
 
 **Meta**
+
 ```js
 import { Meta } from "@angular/common"@Component({
     ...
@@ -28,6 +30,7 @@ export class BlogComponent implements OnInit {
 ```
 
 **Override Template interpolation**
+
 ```js
 @Component({
     interpolation: ["((","))"]
@@ -51,6 +54,7 @@ export class AppComponent {
 ```
 
 **Location**
+
 ```js
 import { Location } from "@angular/common"@Component({
     ...
@@ -67,6 +71,7 @@ export class AppComponent {
 ```
 
 **DOCUMENT**
+
 Getting the document model so we can perform DOM operations from our Angular app.
 
 The DOCUMENT provides just that. DOCUMENT is a DI Token representing the main rendering context. In a browser, this is the DOM Document. It provides DOM operations in an environment-agnostic way.
@@ -91,7 +96,8 @@ export class CanvasElement {
 ```
 We can safely do this using ElementRef and template reference but you got the idea.
 
-**@Attribute decorator```
+**@Attribute decorator**
+
 We have this Attribute decorator, which enables us to pass static string without a cost at performance by eliminating change detection check on it.
 
 The values of Attribute decorator are checked **once** and never checked again. They are used similarly to @Input decorator:
@@ -106,6 +112,7 @@ export class BlogComponent {
 ```
 
 **HttpInterceptor**
+
 HttpInterceptor can be used in:
 - Authentication
 - Caching
@@ -140,6 +147,7 @@ export class AppModule {}
 ```
 
 **AppInitializer**
+
 We do sometimes want a piece of code to be run when our Angular app is starting, maybe load some settings, load cache, load configurations or do some check-ins. The AppInitialzer token helps out with that.
 
 APP_INITIALIZER: A function that will be executed when an application is initialized.
