@@ -66,3 +66,22 @@ The more convenient way is using the IDE extension.
 - [Prettier](https://on.morioh.net/b0a3f595aa?r=https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Code formatter - Visual Studio Marketplace
 
 Working well with VS Code `editor.formatOnSave: true`
+
+# Recommended configuration from [Prettier](https://prettier.io/docs/en/integrating-with-linters.html#recommended-configuration-1)
+
+tslint-plugin-prettier does not expose a recommended configuration. You should combine the two steps above. Add both tslint-plugin-prettier and tslint-config-prettier as developer dependencies, then add both sets of config.
+
+```sh
+yarn add --dev tslint-config-prettier tslint-plugin-prettier
+```
+
+Then in tslint.json:
+
+```json
+{
+  "extends": ["tslint-plugin-prettier", "tslint-config-prettier"],
+  "rules": {
+    "prettier": true
+  }
+}
+```
