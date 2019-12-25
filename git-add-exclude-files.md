@@ -1,6 +1,6 @@
 https://stackoverflow.com/a/51914162
 
-Git supports exclude certain paths and files by pathspec magic :(exclude) and its short form :!. 
+Git supports exclude certain paths and files by pathspec magic `:(exclude)` and its short form `:!`. 
 So you can easily achieve it as the following command.
 
 ```sh
