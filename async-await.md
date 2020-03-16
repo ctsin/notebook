@@ -1,4 +1,5 @@
-// https://javascript.info/async-await
+https://javascript.info/async-await
+
 The async keyword before a function has two effects:
 
 - Makes it always return a promise.
