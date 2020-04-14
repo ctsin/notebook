@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=-G7kStvqgcg
+
 # Sending Data from Component to Component
 
 ## 使用 Setter & Getter 观察 @Input() 的更新
