@@ -28,6 +28,8 @@ export class ChildComponent {
 ```
 
 ## 使用 @ViewChild & @ViewChildren 访问子组件
+
+```ts
 @Component({
   selector: 'app-root',
 })
@@ -39,9 +41,12 @@ export class ParentComponent {
   onAmountChange(event: number) {
     console.log('')
   }
+```
+
+# Http Requests, Interceptors, Error Handling & more
   
-  # Http Requests, Interceptors, Error Handling & more
-  ## Get the full HTTP Response
+## Get the full HTTP Response
+  
   ```ts
   getAllPost(): Observable<Post[]> {
     return this.http.get<Post[]>('url', { observe: 'response' } // Observe full HTTP Response
@@ -56,6 +61,7 @@ export class ParentComponent {
     this.children.toArray()
   }
 }
+```
 
 # How to Add Route Resolvers in Angular
 
