@@ -87,7 +87,7 @@ console.log(name)
 ## Pure & Impure Pipe
 Pipe is pure by default. It means that if the input is modified impurelly, the view will not be updated.
 
-**Two way to update
+**Two way to update**
 
 - Update the input with pure method, assigned to a total new object etc.
 - Parasmenter in pipe decorator: `@Pipe({name: 'SOMETHING', pure: false /* 👈 */})`
