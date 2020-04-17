@@ -1,4 +1,4 @@
-```diff
-+++ console.log('Hello');
---- const fn = () => console.log();
+```ts diff
++ console.log('Hello');
+- const fn = () => console.log();
 ```
