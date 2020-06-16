@@ -4,3 +4,5 @@ The `slice()` method returns a **shallow copy** of a portion of an array into a 
 
 - 对于时间、id等可能为字符串或数值类型的情况，做强转防御。
 - 适度抛错，便于QA排查。
+
+**Update Angular**: `ng update @angular/cli @angular/core`
