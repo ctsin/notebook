@@ -9,4 +9,4 @@ The `slice()` method returns a **shallow copy** of a portion of an array into a 
 
 **可观察对象的退订**：在 Angular 中，`HttpModule` 或 Rxjs `ajax` 方法不需要退订。因为这方法在请求完成后，会自动触发可观察对象的 `complete` 状态。
 
-**思路**：以 `[flatMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)` 为引导，以理解“高阶可观察者”对象.
+**思路**：以 [`flatMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) 为引导，以理解“高阶可观察者”对象.
