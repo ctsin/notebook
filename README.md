@@ -38,7 +38,7 @@ function Counter() {
     const id = setInterval(() => {
       setCount(count + 1);
       // Fix
-      // setCount(c => c + 1); // ✅ This doesn't depend on `count` variable outside. 通过参数形式访问 count 更新值
+      // setCount(c => c + 1); // ✅ This doesn't depend on `count` variable outside. 通过参数形式访问 count, React Hook 机制保证其为更新值。
       console.log("Inside", count); // 作为 setInterval 的回调，作用域内的 count 通过闭包访问到了初始 count, 并一直保持该值。
     }, 1000);
     return () => clearInterval(id);
