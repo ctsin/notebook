@@ -20,3 +20,11 @@ ng update @angular/cli @angular/core
 ##思路
 
 以 [`flatMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) 为引导，以理解“高阶可观察者”对象.
+
+## Disabled type check temporarily
+
+https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
+
+With the following comments: `// @ts-nocheck`, `// @ts-check`, and `// @ts-ignore`.
+
+**Heads up:** if you have a `tsconfig.json`, JS checking will respect strict flags like `noImplicitAny`, `strictNullChecks`, etc.
