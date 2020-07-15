@@ -28,3 +28,10 @@ https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html
 With the following comments: `// @ts-nocheck`, `// @ts-check`, and `// @ts-ignore`.
 
 **Heads up:** if you have a `tsconfig.json`, JS checking will respect strict flags like `noImplicitAny`, `strictNullChecks`, etc.
+
+## DOM 事件的行内回调形式
+行内回调的语句可以拿到 `event` 对象: 
+
+```html
+<input onkeyup="peopleStore[1].name = event.target.value" />
+```
