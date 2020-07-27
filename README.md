@@ -35,3 +35,18 @@ With the following comments: `// @ts-nocheck`, `// @ts-check`, and `// @ts-ignor
 ```html
 <input onkeyup="peopleStore[1].name = event.target.value" />
 ```
+
+# Solve the Enzyme config issue in codesandbox.io
+
+**Issue**
+
+```bash
+Enzyme Internal Error: Enzyme expects an adapter to be configured, but found none.
+```
+
+**Fix** ([Source](https://codesandbox.io/s/determined-chaplygin-8jt5f?file=/src/components/__tests__/RemotePizza_di.spec.js))
+
+```ts
+// This line is only needed for CodeSandbox
+   import '../../../src/setupTests.js';
+```
