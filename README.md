@@ -50,3 +50,12 @@ Enzyme Internal Error: Enzyme expects an adapter to be configured, but found non
 // This line is only needed for CodeSandbox
    import '../../../src/setupTests.js';
 ```
+
+# Prettier End of Line 
+
+https://prettier.io/docs/en/options.html#end-of-line
+
+```sh
+# .prettierrc
+{ "endOfLine": "auto" }
+```
