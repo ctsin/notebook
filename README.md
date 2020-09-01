@@ -59,3 +59,13 @@ https://prettier.io/docs/en/options.html#end-of-line
 # .prettierrc
 { "endOfLine": "auto" }
 ```
+
+# Debug React Native in VS Code
+
+1. Install [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native);
+2. `yarn start` or `npm start` to boost the application, and then **disable the remote debug option**;
+   ![disable remote debug](./assets/disable-debug-remote-JS.png)
+3. Launch the Debug in VS Code
+   ![attach to package](../assets/attach-to-package.png)
+4. Check out the console log output in Panel
+   ![output](../assets/debug-console.png)
