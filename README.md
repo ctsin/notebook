@@ -74,3 +74,13 @@ https://prettier.io/docs/en/options.html#end-of-line
 4. Check out the console log output in Panel
 
 ![output](./debug-console.png)
+
+# How to Test React Hooks
+
+```ts
+  const setState = jest.fn();
+  const useStateMock = (initState) => [initState, setState];
+  jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+  
+  expect(setState).toHaveBeenCalledWith(true);
+```
