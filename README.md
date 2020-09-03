@@ -84,3 +84,17 @@ https://prettier.io/docs/en/options.html#end-of-line
   
   expect(setState).toHaveBeenCalledWith(true);
 ```
+
+# Git rebase
+
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+
+https://git-scm.com/docs/git-rebase
+
+![origin git log](https://git-scm.com/book/en/v2/images/interesting-rebase-1.png)
+
+```sh
+$ git rebase --onto master server client
+```
+
+![result git log](https://git-scm.com/book/en/v2/images/interesting-rebase-2.png)
