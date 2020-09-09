@@ -124,3 +124,17 @@ It makes the following error cause:
 2. Add the path to Windows Environment Variables
 
 ![Windows Environment Variables](https://sung.codes/static/6497ba0af17bd4358d74107bf35b7650/53d09/system-properties-environment-variable-button.jpg)
+
+
+# React HOC Test
+
+```ts
+// "export" one more time for unit test, beside "export default"
+export const UserProfile = ({ navigation, userFirstName }) => (
+
+// ...
+
+export default inject(({ globalStoreV2: { userInfo } }) => ({
+  userFirstName: userInfo.firstName,
+}))(observer(UserProfile));
+```
