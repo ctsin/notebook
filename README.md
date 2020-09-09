@@ -98,3 +98,29 @@ $ git rebase --onto master server client
 ```
 
 ![result git log](https://git-scm.com/book/en/v2/images/interesting-rebase-2.png)
+
+# Remove a file from Git commit
+
+1. `GitLens => File History`, right click the target commit hash you wanna restore, select `Restore`. Check the result to make sure it is intending one.
+2. `git restore <FILE>`, retore it from stages.
+3. `git add .`, add the changes to stages.
+4. `git commit --amend --no-edit`, amend the last commit without changing the commit message.
+
+**Reason**
+
+The actions from both GitLens `Restore` and Git `git restore` recover the unexpected changes to the original commit. `git add . && git commit --amend` will add the desired files to commit again, without the unexpedted ones.
+
+# Make `yarn golbal add` works
+
+If Yarn is installed with `npm install -g yarn`, it's `bin` will not be added to Windows Environment Variables by default. 
+
+It makes the following error cause:
+
+> 'parcel' is not recognized as an internal or external command, operable program or batch file.
+
+**Howtos**
+
+1. `yarn global bin` to retrieve yarn global binary bin, and copy the output
+2. Add the path to Windows Environment Variables
+
+![Windows Environment Variables](https://sung.codes/static/6497ba0af17bd4358d74107bf35b7650/53d09/system-properties-environment-variable-button.jpg)
