@@ -138,3 +138,23 @@ export default inject(({ globalStoreV2: { userInfo } }) => ({
   userFirstName: userInfo.firstName,
 }))(observer(UserProfile));
 ```
+
+# `clamp()` function in CSS
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+
+https://caniuse.com/css-math-functions
+
+**How to use**
+
+- Choose a minimum value: E.g. 16px
+- Choose a maximum value: E.g. 34px
+- Choose a flexible value: E.g. 5vw
+
+```css
+h1 {
+  font-size: clamp(16px, 5vw, 34px);
+}
+```
+
+![clamp()](https://res.cloudinary.com/practicaldev/image/fetch/s--KFPlk1Jn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/0fe8zr0bmhl90wk1r0tg.gif)
