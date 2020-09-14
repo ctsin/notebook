@@ -35,3 +35,46 @@ export default inject(({ globalStoreV2: { userInfo } }) => ({
   userFirstName: userInfo.firstName,
 }))(observer(UserProfile));
 ```
+
+# Test asynchronous fn in FC
+
+```ts
+export const Footer = ({
+  globalStoreV2: { getUserInfo, userInfo: { phone } },
+}) => {
+  // A asynchronous fn
+  const handleOnPress = async👈 () => {
+    getUserInfo(phone);
+  };
+
+  return (
+    <View>
+      <FormButton
+        onPress={handleOnPress}
+      />
+    </View>
+  );
+};
+
+// unit test
+const defaultProps = {
+  globalStoreV2: { getUserInfo: jest.fn(), userInfo: { phone: '12345678' } },
+};
+
+describe('<Footer />', () => {
+  it('handleOnPress()', async👈 () => {
+    const wrapper = shallow(<Footer {...defaultProps} />);
+    const { phone } = defaultProps.globalStoreV2.userInfo;
+    const formButton = wrapper.find(FormButton);
+
+    await👈 formButton.props().onPress();
+
+    expect(
+      defaultProps.globalStoreV2.getUserInfo,
+    ).toHaveBeenCalledWith(
+      phone,
+    );
+  });
+});
+
+```
