@@ -36,21 +36,6 @@ With the following comments: `// @ts-nocheck`, `// @ts-check`, and `// @ts-ignor
 <input onkeyup="peopleStore[1].name = event.target.value" />
 ```
 
-# Solve the Enzyme config issue in codesandbox.io
-
-**Issue**
-
-```bash
-Enzyme Internal Error: Enzyme expects an adapter to be configured, but found none.
-```
-
-**Fix** ([Source](https://codesandbox.io/s/determined-chaplygin-8jt5f?file=/src/components/__tests__/RemotePizza_di.spec.js))
-
-```ts
-// This line is only needed for CodeSandbox
-   import '../../../src/setupTests.js';
-```
-
 # Prettier End of Line 
 
 https://prettier.io/docs/en/options.html#end-of-line
@@ -74,16 +59,6 @@ https://prettier.io/docs/en/options.html#end-of-line
 4. Check out the console log output in Panel
 
 ![output](./debug-console.png)
-
-# How to Test React Hooks
-
-```ts
-  const setState = jest.fn();
-  const useStateMock = (initState) => [initState, setState];
-  jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-  
-  expect(setState).toHaveBeenCalledWith(true);
-```
 
 # Git rebase
 
@@ -118,26 +93,12 @@ It makes the following error cause:
 
 > 'parcel' is not recognized as an internal or external command, operable program or batch file.
 
-**Howtos**
+**Howto**
 
 1. `yarn global bin` to retrieve yarn global binary bin, and copy the output
 2. Add the path to Windows Environment Variables
 
 ![Windows Environment Variables](https://sung.codes/static/6497ba0af17bd4358d74107bf35b7650/53d09/system-properties-environment-variable-button.jpg)
-
-
-# React HOC Test
-
-```ts
-// "export" one more time for unit test, beside "export default"
-export const UserProfile = ({ navigation, userFirstName }) => (
-
-// ...
-
-export default inject(({ globalStoreV2: { userInfo } }) => ({
-  userFirstName: userInfo.firstName,
-}))(observer(UserProfile));
-```
 
 # `clamp()` function in CSS
 
