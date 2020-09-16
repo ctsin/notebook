@@ -119,3 +119,27 @@ h1 {
 ```
 
 ![clamp()](https://res.cloudinary.com/practicaldev/image/fetch/s--KFPlk1Jn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/0fe8zr0bmhl90wk1r0tg.gif)
+
+# How Array sort works in JavaScript
+
+```ts
+const arr = [1, 5, 2, 7, 0];
+
+const result = arr.sort((a, b) => b - a) // [ 7, 5, 2, 1, 0 ]
+```
+
+(a = 1 b = 5) 2⏳ 7 0 👉 [5, 1, 2, 7, 0]
+
+5 (a = 1 b = 2) 7⏳ 0 👉 [5, 2, 1, 7, 0]
+
+(a = 5 b = 2) 1 7⏳ 0 👉 [5, 2, 1, 7, 0]
+
+5 2 (a = 1 b = 7) 0⏳ 👉 [5, 2, 7, 1, 0]
+
+5 (a = 2 b = 7) 1 0⏳ 👉 [5, 7, 2, 1, 0]
+
+(a = 5 b = 7) 2 1 0⏳ 👉 [7, 5, 2, 1, 0]
+
+7 5 2 (a = 1 b = 0)🏁 👉 [7, 5, 2, 1, 0]
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
