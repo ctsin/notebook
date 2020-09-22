@@ -143,3 +143,18 @@ const result = arr.sort((a, b) => b - a) // [ 7, 5, 2, 1, 0 ]
 7 5 2 (a = 1 b = 0)🏁 👉 [7, 5, 2, 1, 0]
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+
+# How to await for multiple results in parallel
+
+https://gist.run/?id=da57950803bf00ce555752da6bd7147e&mc_cid=5fa9352dcf&mc_eid=afaf576ce2
+
+```ts
+Promise.all([asyncFunc1(), asyncFunc2()]).then((results) => {
+  console.log(results);
+});
+
+// OR
+
+const [result1, result2] = await Promise.all([asyncFunc1(), asyncFunc2()]);
+```
