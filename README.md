@@ -158,3 +158,42 @@ Promise.all([asyncFunc1(), asyncFunc2()]).then((results) => {
 
 const [result1, result2] = await Promise.all([asyncFunc1(), asyncFunc2()]);
 ```
+
+# Set `const` variable as `readonly`
+
+```ts
+const arr = [1, 5, 2, 7, 0] as const 👈;
+
+// Property 'sort' does not exist on type 'readonly [1, 5, 2, 7, 0]'.(2339)
+const result = arr.sort((a, b) => b - a)
+```
+
+# Catch error in `async / await`
+
+```ts
+const fn = async () => {
+  throw new Error('Error Happened')
+}
+
+fn().catch(err => {
+  console.table(err)
+  
+})
+```
+
+# Make sure property exist
+
+```ts
+export class X {
+    id! 👈: string; // JavaScript will not complain: "property id do not exist"
+
+    constructor(public age: number = 0) {
+    }
+}
+```
+
+# Initiate `tsconfig.json`
+
+```sh
+npx tsconfig.json
+```
