@@ -214,3 +214,13 @@ https://callstack.github.io/react-native-testing-library/docs/react-navigation
 https://callstack.github.io/react-native-testing-library/docs/redux-integration
 
 https://github.com/twilio/twilio-video-app-react
+
+
+# Testing React components that update asynchronously with React Testing Library
+
+https://www.30secondsofcode.org/blog/s/testing-async-react-components
+
+**Recap**
+- A message about code that causes React state updates not being wrapped in `act(...)` might indicate that **a component updated after the test ended**.
+- Using `waitFor()` can solve the issue by making tests asynchronous, but you might need to bump your react-testing-library version if you are using older versions of react-scripts.
+- If you see errors related to `MutationObserver`, you might need to change your test script to include `--env=jsdom-fourteen` as a parameter.
