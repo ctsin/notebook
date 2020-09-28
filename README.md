@@ -199,3 +199,15 @@ export class X {
 ```sh
 npx tsconfig.json
 ```
+
+# Unit test resources
+
+**Library**
+https://callstack.github.io/react-native-testing-library/docs/api
+
+**Test case**
+
+https://github.com/callstack/react-native-testing-library/tree/master/src/__tests__
+https://callstack.github.io/react-native-testing-library/docs/react-navigation
+https://callstack.github.io/react-native-testing-library/docs/redux-integration
+https://github.com/twilio/twilio-video-app-react
