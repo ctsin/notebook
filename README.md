@@ -237,3 +237,7 @@ const onRefresh = useCallback(() => {
     });
   }, [updating]);
 ```
+
+# Multifolder in VS Code
+
+VS Code workspace definition file can define multifolder, which will lead multifolder options while accessing `Jest Stop` and setting settings.
