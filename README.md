@@ -241,3 +241,7 @@ const onRefresh = useCallback(() => {
 # Multifolder in VS Code
 
 VS Code workspace definition file can define multifolder, which will lead multifolder options while accessing `Jest Stop` and setting settings.
+
+# `npm list -g`
+
+List all NPM packages installed globaly.
