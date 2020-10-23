@@ -47,20 +47,25 @@ https://prettier.io/docs/en/options.html#end-of-line
 { "endOfLine": "auto" }
 ```
 
-# Debug React Native in VS Code
+# Safe area to display in Expo
 
-1. Install [React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native);
-2. `yarn start` or `npm start` to boost the application, and then **disable the remote debug option**;
-   
-![disable remote debug](./disable-debug-remote-JS.png)
+https://docs.expo.io/versions/latest/sdk/safe-area-context/
 
-3. Launch the Debug in VS Code
+```sh
+expo install react-native-safe-area-context
+```
 
-![attach to package](./attach-to-package.png)
+```ts
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-4. Check out the console log output in Panel
-
-![output](./debug-console.png)
+function SomeComponent() {
+  return (
+    <SafeAreaView>
+      <View />
+    </SafeAreaView>
+  );
+}
+```
 
 # Git rebase
 
