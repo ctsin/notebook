@@ -250,3 +250,19 @@ VS Code workspace definition file can define multifolder, which will lead multif
 # `npm list -g`
 
 List all NPM packages installed globaly.
+
+# Styled-Components issue in React Native
+
+https://github.com/styled-components/styled-components/issues/1858#issuecomment-408409443
+
+- `border-bottom` - yes, but you have to write all styles separately, like border-bottom-width, border-bottom-color, when just border can be written as border: 1px solid #000.
+- `box-shadow` - yes, but again, you have to write all styles separately like mentioned here.
+  Also these would work:
+  ```scss
+  box-shadow: 2px 4px 12px red;
+  boxShadow: 2px 4px 12px red;
+  ```
+  These would not work (neither with rgb):
+  ```scss
+  box-shadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
+  boxShadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
