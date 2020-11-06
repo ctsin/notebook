@@ -266,3 +266,17 @@ https://github.com/styled-components/styled-components/issues/1858#issuecomment-
   ```scss
   box-shadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
   boxShadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
+  ```
+  
+# Highlight Git diff in Markdown
+ 
+https://blog.alispit.tel/create-a-git-diff-in-markdown/
+ 
+```ts
+```diff 👈 use "diff" as language indicator
+ function addTwoNumbers (num1, num2) {
+-  return 1 + 2
++  return num1 + num2
+}
+```
+ 
