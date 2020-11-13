@@ -1,0 +1,4 @@
+- Set Object properties with `as const `to make it `readonly` https://twitter.com/i/status/1326890872961720320 https://t.co/SIaxuIdogs?amp=1
+- Set the dictionary-like Object as strict as possible( with `Record`) https://twitter.com/i/status/1326525346443898882 https://t.co/QdYSvKd8o4?amp=1
+- Define a type in `d.ts`https://twitter.com/i/status/1326194158843916289
+- Set the `Array` with `as const `to make it `readonly` https://twitter.com/i/status/1325818478675304448 https://t.co/TEnIxVYsMT?amp=1
