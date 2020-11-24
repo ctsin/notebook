@@ -1,3 +1,9 @@
+# ContextAPI Initiative in twilio-video-app-react
+
+```ts
+export const VideoContext = createContext<IVideoContext>(null!); // without 'as'
+```
+
 # React native tool port
 
 ![react native port configration](./native-port.png)
