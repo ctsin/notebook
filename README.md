@@ -1,3 +1,7 @@
+# How to rename Git branch
+
+Learned from GitHub's repository initial tips: `git branch -M main`.
+
 # Add environment variables to CodeSandbox
 
 - Fock from https://codesandbox.io/s/node-http-server-node
