@@ -1,3 +1,7 @@
+# Create React App with TypeScript issue
+
+CRA v4 DO NOT support set `path` section in `tsconfig.json`, which can set path alias in 'import' statement. (validated on Dec 2020) https://www.typescriptlang.org/tsconfig#paths
+
 # How to rename Git branch
 
 Learned from GitHub's repository initial tips: `git branch -M main`.
