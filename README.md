@@ -1,3 +1,10 @@
+# `package.json`version
+
+- `˜` for patch version. `16.3.x` ✔, but `16.4.0` ❌
+- `ˆ`for minor version. `16.x.x` ✔️, but `17.0.0` ❌
+
+https://dev.to/laurieontech/the-anatomy-of-package-json-pi4?utm_source=digest_mailer&utm_medium=email&utm_campaign=digest_email
+
 # Create React App with TypeScript issue
 
 CRA v4 DO NOT support set `path` section in `tsconfig.json`, which can set path alias in 'import' statement. (validated on Dec 2020) https://www.typescriptlang.org/tsconfig#paths
