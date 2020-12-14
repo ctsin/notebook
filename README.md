@@ -1,3 +1,27 @@
+# How to dark mode
+
+Toggle class name to `.lightMode`to fire light mode.
+
+```scss
+// by default dark theme
+
+:root {
+    --bg-color: #171923;
+    --bg-light: #232535;
+    --font-color: #c5cddb;
+    --font-light: #ffffff;
+}
+
+// light theme colors
+
+.lightMode {
+  --bg-color: #E8E6DC;
+  --bg-light: #DCDACA;
+  --font-color: #3D3D3D;
+  --font-light: #202020;
+}
+```
+
 # `package.json`version
 
 - `˜` for patch version. `16.3.x` ✔, but `16.4.0` ❌
