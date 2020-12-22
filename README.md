@@ -1,3 +1,5 @@
+# Use 'open' command to open a file with its default browser.
+
 # fetch('API').json() 👈
 
 # How to dark mode
