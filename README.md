@@ -1,3 +1,5 @@
+# fetch('API').json() 👈
+
 # How to dark mode
 
 Toggle class name to `.lightMode`to fire light mode.
