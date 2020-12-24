@@ -1,3 +1,5 @@
+# Cold boot virtual android device in Android Studio
+
 # Use 'open' command to open a file with its default browser.
 
 # How to dark mode
