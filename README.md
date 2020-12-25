@@ -1,5 +1,11 @@
 # Fish shell
 
+**Set Fish as default shell in VS Code**
+
+https://stackoverflow.com/questions/60174054/how-does-visual-studio-code-vscode-know-environment-variables-set-in-config
+
+**autosuggestion**
+
 https://fishshell.com/docs/current/index.html#autosuggestions
 
 To accept the autosuggestion (replacing the command line contents), press right arrow or Control+F. To accept the first suggested word, press Alt+→,Right or Alt+F. If the autosuggestion is not what you want, just ignore it: it won't execute unless you accept it.
