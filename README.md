@@ -1,7 +1,8 @@
 # Fish shell
 
-- <kbd>alt</kbd> + <kbd>right</kbd> accept next word of real time suggestion.
-- <kbd>ctrl</kbd> + <kbd>f</kbd> accept all of the real time suggestion.
+https://fishshell.com/docs/current/index.html#autosuggestions
+
+To accept the autosuggestion (replacing the command line contents), press right arrow or Control+F. To accept the first suggested word, press Alt+→,Right or Alt+F. If the autosuggestion is not what you want, just ignore it: it won't execute unless you accept it.
 
 # Cold boot virtual android device in Android Studio
 
