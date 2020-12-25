@@ -4,6 +4,26 @@ https://fishshell.com/docs/current/index.html#autosuggestions
 
 To accept the autosuggestion (replacing the command line contents), press right arrow or Control+F. To accept the first suggested word, press Alt+→,Right or Alt+F. If the autosuggestion is not what you want, just ignore it: it won't execute unless you accept it.
 
+-    Tab completes the current token. Shift, Tab completes the current token and starts the pager's search mode.
+-   Alt+←,Left and Alt+→,Right move the cursor one word left or right (to the next space or punctuation mark), or moves forward/backward in the directory history if the command line is empty. If the cursor is already at the end of the line, and an autosuggestion is available, Alt+→,Right (or Alt+F) accepts the first word in the suggestion.
+-    Shift,←,Left and Shift,→,Right move the cursor one word left or right, without stopping on punctuation.
+-   ↑ (Up) and ↓ (Down) (or Control+P and Control+N for emacs aficionados) search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match. See the history section for more information on history searching.
+-   Alt+↑,Up and Alt+↓,Down search the command history for the previous/next token containing the token under the cursor before the search was started. If the commandline was not on a token when the search started, all tokens match. See the history section for more information on history searching.
+-   Control+C cancels the entire line.
+-   Control+D delete one character to the right of the cursor. If the command line is empty, Control+D will exit fish.
+-   Control+U moves contents from the beginning of line to the cursor to the killring.
+-   Control+L clears and repaints the screen.
+-   Control+W moves the previous path component (everything up to the previous "/", ":" or "@") to the killring.
+-   Control+X copies the current buffer to the system's clipboard, Control+V inserts the clipboard contents.
+-   Alt+d moves the next word to the killring.
+-   Alt+h (or F1) shows the manual page for the current command, if one exists.
+-   Alt+l lists the contents of the current directory, unless the cursor is over a directory argument, in which case the contents of that directory will be listed.
+-   Alt+p adds the string '| less;' to the end of the job under the cursor. The result is that the output of the command will be paged.
+-   Alt+w prints a short description of the command under the cursor.
+-   Alt+e edit the current command line in an external editor. The editor is chosen from the first available of the $VISUAL or $EDITOR variables.
+-   Alt+v Same as Alt+e.
+-   Alt+s Prepends sudo to the current commandline.
+
 # Cold boot virtual android device in Android Studio
 
 # Use 'open' command to open a file with its default browser.
