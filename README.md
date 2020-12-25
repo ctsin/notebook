@@ -1,3 +1,8 @@
+# Fish shell
+
+- <kbd>alt</kbd> + <kbd>right</kbd> accept next word of real time suggestion.
+- <kbd>ctrl</kbd> + <kbd>f</kbd> accept all of the real time suggestion.
+
 # Cold boot virtual android device in Android Studio
 
 # Use 'open' command to open a file with its default browser.
