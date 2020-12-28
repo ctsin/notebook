@@ -1,3 +1,16 @@
+# Fix Expo issue on iOS simulator
+
+https://stackoverflow.com/questions/51147704/expo-error-installing-or-running-app
+
+```sh
+xcrun simctl erase all
+```
+
+# How to access dot file or folder in MacOS
+
+- <kbd>shift</kbd> + <kbd>cmd</kbd> + <kbd>G</kbd> to go to the dot file or folder.
+- Use Spotlight
+
 # Fish shell
 
 **Set Fish as default shell in VS Code**
