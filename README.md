@@ -2,9 +2,15 @@
 
 https://stackoverflow.com/questions/51147704/expo-error-installing-or-running-app
 
+1️⃣ **From shell**
+
 ```sh
 xcrun simctl erase all
 ```
+
+2️⃣ **From Simulator menu**
+
+Simulator -> `Device` -> `Erase All Contents and Settings`.
 
 # How to access dot file or folder in MacOS
 
