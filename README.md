@@ -1,3 +1,5 @@
+# non-null assertion operator (the postfix ! character).
+
 # Fix Expo issue on iOS simulator
 
 https://stackoverflow.com/questions/51147704/expo-error-installing-or-running-app
