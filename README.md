@@ -1,3 +1,26 @@
+# How to use fonts in ReactNative
+
+https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-native-part-1-37kn
+
+- create `react-native.config.js` in root of project.
+
+  ```ts
+  module.exports = {
+    assets: ['./assets/fonts/'],
+  };
+  ```
+- place font files in the folder above.
+- run `npx react-native link`.
+- apply font in style
+
+  ```ts
+  const styles = StyleSheet.create({
+    title: {
+      fontFamily: 'Lato-Regular',
+    },
+  });
+  ```
+
 # non-null assertion operator (the postfix ! character).
 
 # Fix Expo issue on iOS simulator
