@@ -1,3 +1,9 @@
+# Styled-Components features not support in React Native
+
+- Note that the `flex` property works like CSS shorthand, and not the legacy `flex` property in React Native. Setting `flex: 1` sets `flexShrink` to `1` in addition to setting `flexGrow` to `1` and `flexBasis` to `0`.
+- cannot use the `keyframes` and `createGlobalStyle` helpers since React Native doesn't support `keyframes` or `global` styles.
+- You will be warned if you use media queries or nest your CSS.
+
 # A code style
 
 ```ts
