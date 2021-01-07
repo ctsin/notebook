@@ -1,3 +1,46 @@
+# A code style
+
+```ts
+export const renderReactions = (
+  reactions,
+  supportedReactions,
+  reactionCounts,
+  handleReaction,
+) => {
+  const reactionsByType = {}; // 👈  a store
+  reactions &&
+    reactions.forEach(item => {
+      if (reactions[item.type] === undefined) {
+        return (reactionsByType[item.type] = [item]);
+      } else {
+        // 👇 update store and return it.
+        return (reactionsByType[item.type] = [
+          ...reactionsByType[item.type],
+          item,
+        ]);
+      }
+    });
+
+  const emojiDataByType = {};
+  supportedReactions.forEach(e => (emojiDataByType[e.id] = e));
+
+  const reactionTypes = supportedReactions.map(e => e.id);
+
+  // 👇 map the store to view
+  return Object.keys(reactionsByType).map((type, index) =>
+    reactionTypes.indexOf(type) > -1 ? (
+      <ReactionItem
+        key={index}
+        type={type}
+        handleReaction={handleReaction}
+        reactionCounts={reactionCounts}
+        emojiDataByType={emojiDataByType}
+      />
+    ) : null,
+  );
+};
+```
+
 # How to use fonts in ReactNative
 
 https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-native-part-1-37kn
