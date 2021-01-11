@@ -72,7 +72,9 @@ https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-nat
 
 # non-null assertion operator (the postfix ! character).
 
-# Fix Expo issue on iOS simulator
+# Fix issues on iOS simulator
+
+## Reset simulator
 
 https://stackoverflow.com/questions/51147704/expo-error-installing-or-running-app
 
@@ -85,6 +87,10 @@ xcrun simctl erase all
 2️⃣ **From Simulator menu**
 
 Simulator -> `Device` -> `Erase All Contents and Settings`.
+
+## Activate keyboard
+
+- Simulator -> 'I/O' -> `Keyboard` -> `Connect Hardware Keyboard`, or <kbd>⌘+Shift+K</kbd>
 
 # How to access dot file or folder in MacOS
 
