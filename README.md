@@ -1,3 +1,9 @@
+# Default parameter in ES6
+
+https://es6.ruanyifeng.com/#docs/function#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE
+
+如果传入undefined，将触发该参数等于默认值，null则没有这个效果。
+
 # Styled-Components features not support in React Native
 
 - Note that the `flex` property works like CSS shorthand, and not the legacy `flex` property in React Native. Setting `flex: 1` sets `flexShrink` to `1` in addition to setting `flexGrow` to `1` and `flexBasis` to `0`.
