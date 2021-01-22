@@ -1,3 +1,26 @@
+# Destructuring Object conditionally
+
+```ts
+const conditionallyProperty = {...(bool ? {foo: 'Foo'} : {})};
+```
+
+# Define `Enums` in JSDoc
+
+https://stackoverflow.com/questions/19093935/how-to-document-a-string-type-in-jsdoc-with-limited-possible-values
+
+```ts
+/**
+ * @typedef {"keyvalue" | "bar" | "timeseries" | "pie" | "table"} MetricFormat
+ */
+
+/**
+ * @param format {MetricFormat}
+ */
+export function fetchMetric(format) {
+    return fetch((`/`), format);
+}
+```
+
 # Get key types from `Enum`
 
 https://www.typescriptlang.org/docs/handbook/enums.html#enums-at-compile-time
