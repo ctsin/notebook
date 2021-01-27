@@ -1,3 +1,11 @@
+# `React.memo` hint
+
+https://www.youtube.com/watch?v=IuXpqUxJG90
+
+By default it will only shallowly compare complex objects in the props object. So if a callback is passed as inline arrow function, it will cause a rerender.
+
+Try to avoid use inline arrow function, or wrap ti with `useCallback`
+
 # Destructuring Object conditionally
 
 ```ts
