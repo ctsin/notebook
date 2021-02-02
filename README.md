@@ -56,7 +56,7 @@ export const useTransferWiseQuote = (initialParams) => {
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote,
+      queryKeys.twQuote, // NOT mandatory
       {
         sourceAmount,
         sourceCurrency,
@@ -70,7 +70,7 @@ export const useTransferWiseQuote = (initialParams) => {
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote,
+      queryKeys.twQuote, // NOT mandatory
       sourceAmount,
       sourceCurrency,
       targetAmount,
