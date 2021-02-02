@@ -2,6 +2,17 @@
 
 https://react-query.tanstack.com/guides/query-keys#if-your-query-function-depends-on-a-variable-include-it-in-your-query-key
 
+
+React Query use query keys to unique the cache for data.
+
+All the variables which effect the query should be list in the query key.
+
+**Heads Up**
+
+- Both of the following query form work, but the order matters in array form.
+- The first string type item is NOT mandatory, the variables are enough to make the cache invalidate.
+
+
 ```ts
 export const useTransferWiseQuote = (initialParams) => {
   const { data: TransferWiseUser } = useQuery(queryKeys.twUser, getTwId);
@@ -42,13 +53,6 @@ export const useTransferWiseQuote = (initialParams) => {
   ].join('&');
 
   const url = `${ApiEndpointTransferWise}/quotes/v1/getQuote?${joined}`;
-
-  /**
-   * Both of the following query form work, but the order matters in array form.
-   * 
-   * React Query use query keys to unique the cache for data.
-   * All the variables which effect the query should be list in the query key.
-   */
 
   const { error, data } = useQuery(
     [
