@@ -5,12 +5,13 @@ https://react-query.tanstack.com/guides/query-keys#if-your-query-function-depend
 
 React Query use query keys to unique the cache for data.
 
-All the variables which effect the query should be list in the query key.
+All the variables which effect the query should be listed in the query keys.
 
-**Heads Up**
+**Of array form**
 
-- Both of the following query form work, but the order matters in array form.
-- The first string type item is NOT mandatory, the variables are enough to make the cache invalidate.
+1️⃣ Both of the following query forms work, but the order matters in array form.
+
+2️⃣ The first string type item is ❓ optional, the variables are enough to make the cache invalidate.
 
 
 ```ts
@@ -56,9 +57,9 @@ export const useTransferWiseQuote = (initialParams) => {
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote, // NOT mandatory
+      queryKeys.twQuote, // 2️⃣  Optional 
       {
-        sourceAmount,
+        sourceAmount, // 1️⃣ Order does NOT matters
         sourceCurrency,
         targetAmount,
         targetCurrency,
@@ -70,8 +71,8 @@ export const useTransferWiseQuote = (initialParams) => {
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote, // NOT mandatory
-      sourceAmount,
+      queryKeys.twQuote, // 2️⃣ Optional 
+      sourceAmount, // 1️⃣ Order matters
       sourceCurrency,
       targetAmount,
       targetCurrency,
