@@ -1,10 +1,92 @@
+# Query keys from React Query
+
+https://react-query.tanstack.com/guides/query-keys#if-your-query-function-depends-on-a-variable-include-it-in-your-query-key
+
+```ts
+export const useTransferWiseQuote = (initialParams) => {
+  const { data: TransferWiseUser } = useQuery(queryKeys.twUser, getTwId);
+
+  const { twCustomerId } = TransferWiseUser;
+
+  const customerId = `tw_customer_id=${twCustomerId}`;
+
+  const [
+    {
+      sourceAmount, sourceCurrency, targetAmount, targetCurrency,
+    },
+    setParams,
+  ] = useState(initialParams);
+
+  const initialData = useMemo(
+    () => ({
+      fee: 0,
+      formattedEstimatedDelivery: '',
+      id: '',
+      rate: 0,
+      rateType: '',
+      targetAmount: 0,
+      ...initialParams,
+    }),
+    [initialParams],
+  );
+  const amountKey = sourceAmount ? 'sourceAmount' : 'targetAmount';
+  const amountValue = sourceAmount || targetAmount;
+  const amountString = `${amountKey}=${amountValue}`;
+  const sourceCurrencyString = `sourceCurrency=${sourceCurrency}`;
+  const targetCurrencyString = `targetCurrency=${targetCurrency}`;
+  const joined = [
+    customerId,
+    amountString,
+    sourceCurrencyString,
+    targetCurrencyString,
+  ].join('&');
+
+  const url = `${ApiEndpointTransferWise}/quotes/v1/getQuote?${joined}`;
+
+  /**
+   * Both of the following query form work, but the order matters in array form.
+   * 
+   * React Query use query keys to unique the cache for data.
+   * All the variables which effect the query should be list in the query key.
+   */
+
+  const { error, data } = useQuery(
+    [
+      queryKeys.twQuote,
+      {
+        sourceAmount,
+        sourceCurrency,
+        targetAmount,
+        targetCurrency,
+      },
+    ],
+    () => httpRequest.get(url),
+    { initialData },
+  );
+
+  const { error, data } = useQuery(
+    [
+      queryKeys.twQuote,
+      sourceAmount,
+      sourceCurrency,
+      targetAmount,
+      targetCurrency,
+    ],
+    () => httpRequest.get(url),
+    { initialData },
+  );
+
+  return [data, setParams];
+};
+```
+
 # `React.memo` hint
 
 https://www.youtube.com/watch?v=IuXpqUxJG90
 
 By default it will only shallowly compare complex objects in the props object. So if a callback is passed as inline arrow function, it will cause a rerender.
 
-Try to avoid use inline arrow function, or wrap ti with `useCallback`
+Try to avoid use inline arrow function, or wrap it with `useCallback`
 
 # Destructuring Object conditionally
 
