@@ -1,3 +1,25 @@
+# `onBlur` and `onFocus` issues of `TextInput`
+
+In Android, the following code will print `undefined`.
+
+```ts
+  const onFocus = ({ nativeEvent: { text } }) => console.log(text);
+  const onBlur = ({ nativeEvent: { text } }) => console.log(text);
+```
+
+How to fix
+
+1️⃣ access the value from some kind of store.
+```ts
+const [value, setValue] = useState('');
+
+const onChangeText = (text) => setValue(text);
+const onFocus = () => console.log(value);
+const onEndEditing = () => console.log(value);
+```
+
+2️⃣ use `onEndEditing` instead of `onBlur`
+
 # Query keys from React Query
 
 https://react-query.tanstack.com/guides/query-keys#if-your-query-function-depends-on-a-variable-include-it-in-your-query-key
