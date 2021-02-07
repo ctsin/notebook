@@ -3,8 +3,8 @@
 In Android, the following code will print `undefined`.
 
 ```ts
-  const onFocus = ({ nativeEvent: { text } }) => console.log(text);
-  const onBlur = ({ nativeEvent: { text } }) => console.log(text);
+const onFocus = ({ nativeEvent: { text } }) => console.log(text);
+const onBlur = ({ nativeEvent: { text } }) => console.log(text);
 ```
 
 How to fix
