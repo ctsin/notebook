@@ -37,3 +37,38 @@ git pull --rebase origin/dev
 git checkout -b BRANCH_NAME --no-track origin/dev
 git push --force-with-lease origin dev
 ```
+
+# Reset
+
+https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
+
+|Tree|Role|
+|-:|-|
+|HEAD|Last commit snapshot, next parent|
+|Index|Proposed next commit snapshot|
+|Working Directory|Sandbox|
+
+![reset soft](https://git-scm.com/book/en/v2/images/reset-soft.png)
+
+![reset mix - default](https://git-scm.com/book/en/v2/images/reset-mixed.png)
+
+![reset hard - dangerous](https://git-scm.com/book/en/v2/images/reset-hard.png)
+
+**Recap**
+
+The reset command overwrites these three trees in a specific order, stopping when you tell it to:
+
+1. Move the branch HEAD points to (stop here if --soft).
+1. Make the index look like HEAD (stop here unless --hard).
+1. Make the working directory look like the index.
+
+**Reset With a Path**
+
+1. Move the branch HEAD points to (skipped).
+1. Make the index look like HEAD (stop here).
+
+`checkout` with a path is similar to `reset` with a path, BUT it will overwrite the working directory.
+
+**Squashing**
+
+![squashing commits](https://git-scm.com/book/en/v2/images/reset-squash-r3.png)
