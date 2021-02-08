@@ -1,3 +1,21 @@
+# `useRef`and `setTimeout` in TypeScript
+
+```ts
+                          👇                          👇
+const timer = useRef<ReturnType<typeof setTimeout>>(null!);
+
+useEffect(() => {
+  timer.current = setTimeout(function updater() {
+    setCurrent((current + 1) % length);
+
+    timer.current = setTimeout(updater, duration);
+  }, duration);
+  return () => {
+    clearTimeout(timer.current);
+  };
+}, [current, duration, length]);
+```
+
 # Record screen in iOS Simulator
 
 https://stackoverflow.com/questions/25797990/capture-ios-simulator-video-for-app-preview
