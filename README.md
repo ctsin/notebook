@@ -1,3 +1,7 @@
+# Record screen in iOS Simulator
+
+https://stackoverflow.com/questions/25797990/capture-ios-simulator-video-for-app-preview
+
 # `onBlur` and `onFocus` issues of `TextInput`
 
 In Android, the following code will print `undefined`.
