@@ -1,3 +1,21 @@
+# Tips from React Native document
+
+https://reactnative.dev/docs/text
+
+```ts
+const TextInANest = () => {
+  const titleText = useState("Bird's Nest"); // 👈 useful if need value only,
+  const bodyText = useState("This is not really a bird nest.");
+
+  return (
+    // <Text /> can be set as block             👇
+    <Text style={[styles.titleText, {display: 'flex'}]}>
+      {titleText}
+    </Text>
+  );
+};
+```
+
 # `useRef`and `setTimeout` in TypeScript
 
 ```ts
