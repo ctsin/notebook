@@ -1,5 +1,7 @@
 # Tips from React Native document
 
+**Set `<Text />` as block**
+
 https://reactnative.dev/docs/text
 
 ```ts
@@ -15,6 +17,12 @@ const TextInANest = () => {
   );
 };
 ```
+
+**Styling on `<View />`**
+
+https://reactnative.dev/docs/view
+
+Views are designed to be used with StyleSheet for clarity and performance, although inline styles are also supported.
 
 # `useRef`and `setTimeout` in TypeScript
 
