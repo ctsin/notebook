@@ -1,3 +1,16 @@
+# Search and replace in VSCode
+
+https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options
+
+In the two input boxes below the search box, you can enter patterns to include or exclude from the search. If you enter example, that will match every folder and file named example in the workspace. If you enter ./example, that will match the folder example/ at the top level of your workspace. Use , to separate multiple patterns. Paths must use forward slashes. You can also use glob syntax:
+
+- `*` to match one or more characters in a path segment
+- `?` to match on one character in a path segment
+- `**` to match any number of path segments, including none
+- `{}` to group conditions (for example {\*\*/\*.html,\*\*/\*.txt} matches all HTML and text files)
+- `[]` to declare a range of characters to match (example.[0-9] to match on example.0, example.1, …)
+
+
 # Tips from React Native document
 
 **Set `<Text />` as block**
