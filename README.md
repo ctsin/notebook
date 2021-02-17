@@ -1,3 +1,14 @@
+# Use more derived types
+
+```ts
+const theme = {
+  color: {},
+  spacing: {},
+};
+
+export type Theme = typeof theme;
+```
+
 # Search and replace in VSCode
 
 https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options
