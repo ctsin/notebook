@@ -1,4 +1,4 @@
-# Use more derived types
+# Use derived types
 
 ```ts
 const theme = {
@@ -23,6 +23,19 @@ In the two input boxes below the search box, you can enter patterns to include o
 
 
 # Tips from React Native document
+
+**Use `contentContainerStyle` in customer component**
+
+https://reactnative.dev/docs/scrollview#contentcontainerstyle
+
+While designing customer component, we can use `contentContainerStyle` to define the component's container style.
+
+```ts
+export const C = ({ contentContainerStyle, style }) => (
+  <View style={[styles.container, ...contentContainerStyle 👈]}>
+    <Text style={[styles.content, ...styles 👈]}>Hello</Text>
+  </View>
+)
 
 **Set `<Text />` as block**
 
