@@ -1,3 +1,14 @@
+# Static property for both class component & function component
+
+```ts
+class C extents Component {
+  static sharedElement = (route, otherRoute, showing) => {}
+}
+
+const C = () => (<></>)
+C.sharedElement = (route, otherRoute, showing) => {}
+```
+
 # Use derived types
 
 ```ts
