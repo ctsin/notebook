@@ -35,7 +35,45 @@ In the two input boxes below the search box, you can enter patterns to include o
 
 # Tips from React Native document
 
-**Use `contentContainerStyle` in customer component**
+## Default values of `FlexBox` in React Native
+
+https://reactnative.dev/docs/flexbox#flex-wrap
+
+1. `flexDirection` defaulting to `column` instead of `row`;
+2. `alignContent` defaulting to `flex-start` instead of `stretch`;
+3. `flexShrink` defaulting to `0` instead of `1`;
+4. `flex` parameter only supporting a single number.
+
+## `style` vs `contentContainerStyle` in `ScrollView`
+
+https://stackoverflow.com/questions/52892304/style-vs-contentcontainerstyle-in-scrollview
+
+`ScrollView` is a special kind of View, which has two parts:
+
+1. Container (the grey box), it's the outside View, its height can't exceed 100% of the window height.
+2. Content (marked in blue) is the inner part, it can be higher than the window height, it's what's moving inside the container.
+
+<img alt="ScrollView" src="https://i.stack.imgur.com/CDm8y.png" height="300" />
+
+ScrollView `style` defines the outer container of the `ScrollView`, e.g its `height` and `relations` to siblings elements
+
+ScrollView `contentContainerStyle` defines the inner container of it, e.g items `alignItems`, `padding`, etc
+
+## On `<ScrollView />`
+
+https://reactnative.dev/docs/scrollview
+
+Keep in mind that ScrollViews **must have a bounded height** in order to work, since they contain unbounded-height children into a bounded container (via a scroll interaction). In order to bound the height of a ScrollView, either set the height of the view directly (discouraged) or make sure all parent views have bounded height. Forgetting to transfer {flex: 1} down the view stack can lead to errors here, which the element inspector makes quick to debug.
+
+`<ScrollView>` vs `<FlatList>` - which one to use?
+
+`ScrollView` renders all its react child components at once, but this has a performance downside.
+
+`FlatList` renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
+
+`FlatList` is also handy if you want to render separators between your items, multiple columns, infinite scroll loading, or any number of other features it supports out of the box.
+
+## Use `contentContainerStyle` in customer component
 
 https://reactnative.dev/docs/scrollview#contentcontainerstyle
 
@@ -48,7 +86,7 @@ export const C = ({ contentContainerStyle, style }) => (
   </View>
 )
 
-**Set `<Text />` as block**
+## Set `<Text />` as block
 
 https://reactnative.dev/docs/text
 
@@ -66,7 +104,7 @@ const TextInANest = () => {
 };
 ```
 
-**Styling on `<View />`**
+## Styling on `<View />`
 
 https://reactnative.dev/docs/view
 
