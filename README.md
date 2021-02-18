@@ -35,6 +35,22 @@ In the two input boxes below the search box, you can enter patterns to include o
 
 # Tips from React Native document
 
+## Resize mode for `<Image>`
+
+https://reactnative.dev/docs/image#resizemode
+
+Determines how to resize the image when the frame doesn't match the raw image dimensions. Defaults to cover.
+
+- `cover`: Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or larger than the corresponding dimension of the view (minus padding).
+
+- `contain`: Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding).
+
+- `stretch`: Scale width and height independently, This may change the aspect ratio of the src.
+
+- `repeat`: Repeat the image to cover the frame of the view. The image will keep its size and aspect ratio, unless it is larger than the view, in which case it will be scaled down uniformly so that it is contained in the view.
+
+- `center`: Center the image in the view along both dimensions. If the image is larger than the view, scale it down uniformly so that it is contained in the view.
+
 ## Default values of `FlexBox` in React Native
 
 https://reactnative.dev/docs/flexbox#flex-wrap
@@ -312,6 +328,75 @@ https://es6.ruanyifeng.com/#docs/function#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E
 - Note that the `flex` property works like CSS shorthand, and not the legacy `flex` property in React Native. Setting `flex: 1` sets `flexShrink` to `1` in addition to setting `flexGrow` to `1` and `flexBasis` to `0`.
 - cannot use the `keyframes` and `createGlobalStyle` helpers since React Native doesn't support `keyframes` or `global` styles.
 - You will be warned if you use media queries or nest your CSS.
+
+# Styled Props tips in React Native
+
+The following style props can be used as component props directly.
+
+https://reactnative.dev/docs/view-style-props
+
+Component will be styled with height and box shadow(Android only)
+
+Although TypeScript complains that those two props are not available
+
+```ts
+<View 
+  height={100} 👈
+  elevation={10} 👈 
+  style={{backgroundColor: 'white'}} />
+```
+
+> It DO NOT work on React Native for web
+
+# Use React Native build-in style types
+
+```ts
+type ContainerProps = {
+  // available options: ViewStyle | TextStyle | ImageStyle
+  contentContainerStyle: ViewStyle; 👈
+};
+
+const Container = styled.FlatList<ContainerProps>`
+  flex-grow: 0;
+  margin: ${({contentContainerStyle: {margin}}) => margin ?? '10'}px;
+`;
+```
+
+# Styled-components for React Native
+
+### `attrs` method DO NOT support `style` props
+```ts
+type ViewStyledProps = {
+  x?: number;
+};
+
+const ViewStyled = styled.View.attrs({x}) => ({
+  // The following DO NOT work.
+  style: {elevation: x, backgroundColor: 'red'},
+}))``;
+```
+
+### How to define additional props
+
+```ts
+type ViewStyledProps = {
+  elevation?: number;
+};
+
+const AnimatedViewStyled = styled(Animated.View)
+  .attrs<ViewStyledProps 👈 >(props => ({}))<ViewStyledProps 👈 >`
+    box-shadow: ${({elevation = 10}) => `0 0 ${elevation}px rgba(255, 0, 0, 0.5)`};
+    background-color: white;
+  `;
+```
+
+# customize component display name
+
+```ts
+AnimatedViewStyled.displayName = 'Hello';
+```
+
+# Default `backgroundColor` for `<View />` is `#FAFAFA`
 
 # A code style
 
