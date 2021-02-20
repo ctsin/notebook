@@ -1,3 +1,15 @@
+# Generic type support default type
+
+https://www.smashingmagazine.com/2021/01/dynamic-static-typing-typescript/
+
+
+```ts
+type ServerRequest<Met extends Methods, Par extends string = string> = {
+  method: Met;
+  params: Record<Par, string>;
+};
+```
+
 # Static property for both class component & function component
 
 ```ts
