@@ -1,3 +1,16 @@
+# Re-export a component as default
+
+https://reactjs.org/docs/code-splitting.html#named-exports
+
+```ts
+// ManyComponents.js
+export const MyComponent = /* ... */;
+export const MyUnusedComponent = /* ... */;
+
+// MyComponent.js
+export { MyComponent as default 👈 } from "./ManyComponents.js";
+```
+
 # Generic type support default type
 
 https://www.smashingmagazine.com/2021/01/dynamic-static-typing-typescript/
