@@ -29,3 +29,9 @@ Have you ever written `v => console.log(v)` to quickly find out what comes in a 
 Just use `console.log` directly!
 
 (it's not only less typing, but also "automatically" gets all the params, if there's more than one)
+
+## Use `start` attribute in ordered list
+
+Use the `start` attribute to change the starting point for your ordered lists.
+
+<img height="200" src="https://pbs.twimg.com/media/Eu-b10NXMAAiR_M?format=png&name=900x900">
