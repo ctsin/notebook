@@ -23,6 +23,10 @@ type ServerRequest<Met extends Methods, Par extends string = string> = {
 };
 ```
 
+# `Intl` API
+
+As a bonus and because `Intl` is part of `ECMAScript`, it is also available in Node.js. You will want to be more careful with defaults when working on server though. The time zone, for example, is going to be where the server is located, not the time zone of your user. I recommend working in `UTC` on servers and using users’ time zones when displaying the datetime.
+
 # Static property for both class component & function component
 
 ```ts
