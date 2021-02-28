@@ -1,3 +1,9 @@
+# Building React Components Using Children Props and Context API
+
+https://blog.soshace.com/en/javascript/building-react-components-using-children-props-and-context-api/
+
+What we need first is React.Children.toArray(children) to always handle children as an array because when there is only one component, it will not be an array by default.
+
 # Re-export a component as default
 
 https://reactjs.org/docs/code-splitting.html#named-exports
