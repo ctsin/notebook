@@ -1,3 +1,13 @@
+# `$$` in DevTools
+
+In DevTools, `$$` is shorthand for
+
+```ts
+Array.from(document.querySelectorAll())
+```
+
+Leran more https://developers.google.com/web/tools/chrome-devtools/console/utilities
+
 # Building React Components Using Children Props and Context API
 
 https://blog.soshace.com/en/javascript/building-react-components-using-children-props-and-context-api/
