@@ -38,6 +38,14 @@ bar = [true, "some", "separated", "text", false];
 
 > ⚠️ **RESTRICTION** It's avoid to be followed by another optional element or rest element.
 
+# Destructured Variables Can be Explicitly Marked as Unused
+
+```ts
+let [_first, second] = getValues();
+```
+
+Now, TypeScript will recognize that _first was intentionally named with an underscore because there was no intent to use it.
+
 # Relaxed Rules Between Optional Properties and String Index Signatures
 
 https://devblogs.microsoft.com/typescript/announcing-typescript-4-2-beta/#relaxed-rules-between-optional-properties-and-string-index-signatures
