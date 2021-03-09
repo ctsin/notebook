@@ -1,3 +1,21 @@
+# `addEventListener` support abort
+
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters
+
+https://jakearchibald.com/2021/function-callback-risks/
+
+```ts
+const controller = new AbortController();
+const { signal } = controller;
+
+el.addEventListener('mousemove', callback, { signal });
+el.addEventListener('pointermove', callback, { signal });
+el.addEventListener('touchmove', callback, { signal });
+
+// Later, remove all three listeners:
+controller.abort();
+```
+
 # Installing react-native-unimodules
 
 https://docs.expo.io/bare/installing-unimodules/
