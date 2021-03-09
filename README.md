@@ -4,7 +4,7 @@ https://docs.expo.io/bare/installing-unimodules/
 
 This library contains infrastructure and a small set of foundational libraries and interfaces that are commonly depended on by other modules. You can install react-native-unimodules in any react-native app, and once it is installed you can use most of the libraries from the Expo SDK, like expo-camera, expo-media-library and many more.
 
-> If you are creating a new project, we recommend using `npx create-react-native-app` instead of `npx react-native init` because it will handle the following configuration for you automatically.
+> If you are creating a new project, we recommend using `npx create-react-native-app` (https://github.com/expo/create-react-native-app) instead of `npx react-native init` because it will handle the following configuration for you automatically.
 
 # Using Libraries in React Native
 
