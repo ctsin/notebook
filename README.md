@@ -1,3 +1,32 @@
+# Using Libraries in React Native
+
+https://reactnative.dev/docs/libraries
+
+**React Native Directory** https://reactnative.directory/
+
+## Linking Native Code on iOS
+
+React Native uses CocoaPods to manage iOS project dependencies and most React Native libraries follow this same convention.
+
+Run `pod install` in our ios directory in order to link it to our native iOS project. A shortcut for doing this without switching to the ios directory is to run:
+
+```ts
+npx pod-install
+```
+
+Once this is complete, re-build the app binary to start using your new library:
+```ts
+npx react-native run-ios
+```
+
+## Linking Native Code on Android
+
+React Native uses Gradle to manage Android project dependencies. After you install a library with native dependencies, you will need to re-build the app binary to use your new library:
+
+```ts
+npx react-native run-android
+```
+
 # `$$` in DevTools
 
 In DevTools, `$$` is shorthand for
