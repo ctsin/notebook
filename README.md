@@ -1,3 +1,10 @@
+# React Types
+
+https://reactnative.dev/docs/flatlist#listemptycomponent
+
+- React Component (e.g. SomeComponent)
+- React element (e.g. <SomeComponent />)
+
 # `addEventListener` support abort
 
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters
