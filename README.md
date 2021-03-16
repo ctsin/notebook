@@ -1,3 +1,33 @@
+# React Native 0.64
+
+## Inline Requires enabled by default for better performance.
+
+Before:
+
+```ts
+import { MyFunction } from 'my-module';
+
+const MyComponent = (props) => {
+  const result = MyFunction();
+
+  return (<Text>{result}</Text>);
+};
+```
+
+After:
+
+```ts
+const MyComponent = (props) => {
+  const result = require('my-module').MyFunction();
+
+  return (<Text>{result}</Text>);
+};
+```
+
+## React 17
+
+The main change is a new JSX transform enabling files to no longer need to import `React` to be able to use JSX.
+
 # React Types
 
 https://reactnative.dev/docs/flatlist#listemptycomponent
