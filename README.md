@@ -1,3 +1,7 @@
+# MacOS
+
+In LaunchPad, holding <kbd>Option</kbd> key can uninstall apps instantly.
+
 # React Native 0.64
 
 ## Inline Requires enabled by default for better performance.
