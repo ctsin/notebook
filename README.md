@@ -1,3 +1,28 @@
+# ES2021 Logical assignment operators
+
+https://exploringjs.com/impatient-js/ch_operators.html#logical-assignment-operators
+
+Logical assignment operators work differently from other compound assignment operators:
+
+| Assignment operator | Equivalent to | Only assigns if a is |
+|---|---|---|
+| a \|\|= b  | a \|\| (a = b) | Falsy |
+| a &&= b  | a && (a = b) | Truthy |
+| a ??= b  | a ?? (a = b) | Nullish |
+
+Why is `a||= b` equivalent to the following expression?
+```ts
+a || (a = b)
+```
+
+Why not to this expression?
+
+```ts
+a = a || b
+```
+
+The former expression has the benefit of short-circuiting: The assignment is only evaluated if a evaluates to false. Therefore, the assignment is only performed if it’s necessary. In contrast, the latter expression always performs an assignment.
+
 # MacOS
 
 In LaunchPad, holding <kbd>Option</kbd> key can uninstall apps instantly.
