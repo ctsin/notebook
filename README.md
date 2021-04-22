@@ -1,14 +1,69 @@
+# How to use CSS3 variables in styled-components
+
+https://epicreact.dev/css-variables/
+
+```css
+body[data-theme='light'] {
+  --colors-primary: deeppink;
+  --colors-background: white;
+}
+body[data-theme='dark'] {
+  --colors-primary: lightpink;
+  --colors-background: black;
+}
+```
+
+```ts
+const PrimaryText = styled.div({
+  padding: 20,
+  color: 'var(--colors-primary)',
+  backgroundColor: 'var(--colors-background)',
+})
+```
+
+# Handling Static Assets in Jest
+
+https://jestjs.io/docs/webpack#handling-static-assets
+
+```json
+// package.json
+{
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  }
+}
+```
+
+And the mock files themselves:
+
+```ts
+// __mocks__/styleMock.js
+
+module.exports = {};
+```
+
+```ts
+// __mocks__/fileMock.js
+
+module.exports = 'test-file-stub';
+```
+
+> See also: [Mocking CSS Modules](https://jestjs.io/docs/webpack#mocking-css-modules)
+
 # ES2021 Logical assignment operators
 
 https://exploringjs.com/impatient-js/ch_operators.html#logical-assignment-operators
 
 Logical assignment operators work differently from other compound assignment operators:
 
-| Assignment operator | Equivalent to | Only assigns if a is |
-|---|---|---|
-| a \|\|= b  | a \|\| (a = b) | Falsy |
-| a &&= b  | a && (a = b) | Truthy |
-| a ??= b  | a ?? (a = b) | Nullish |
+| Assignment operator | Equivalent to  | Only assigns if a is |
+| ------------------- | -------------- | -------------------- |
+| a \|\|= b           | a \|\| (a = b) | Falsy                |
+| a &&= b             | a && (a = b)   | Truthy               |
+| a ??= b             | a ?? (a = b)   | Nullish              |
 
 Why is `a||= b` equivalent to the following expression?
 ```ts
