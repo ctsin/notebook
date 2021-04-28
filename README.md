@@ -1,3 +1,80 @@
+# Styled Components Best Practices
+
+https://www.robinwieruch.de/styled-components
+
+## Use `css` utility
+
+```js
+import styled, { css } from 'styled-components';
+ 
+const red = css`
+  color: red;
+`;
+ 
+const Headline = styled.h1`
+  ${red}
+ 
+  font-size: 20px;
+`;
+```
+
+## Single/Multiple Styled Components
+
+On the left side of spectrum
+
+```js
+const Section = styled.section`
+  border-bottom: 1px solid grey;
+  padding: 20px;
+`;
+ 
+const Headline = styled.h1`
+  color: red;
+`;
+ 
+const Text = styled.span`
+  padding: 10px;
+`;
+ 
+const Content = ({ title, children }) => {
+  return (
+    <Section>
+      <Headline>{title}</Headline>
+ 
+      <Text>{children}</Text>
+    </Section>
+  );
+};
+```
+
+On the other side of the spectrum,
+
+```js
+const Container = styled.section`
+  border-bottom: 1px solid grey;
+  padding: 20px;
+ 
+  h1 {
+    color: red;
+  }
+ 
+  .text {
+    padding: 10px;
+  }
+`;
+ 
+const Content = ({ title, children }) => {
+  return (
+    <Container>
+      <h1>{title}</h1>
+ 
+      <span className="text">{children}</span>
+    </Container>
+  );
+};
+```
+
+
 # How to use CSS3 variables in styled-components
 
 https://epicreact.dev/css-variables/
