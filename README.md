@@ -1,3 +1,57 @@
+# Yarn WorkSpace
+
+https://halftheopposite.dev/post/app-yarn-typescript-esbuild-part-1
+https://halftheopposite.dev/post/app-yarn-typescript-esbuild-part-2
+https://halftheopposite.dev/post/app-yarn-typescript-esbuild-part-3
+https://halftheopposite.dev/post/app-yarn-typescript-esbuild-part-going-further
+
+```
+my-app/
+├─ node_modules/
+├─ packages/
+│  ├─ app/
+│  │  ├─ package.json
+│  ├─ common/
+│  │  ├─ package.json
+│  ├─ server/
+│  │  ├─ package.json
+├─ package.json
+├─ tsconfig.json
+├─ yarn.lock
+```
+
+```sh
+{
+  "name": "my-app",
+  "version": "1.0",
+  "license": "UNLICENSED",
+  "private": true, // Required for Yarn WorkSpace
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "app": "yarn workspace @my-app/app",
+    "common": "yarn workspace @my-app/common",
+    "server": "yarn workspace @my-app/server"
+  }
+}
+```
+
+`package.json` in every WorkSpace module
+```sh
+{
+  "name": "@my-app/app",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "private": true
+}
+```
+
+```sh
+yarn add -D -W typescript // -W to install the dependency in WorkSpace root
+```
+
 # Styled Components Best Practices
 
 https://www.robinwieruch.de/styled-components
