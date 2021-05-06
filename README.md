@@ -1,3 +1,52 @@
+# React 17 adds support for KeyboardEvent.code property to SyntheticEvent
+
+https://blog.saeloun.com/2021/04/23/react-keyboard-event-code
+
+```ts
+// Before
+const handleKeyDown = (event) => {
+    const key = event.nativeEvent.code;
+    switch (key) {
+      case 'KeyW':
+        //moveTop();
+        break;
+      case 'KeyA':
+        //moveLeft();
+        break;
+      case 'KeyS':
+        //moveDown();
+        break;
+      case 'KeyD':
+        //moveRight();
+        break;
+      default:
+      //custom logic  
+    }
+  }
+
+// After
+const handleKeyDown = (event) => {
+    // We replaced the native event with the synthetic keyboard event
+    const key = event.code; 
+    switch (key) {
+      case 'KeyW':
+        //moveTop();
+        break;
+      case 'KeyA':
+        //moveLeft();
+        break;
+      case 'KeyS':
+        //moveDown();
+        break;
+      case 'KeyD':
+        //moveRight();
+        break;
+      default:
+      //custom logic  
+    }
+  }
+```
+
 # Yarn WorkSpace
 
 https://halftheopposite.dev/post/app-yarn-typescript-esbuild-part-1
