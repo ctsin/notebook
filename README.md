@@ -1,3 +1,11 @@
+navigate directories faster with bash
+
+https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
+
+- `~` Home directory
+- `-` Previous directory
+- `!$` is an alias for the last argument of the previous command(⚠️ DO NOT WORK in fish)
+
 # React 17 adds support for KeyboardEvent.code property to SyntheticEvent
 
 https://blog.saeloun.com/2021/04/23/react-keyboard-event-code
