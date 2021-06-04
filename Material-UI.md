@@ -22,3 +22,7 @@ const Accordion = withStyles({
   expanded: {},
 })(MuiAccordion);
 ```
+|                                                                                                 | makeStyles                                               | withStyles                                               | styled |
+| ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | ------ |
+| [multiple style rules](https://material-ui.com/styles/advanced/#overriding-styles-classes-prop) | O                                                        | O                                                        | X      |
+| override the style by parent                                                                    | [O](https://material-ui.com/styles/advanced/#makestyles) | [O](https://material-ui.com/styles/advanced/#withstyles) | X      |

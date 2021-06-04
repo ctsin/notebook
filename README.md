@@ -1,4 +1,88 @@
-navigate directories faster with bash
+# Journey of Improving React App Performance
+
+https://medium.com/technogise/journey-of-improving-react-app-performance-by-10x-9195d4b483d4
+
+### Remove all Inline Functions
+
+```ts
+class Parent extends Component {
+  render() {
+    return (
+      <Child
+        onClick={() => console.log('You clicked!')}
+     />
+    );
+  }
+}
+```
+
+1. It will always trigger a re-render of the component even if there is no change in the props.
+2. It increases the memory footprint of the app. (Refer: Function spaces in Memory snapshot of Firefox)
+
+### Conditional rendering of the components
+
+```ts
+class Parent extends Component {
+  render() {
+    return (
+      <Modal show={isOpen}>
+        <Modal.Header>
+          Hello
+        </Modal.Header>
+        <Modal.Body>
+          I am a Modal
+        </Modal.Body>
+      </Modal>
+    );
+}
+```
+Avoided rendering these components until they are needed i.e. [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html).
+
+This decreased the memory footprint from 500Mb to 150Mb. 😄
+
+Improving above example as below:
+
+```ts
+class Parent extends Component {
+  render() {
+    return (
+      <Modal show={isOpen}>
+        <Modal.Header>
+          Hello
+        </Modal.Header>
+        <Modal.Body>
+          I am a Modal
+        </Modal.Body>
+      </Modal>
+    );
+}
+```
+
+### Remove unnecessary awaits and use Promise.all() wherever applicable
+
+```ts
+const userSubscription = getUserSubscription();
+const userDetails = getUserDetails();
+const userNotifications = getUserNotifications();
+```
+
+Solution: We identified that most of the API calls can be made to execute in parallel. So, we used `Promise.all()` to help us send all these API calls parallelly.
+
+This decreased the initial page load time and other pages by 30%.
+
+```ts
+const [
+  userSubscription,
+  userDetails,
+  userNotifications
+] = await Promise.all([
+  getUserSubscription(),
+  getUserDetails(),
+  getUserNotifications()
+]);
+```
+
+# navigate directories faster with bash
 
 https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
 
