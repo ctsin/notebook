@@ -1,3 +1,206 @@
+#  HTML Tips
+
+https://markodenic.com/html-tips/
+
+## The `loading=lazy` attribute
+
+Performance tip. You can use the loading=lazy attribute to defer the loading of the image until the user scrolls to them.
+
+```html        
+<img src='image.jpg' loading='lazy' alt='Alternative Text'>
+```
+
+## Email, call, and SMS links:
+
+```html  
+<a href="mailto:{email}?subject={subject}&body={content}">
+  Send us an email
+</a>
+
+<a href="tel:{phone}">
+  Call us
+</a>
+
+<a href="sms:{phone}?body={content}">
+  Send us a message
+</a>           
+```
+## Ordered lists `start` attribute.
+
+Use the `start` attribute to change the starting point for your ordered lists.
+
+```html
+<ol start="11">
+<li>HTML</li>
+<li>CSS</li>
+</ol>
+```
+
+## The `meter` element
+
+You can use the `meter` element to display quantities. No JavaScript/CSS needed.
+
+```html
+<label for="value1">Low</label>
+<meter id="value1" min="0" max="100" low="30" high="75" optimum="80" value="25"></meter>
+
+<label for="value2">Medium</label>
+<meter id="value2" min="0" max="100" low="30" high="75" optimum="80" value="50"></meter>
+
+<label for="value3">High</label>
+<meter id="value3" min="0" max="100" low="30" high="75" optimum="80" value="80"></meter>
+```
+
+## HTML Native Search
+
+```html
+<div class="wrapper">
+  <h1>
+    Native HTML Search
+  </h1>
+  
+  <input list="items">
+  
+  <datalist id="items">
+    <option value="Marko Denic">
+    <option value="FreeCodeCamp">
+    <option value="FreeCodeTools">
+    <option value="Web Development">
+    <option value="Web Developer">
+  </datalist>
+</div>
+```
+
+## Fieldset Element
+
+You can use the `fieldset` element to group several controls as well as labels (`label`) within a web form.
+
+```html
+<form>
+  <fieldset>
+    <legend>Choose your favorite language</legend>
+
+    <input type="radio" id="javascript" name="language">
+    <label for="javascript">JavaScript</label><br/>
+
+    <input type="radio" id="python" name="language">
+    <label for="python">Python</label><br/>
+
+    <input type="radio" id="java" name="language">
+    <label for="java">Java</label>
+  </fieldset>
+</form>
+```
+
+## Base Element
+
+If you want to open all links in the document in a new tab, you can use `base` element:
+
+```html
+<head>
+   <base target="_blank">
+</head>
+<!-- This link will open in a new tab. -->
+<div class="wrapper">
+  This link will be opened in a new tab: &nbsp;
+  <a href="https://freecodetools.org/">
+    Free Code Tools
+  </a>
+
+  <p>
+    Read more: <br><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">
+    MDN Documentation
+    </a>
+  </p>
+</div>
+```
+
+## Favicon cache busting
+
+To refresh your website’s favicon you can force browsers to download a new version by adding `?v=2` to the filename.
+
+This is especially helpful in production to make sure the users get the new version.
+
+```html
+<link rel="icon" href="/favicon.ico?v=2" />           
+```
+## The `spellcheck` attribute
+
+Use the spellcheck attribute to define whether the element may be checked for spelling errors.
+
+```html
+<label for="input1">spellcheck="true"</label>
+<input type="text" id="input1" spellcheck="true">
+
+<label for="input2">spellcheck="false"</label>
+<input type="text" id="input2" spellcheck="false">
+```
+
+## Native HTML sliders
+
+You can use `<input type="range">` to create sliders.
+
+```html
+<label for="volume">Volume: </label>
+<input type="range" id="volume" name="volume" min="0" max="20">
+
+<label for="result">Your choice: </label>
+<input type="number" id="result" name="result">
+```
+
+## HTML Accordion
+
+You can use the `details` element to create a native HTML accordion.
+
+```html
+<div class="wrapper">
+  <details>
+    <summary>
+      Click me to see more details
+    </summary>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </details>
+</div>
+```
+
+## `mark` tag
+
+You can use the `<mark>` tag to highlight text.
+
+## `download` attribute
+
+You can use the `download` attribute in your links to download the file instead of navigating to it.
+
+```html
+<a href='path/to/file' download>
+  Download
+</a>
+```
+
+##  Performance tip
+
+Use the `.webp` image format to make images smaller and boost the performance of your website.
+
+```html
+<picture>
+  <!-- load .webp image if supported -->
+  <source srcset="logo.webp" type="image/webp">
+  
+  <!-- 
+	Fallback if `.webp` images or <picture> tag 
+	not supported by the browser.
+  -->
+  <img src="logo.png" alt="logo">
+</picture>           
+```
+
+## input type="search"
+
+Use the `type="search"` for your search inputs and you get the “clear” button for free.
+
 # Journey of Improving React App Performance
 
 https://medium.com/technogise/journey-of-improving-react-app-performance-by-10x-9195d4b483d4
