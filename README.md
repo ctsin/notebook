@@ -1,3 +1,39 @@
+# Google layout demonstration
+
+## Grid
+
+Implemented side aligned grid with as less as two element.
+
+```html
+<ul class="Bgzgmd">
+  <li>
+    <a href="" target="_blank">帮助</a>
+  </li>
+  <li>
+    <a href="" target="_blank">隐私权</a>
+  </li>
+  <li>
+    <a href="" target="_blank">条款</a>
+  </li>
+</ul>
+```
+
+```css
+.Bgzgmd {
+  margin: 8px -16px; // 👈 negative margin
+}
+
+.Bgzgmd li {
+    margin: 0;
+}
+
+.Bgzgmd a {
+    padding: 6px 16px; // 👈  padding
+}
+```
+
+![Google sign in  layout](google-signin-grid.png)
+
 #  HTML Tips
 
 https://markodenic.com/html-tips/
@@ -13,7 +49,7 @@ Performance tip. You can use the loading=lazy attribute to defer the loading of 
 ## Email, call, and SMS links:
 
 ```html  
-<a href="mailto:{email}?subject={subject}&body={content}">
+<a href="mailto:{email}?subject={**subject**}&body={content}">
   Send us an email
 </a>
 
