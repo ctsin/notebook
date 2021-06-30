@@ -1,3 +1,29 @@
+# TypeScript Config for `import` statement shortcut
+
+https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
+
+```
+
+The above configuration makes:
+
+```ts
+import { Actions, Summary } from "./src/components";
+```
+
+as
+
+```ts
+import { Actions, Summary } from "components";
+```
+
 # Google layout demonstration
 
 ## Grid
