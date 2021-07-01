@@ -1,3 +1,25 @@
+# React uncontrolled input issue
+
+https://reactjs.org/docs/forms.html#controlled-input-null-value
+
+For the error message following:
+
+```sh
+Warning: A component is changing a controlled input to be uncontrolled. This is likely caused by the value changing from a defined to undefined, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components
+```
+
+Specifying the value prop on a controlled component prevents the user from changing the input unless you desire so. If you’ve specified a value but the input is still editable, you may have accidentally set value to undefined or null.
+
+The following code demonstrates this. (The input is locked at first but becomes editable after a short delay.)
+
+```ts
+ReactDOM.render(<input value="hi" />, mountNode);
+
+setTimeout(function() {
+  ReactDOM.render(<input value={null} />, mountNode);
+}, 1000);
+```
+
 # Enums
 
 - A Enum is a set of named constants.
