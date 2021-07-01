@@ -1,3 +1,120 @@
+# Enums
+
+- A Enum is a set of named constants.
+- Enum value can be numeric, string, or [computed](https://www.typescriptlang.org/docs/handbook/enums.html#computed-and-constant-members).
+- Technically enums can be mixed with [string and numeric](https://www.typescriptlang.org/docs/handbook/enums.html#heterogeneous-enums) members, but it's not clear to do it
+
+## Enums at compile time
+
+https://www.typescriptlang.org/docs/handbook/enums.html#enums-at-compile-time
+
+Even though Enums are real objects that exist at runtime, the `keyof` keyword works differently than you might expect for typical objects. Instead, use `keyof typeof` to get a Type that represents all Enum keys as strings.
+
+```ts
+enum LogLevel {
+  ERROR,
+  WARN,
+  INFO,
+  DEBUG,
+}
+
+/**
+ * This is equivalent to:
+ * type LogLevelStrings = 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
+ */
+type LogLevelStrings = keyof typeof LogLevel;
+
+function printImportant(key: LogLevelStrings, message: string) {
+  const num = LogLevel[key];
+  if (num <= LogLevel.WARN) {
+    console.log("Log level key is:", key);
+    console.log("Log level value is:", num);
+    console.log("Log level message is:", message);
+  }
+}
+printImportant("ERROR", "This is a message");
+```
+
+## Reverse mappings
+
+https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings
+
+```ts
+enum Enum {
+  A,
+}
+
+let a = Enum.A;
+let nameOfA = Enum[a]; // "A"
+```
+
+TypeScript compiles this down to the following JavaScript:
+
+```ts
+"use strict";
+var Enum;
+(function (Enum) {
+    Enum[Enum["A"] = 0] = "A";
+})(Enum || (Enum = {}));
+let a = Enum.A;
+let nameOfA = Enum[a]; // "A"
+```
+
+⚠️ String enum members DO NOT get a reverse mapping generated at all.
+
+## Objects vs Enums
+
+https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums
+
+In modern TypeScript, you may not need an enum when an object with as const could suffice:
+
+```ts
+const enum EDirection {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+const ODirection = {
+  Up: 0,
+  Down: 1,
+  Left: 2,
+  Right: 3,
+} as const;
+
+EDirection.Up;
+           
+(enum member) EDirection.Up = 0
+
+ODirection.Up;
+           
+(property) Up: 0
+
+// Using the enum as a parameter
+function walk(dir: EDirection) {}
+
+// It requires an extra line to pull out the keys
+type Direction = typeof ODirection[keyof typeof ODirection];
+function run(dir: Direction) {}
+
+walk(EDirection.Left);
+run(ODirection.Right);
+```
+
+> The biggest idea is not only to differentiate object and enum, but also to explain how `typeof`and `keyof` works.
+
+```ts
+const people = {
+  name: "Peter",
+  age: 9,
+}
+
+type People = typeof people; // { name: string; age: number;}
+type KeyofPeople = keyof People; // "name" | "age"
+type TypeofPeople = typeof people[KeyofPeople]; // string | number
+```
+
 # TypeScript Config for `import` statement shortcut
 
 https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url
