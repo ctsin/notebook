@@ -1,3 +1,149 @@
+# The extended types can be narrower than its parent ones only
+
+```ts
+interface Base {
+  common: string // 👉 string | boolean will makes the Ex works
+}
+
+/**
+ * Interface 'Ex' incorrectly extends interface 'Base'.
+ *  Types of property 'common' are incompatible.
+ *   Type 'boolean' is not assignable to type 'string'.(2430)
+*/
+interface Ex extends Base {
+  common: boolean;
+}
+```
+
+# Reminds on Union and Intersection Types in TypeScript
+
+## What's Union Types
+
+Described in the document:
+
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#defining-a-union-type
+
+> A union type is a type formed from two or more other types, representing values that may be any one of those types.
+
+and: 
+
+https://www.tslang.cn/docs/handbook/advanced-types.html
+
+> 联合类型表示一个值可以是几种类型之一。
+> 
+> ...
+> 
+> 如果一个值是联合类型，我们只能访问此联合类型的所有类型里**共有**的成员。
+
+```ts
+interface Bird {
+    fly();
+    layEggs();
+}
+
+interface Fish {
+    swim();
+    layEggs();
+}
+
+function getSmallPet(): Fish | Bird {
+    // ...
+}
+
+let pet = getSmallPet();
+pet.layEggs(); // okay
+pet.swim();    // errors
+```
+
+> 如果一个值的类型是 A | B，我们能够 确定的是它包含了 A 和 B中共有的成员。 这个例子里， Bird具有一个 fly成员。 我们不能确定一个 Bird | Fish类型的变量是否有 fly方法。 如果变量在运行时是 Fish类型，那么调用 pet.fly()就出错了。
+
+It's explained with one more example in document:
+
+> It might be confusing that a union of types appears to have the intersection of those types’ properties. This is not an accident - the name union comes from type theory. The union number | string is composed by taking the union of the values from each type. Notice that given two sets with corresponding facts about each set, only the intersection of those facts applies to the union of the sets themselves. For example, if we had a room of tall people wearing hats, and another room of Spanish speakers wearing hats, after combining those rooms, the only thing we know about every person is that they must be wearing a hat.
+
+## As same key with different types happens
+
+### For Intersection Types
+
+```ts
+// X receives THREE properties: `name`, `age`, and `gender`.
+// Age props with different types
+type X = {
+  name: string;
+  age: number;
+} & {
+  gender: 'M' | "F"
+  age: string
+}
+
+declare const x: X;
+
+// Age will receives `never` types, with error:
+// Type 'string' is not assignable to type 'never'.(2322)
+x.age = '' 
+```
+
+### For Union Types
+
+```ts
+// X receives ONE property: `age`.
+// Age props with different types
+type X = {
+  name: string;
+  age: number;
+} | {
+  gender: 'M' | "F"
+  age: string
+}
+
+declare const x: X;
+
+// Age will receives `string | number` types, without error.
+x.age = '' 
+```
+
+# 3 Useful TypeScript Patterns to Keep in Your Back Pocket
+
+https://spin.atomicobject.com/2021/05/11/3-useful-typescript-patterns/
+
+## Pattern 1: Mapped Types 👍
+
+```ts
+type Names = "Bob" | "Bill" | "Ben";
+type JobTitles = "Welder" | "Carpenter" | "Plumber";
+
+const JobAssignments: { [Key in Names]: JobTitles } = {
+  Bob: "Welder",
+  Bill: "Carpenter",
+  Ben: "Plumber"
+};
+```
+
+## Pattern 2: Function Overloading
+
+```ts
+function inputDoubler(input: string): string;
+function inputDoubler(input: number): number;
+
+function inputDoubler(input: string | number) {
+  if (typeof input === "string"){
+    return `${input}${input}`;
+  } else {
+    return input * 2;
+  }
+};
+```
+
+## Pattern 3: Custom Type Guards
+
+```ts
+function isPizza (food: Pizza | Burrito): food is Pizza {
+  return (<Pizza>food).ingredients.topping !== undefined;
+  // Or
+  return (food as Pizza).ingredients.topping !== undefined;
+};
+```
+
 # React uncontrolled input issue
 
 https://reactjs.org/docs/forms.html#controlled-input-null-value
