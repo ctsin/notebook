@@ -1,3 +1,183 @@
+# Serving sharp images to high density screens
+
+https://jakearchibald.com/2021/serving-sharp-images-to-high-density-screens/
+
+Key points: AVIF & WebP
+
+```html
+<picture>
+  <source
+    type="image/avif"
+    media="(-webkit-min-device-pixel-ratio: 1.5)"
+    srcset="2x-800.avif 800w, 2x-1200.avif 1200w, 2x-1598.avif 1598w"
+    sizes="
+      (min-width: 1066px) 743px,
+      (min-width: 800px) calc(75vw - 57px),
+      100vw
+    "
+  />
+  <source
+    type="image/webp"
+    media="(-webkit-min-device-pixel-ratio: 1.5)"
+    srcset="2x-800.webp 800w, 2x-1200.webp 1200w, 2x-1598.webp 1598w"
+    sizes="
+      (min-width: 1066px) 743px,
+      (min-width: 800px) calc(75vw - 57px),
+      100vw
+    "
+  />
+  <source
+    media="(-webkit-min-device-pixel-ratio: 1.5)"
+    srcset="2x-800.jpg 800w, 2x-1200.jpg 1200w, 2x-1598.jpg 1598w"
+    sizes="
+      (min-width: 1066px) 743px,
+      (min-width: 800px) calc(75vw - 57px),
+      100vw
+    "
+  />
+  <source type="image/avif" srcset="1x-743.avif" />
+  <source type="image/webp" srcset="1x-743.webp" />
+  <img src="1x-743.jpg" width="743" height="477" alt="A red panda" />
+</picture>
+```
+
+# How to Dynamically Import ECMAScript Modules
+
+https://dmitripavlutin.com/ecmascript-modules-dynamic-import/
+
+```ts
+// namedConcat.js
+export const concat = (paramA, paramB) => paramA + paramB;
+
+async function loadMyModule() {
+  const { concat } = await import('./namedConcat.js');  concat('b', 'c'); // => 'bc'
+}
+```
+
+```ts
+// defaultConcat.js
+export default (paramA, paramB) => paramA + paramB;
+
+async function loadMyModule() {
+  const { default: defaultImport } = await import('./defaultConcat.js');
+  defaultImport('b', 'c'); // => 'bc'
+}
+```
+
+# ES2021
+
+https://h3manth.com/ES2021/
+
+Logical Assignment Operators
+
+```ts
+//"Or Or Equals"
+x ||= y;
+x || (x = y);
+
+// "And And Equals"
+x &&= y;
+x && (x = y);
+
+// "QQ Equals"
+x ??= y;
+x ?? (x = y);
+
+const updateID = user => {
+
+  // We can do this
+  if (!user.id) user.id = 1
+
+  // Or this
+  user.id = user.id || 1
+
+  // Or use logical assignment operator.
+  user.id ||= 1
+}
+
+function setOpts(opts) {
+  opts.cat ??= 'meow'
+  opts.dog ??= 'bow';
+}
+
+setOpts({ cat: 'meow' })
+```
+
+Numeric Separators
+
+```ts
+1_000_000_000           // Ah, so a billion
+101_475_938.38          // And this is hundreds of millions
+
+let fee = 123_00;       // $123 (12300 cents, apparently)
+let fee = 12_300;       // $12,300 (woah, that fee!)
+let amount = 12345_00;  // 12,345 (1234500 cents, apparently)
+let amount = 123_4500;  // 123.45 (4-fixed financial)
+let amount = 1_234_500; // 1,234,500
+
+0.000_001 // 1 millionth
+1e10_000  // 10^10000 -- granted, far less useful / in-range...
+0xA0_B0_C0;
+```
+
+Promise.any and AggregateError
+
+```ts
+Promise.any([
+  fetch('https://v8.dev/').then(() => 'home'),
+  fetch('https://v8.dev/blog').then(() => 'blog'),
+  fetch('https://v8.dev/docs').then(() => 'docs')
+]).then((first) => {
+  // Any of the promises was fulfilled.
+  console.log(first);
+  // → 'home'
+}).catch((error) => {
+  // All of the promises were rejected.
+  console.log(error);
+});
+```
+String.prototype.replaceAll
+
+```ts
+// String.prototype.replaceAll(searchValue, replaceValue)
+
+'x'.replace('', '_');
+// → '_x'
+
+'xxx'.replace(/(?:)/g, '_');
+// → '_x_x_x_'
+
+'xxx'.replaceAll('', '_');
+// → '_x_x_x_'
+```
+
+WeakRefs and FinalizationRegistry Objects
+
+```ts
+let target = {};
+let wr = new WeakRef(target);
+
+//wr and target aren't the same
+
+
+// Creating a new registry
+const registry = new FinalizationRegistry(heldValue => {
+  // ....
+});
+
+registry.register(myObject, "some value", myObject);
+// ...some time later, if you don't care about `myObject` anymore...
+registry.unregister(myObject);
+```
+
+# Optional chain tip
+
+https://swizec.com/blog/a-surprising-feature-of-javascript-optional-chaining/
+
+```ts
+object?.deepProp?.[console.log("runs if deepProp defined")]
+```
+
 # The extended types can be narrower than its parent ones only
 
 ```ts
