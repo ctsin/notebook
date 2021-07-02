@@ -146,7 +146,6 @@ https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src"]
 }
 
 ```
