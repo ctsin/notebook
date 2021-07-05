@@ -1,3 +1,9 @@
+# VS Code IntelliSense
+
+Moving "Auto Import" statement to the very top of IntelliSense menu.
+
+![intelliSense](intelliSense.png)
+
 # `<fieldset />`
 
 Grouping and manipulating the relevant inputs together.
