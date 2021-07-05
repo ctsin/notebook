@@ -1,3 +1,9 @@
+# `<fieldset />`
+
+Grouping and manipulating the relevant inputs together.
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+
 # Serving sharp images to high density screens
 
 https://jakearchibald.com/2021/serving-sharp-images-to-high-density-screens/
