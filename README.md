@@ -1,3 +1,21 @@
+# Accessing `NODE_ENV`
+
+https://stackoverflow.com/questions/45194598/using-process-env-in-typescript
+
+> There's no guarantee of what (if any) environment variables are going to be available in a Node process - the NODE_ENV variable is just a convention that was popularised by Express, rather than something built in to Node itself. As such, it wouldn't really make sense for it to be included in the type definitions. Instead, they define process.env like this:
+
+```ts
+export interface ProcessEnv {
+    [key: string]: string | undefined
+}
+```
+
+> Which means that process.env can be indexed with a string in order to get a string back (or undefined, if the variable isn't set). To fix your error, you'll have to use the index syntax:
+
+```ts
+let env = process.env["NODE_ENV"]; // 👈 That's it.
+```
+
 # VS Code IntelliSense
 
 Moving "Auto Import" statement to the very top of IntelliSense menu.
