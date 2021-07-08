@@ -1,28 +1,28 @@
-# Pseudo selector usage
+# Demonstration from AutoComplete 
 
-https://codesandbox.io/s/ie3nt?file=/demo.js:334-637
-
-https://codesandbox.io/s/suspicious-sound-i9tb1?file=/src/App.js
+https://material-ui.com/components/autocomplete/#virtualization
 
 ```ts
-const Accordion = withStyles({
-  root: {
-    border: '1px solid rgba(0, 0, 0, .125)',
-    boxShadow: 'none',
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      content: '"Hello"' // ⚠️ double quote "", '' or `` to make pseudo work
-    },
-    '&$expanded': {
-      margin: 'auto',
-    },
-  },
-  expanded: {},
-})(MuiAccordion);
+                                                👇
+const ListboxComponent = React.forwardRef<HTMLDivElement>(
+  function ListboxComponent(props, ref) {
+    const { children, ...other } = props;
+                                        👇
+    const itemData = React.Children.toArray(children);
+    const theme = useTheme();
+                        👇
+    const smUp = useMediaQuery(theme.breakpoints.up("sm"), { noSsr: true });
+    const itemCount = itemData.length;
+    const itemSize = smUp ? 36 : 48;
+
+    const getChildSize = (child: React.ReactNode) => {
+                                                👇
+      if (React.isValidElement(child) && child.type === ListSubheader) {
+        return 48;
+      }
+
+      return itemSize;
+    };
+
 ```
-|                                                                                                 | makeStyles                                               | withStyles                                               | styled |
-| ----------------------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | ------ |
-| [multiple style rules](https://material-ui.com/styles/advanced/#overriding-styles-classes-prop) | O                                                        | O                                                        | X      |
-| override the style by parent                                                                    | [O](https://material-ui.com/styles/advanced/#makestyles) | [O](https://material-ui.com/styles/advanced/#withstyles) | X      |
+
