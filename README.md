@@ -1,3 +1,16 @@
+# Debug setting for CRA in VS Code
+
+```json
+{
+  "type": "pwa-chrome",
+  "request": "launch",
+  "name": "Chrome",
+  "skipFiles": ["node_modules"],
+  "url": "http://localhost:3000",
+  "webRoot": "${workspaceFolder}/src"
+}
+```
+
 # `<input />` events tips
 
 When listening to value changes mind that:
