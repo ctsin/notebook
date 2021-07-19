@@ -1,3 +1,15 @@
+# `<input />` events tips
+
+When listening to value changes mind that:
+
+❌ Cross mark `change` event doesn't emit unless user e.g. leaves the input
+
+❌ Cross mark `keypress`/`keydown` doesn't emit eg. when the input is changed with a mouse click
+
+✅ White heavy check mark but `input` event does emit every time user updates the field
+
+https://twitter.com/stackblitz/status/1416033954034036745
+
 # Accessing `NODE_ENV`
 
 https://stackoverflow.com/questions/45194598/using-process-env-in-typescript
