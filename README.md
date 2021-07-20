@@ -1,3 +1,31 @@
+# `useMemo` is not restricted to use on the most top of code
+
+```
+export const useTodosQuery = () => {
+  const queryInfo = useQuery(['todos'], fetchTodos)
+
+  return {
+    ...queryInfo,
+    data: React.useMemo( 👈
+      () => queryInfo.data?.map((todo) => todo.name.toUpperCase()),
+      [queryInfo.data]
+    ),
+  }
+}
+
+const transformTodoNames = (data: Todos) =>
+  data.map((todo) => todo.name.toUpperCase())
+
+export const useTodosQuery = () =>
+  useQuery(['todos'], fetchTodos, {
+    // ✅ memoizes with useCallback
+    select: React.useCallback( 👈
+      (data: Todos) => data.map((todo) => todo.name.toUpperCase()),
+      []
+    ),
+  })
+```
+
 # Debug setting for CRA in VS Code
 
 ```json
