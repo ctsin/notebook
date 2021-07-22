@@ -35,3 +35,5 @@ https://tkdodo.eu/blog/practical-react-query
 - Keep my Query Keys next to their respective queries
 - keep your api layer separated from your queries
 - Keeping the whole object will keep the context of what data it is or where the error is coming from. With [type narrowing](https://tkdodo.eu/blog/react-query-and-type-script#type-narrowing)
+
+⚠️ When using options like `initialData` or `select` in your query, make sure that when you restructure your data that it still includes data.pages and data.pageParams properties, otherwise your changes will be overwritten by the query in its return!
