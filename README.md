@@ -1,3 +1,16 @@
+# `<input />` value
+
+By default, the type of input's value is `string`.
+
+Accessing `valueAsDate` and `valueAsNumber`, it will return intended type directly.
+
+```ts
+<input
+  onChange={(event) => console.log(event.target.valueAsDate)}
+  onChange={(event) => console.log(event.target.valueAsNumber)}
+/>
+```
+
 # `useMemo` is not restricted to use on the most top of code
 
 ```
