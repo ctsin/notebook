@@ -1,3 +1,11 @@
+# CSS 繁简转换
+
+CSS 命令 ，可以让网站字体从简体变成繁体。
+
+```css
+font-variant-east-asian: traditional;
+```
+
 # `<input />` value
 
 By default, the type of input's value is `string`.
