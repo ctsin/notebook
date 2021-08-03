@@ -1,3 +1,47 @@
+# Git `switch` and `restore`
+
+https://www.banterly.net/2021/07/31/new-in-git-switch-and-restore/
+
+Checkout can also:
+
+```sh
+git checkout develop // brach
+git checkout f8c540805b7e... // commit hash
+git checkout -- test.txt // file name to restore it with the latest commit
+```
+
+Suppose `HEAD` is `develop`, the following command will restore the file with the latest commit in `main` brach:
+
+```sh
+git checkout main -- test.text
+```
+
+It's due to the [doc in git](https://git-scm.com/docs/git-checkout)
+
+`switch` to a new brach
+
+```sh
+git switch develop
+```
+
+and commit
+
+```
+git switch -d 👈 f8c540805b7e16753c65619ca3d7514178353f39
+```
+
+or create a brach and switch to it
+
+```sh
+git switch -c 👈 new_branch
+```
+
+`restore` a file
+
+```sh
+git restore -- test.txt
+```
+
 # CSS 繁简转换
 
 CSS 命令 ，可以让网站字体从简体变成繁体。
