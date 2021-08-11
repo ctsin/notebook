@@ -1,3 +1,49 @@
+# Protected Routes in React
+
+YouTube: https://www.youtube.com/watch?v=Y0-qdp-XBJg
+
+CodeSandBox: https://codesandbox.io/s/react-protected-routes-forked-vrpc7?file=/src/protected.route.js
+
+```ts
+function App() {
+  return (
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <ProtectedRoute path="/app" component={AppLayout} />
+        <Route path="*" component={() => "404 NOT FOUND"} />
+      </Switch>
+    </div>
+  );
+}
+
+
+export const ProtectedRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (auth.isAuthenticated()) {
+          return <Component {...props} />;
+        } else {
+          return (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: {
+                  // access location from "props", instead of "useHistory"
+                  from: props.location 
+                }
+              }}
+            />
+          );
+        }
+      }}
+    />
+  );
+};
+```
+
 # Git `switch` and `restore`
 
 https://www.banterly.net/2021/07/31/new-in-git-switch-and-restore/
