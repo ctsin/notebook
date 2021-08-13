@@ -1,3 +1,7 @@
+# New shortcut for any GitHub repo
+
+Press <kbd>.</kbd> on any GitHub repo to open it in a browser builtin VS Code.
+
 # Protected Routes in React
 
 YouTube: https://www.youtube.com/watch?v=Y0-qdp-XBJg
