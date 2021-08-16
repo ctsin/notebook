@@ -1,3 +1,14 @@
+# React Children And Iteration Methods
+
+https://www.smashingmagazine.com/2021/08/react-children-iteration-methods/
+
+
+- The `React.Children` utility methods. We saw two of them: `React.Children.map` to see how to use it to make compound components, and `React.Children.toArray` in depth.
+- We saw how `React.Children.toArray` converts opaque children prop — which could be either object, array or function — into a flat array, so that one could operate over it in required manner — sort, filter, splice, etc…
+- We learned that `React.Children.toArray` doesn’t traverse through React Fragments.
+- We learned about an open-source package called `react-keyed-flatten-children` and understood how it solves the problem.
+- We saw that `Children` utilities are in maintenance mode because they do not compose well.
+
 # New shortcut for any GitHub repo
 
 Press <kbd>.</kbd> on any GitHub repo to open it in a browser builtin VS Code.

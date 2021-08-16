@@ -36,3 +36,18 @@ await updateDoc(washingtonRef, {
     population: increment(50)
 });
 ```
+
+https://firebase.google.com/docs/firestore/query-data/get-data?authuser=0#get_multiple_documents_from_a_collection
+
+```ts
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+const q = query(collection(db, "cities"), where("capital", "==", true));
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+```
+
