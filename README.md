@@ -1,3 +1,9 @@
+# A snippet of `useContext`
+
+```ts
+export const useAuth = () => useContext(AuthContext);
+```
+
 # React Children And Iteration Methods
 
 https://www.smashingmagazine.com/2021/08/react-children-iteration-methods/
