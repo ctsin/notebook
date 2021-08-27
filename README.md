@@ -1,3 +1,15 @@
+# Download with `<a></a>`
+
+https://shkspr.mobi/blog/2021/08/to-download-this-page-click-here/
+
+```html
+<a href="" download="this.html">Download this page</a>
+
+<a href="/pictures/kitten.jpg" download>Download a kitten photo!!!</a>
+
+<a href="/6f12ec75-c4ff-401e-a542" download="puppy.png">Download a random puppy!</a>
+```
+
 # A `setTimeout` demo in create-snowpack-app
 
 ```ts
