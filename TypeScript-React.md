@@ -1,3 +1,22 @@
+# Event in React with TypeScript
+
+https://www.newline.co/@bespoyasov/how-to-handle-keyboard-input-events-in-react-typescript-application--9b21764e
+
+```ts
+const log = (e: SyntheticEvent<HTMLInputElement>): void => {
+  // ...
+}
+
+const log = (e: ChangeEvent<HTMLInputElement>): void => {
+  // ...
+}
+
+const log = (e: KeyboardEvent<HTMLInputElement>): void => {
+  // ...
+}
+```
+
+
 https://felixgerschau.com/react-typescript-components/
 
 # Two methods to define props type
