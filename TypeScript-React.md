@@ -1,3 +1,51 @@
+# Use Context effectively
+
+https://kentcdodds.com/blog/how-to-use-react-context-effectively
+
+```ts
+type Action = {type: 'increment' | 'decrement'}
+type Dispatch = (action: Action) => void
+type State = {count: number}
+type CountProviderProps = {children: React.ReactNode}
+
+const CountStateContext = React.createContext<
+  {state: State; dispatch: Dispatch} | undefined // 👈
+>(undefined)
+
+function countReducer(state: State, action: Action) {
+  switch (action.type) {
+    case 'increment': {
+      return {count: state.count + 1}
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`) // 👈 Exception
+    }
+  }
+}
+
+function CountProvider({children}: CountProviderProps) {
+  const [state, dispatch] = React.useReducer(countReducer, {count: 0})
+  // NOTE: you *might* need to memoize this value
+  // Learn more in http://kcd.im/optimize-context
+  const value = {state, dispatch}
+  return (
+    <CountStateContext.Provider value={value}>
+      {children}
+    </CountStateContext.Provider>
+  )
+}
+
+function useCount() {
+  const context = React.useContext(CountStateContext)
+  if (context === undefined) {
+    throw new Error('useCount must be used within a CountProvider') // Exception
+  }
+  return context
+}
+
+export {CountProvider, useCount}
+```
+
 # Time and Date in JavaScript
 
 https://www.toptal.com/software/definitive-guide-to-datetime-manipulation
