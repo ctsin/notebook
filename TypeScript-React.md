@@ -1,3 +1,19 @@
+# Time and Date in JavaScript
+
+https://www.toptal.com/software/definitive-guide-to-datetime-manipulation
+
+## Using JavaScript Date Object’s Localization Functions
+
+> If you want the browser to automatically use the user’s locale, you can pass `undefined` as the first parameter.
+
+
+| Code                                                                                                                                                                                                                         | Output                  | Description                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------- |
+| now.toLocaleTimeString()                                                                                                                                                                                                     | "4:21:38 AM"            | Display localized version of only time                    |
+| now.toLocaleTimeString(undefined, {<br />&nbsp;&nbsp;hour: '2-digit',<br />&nbsp;&nbsp;minute: '2-digit',<br />&nbsp;&nbsp;second: '2-digit',<br />});                                                                       | "04:21:38 AM"           | Display localized time based on options provided          |
+| now.toLocaleString()                                                                                                                                                                                                         | "7/22/2016, 4:21:38 AM" | Display date and time for user's locale                   |
+| now.toLocaleString(undefined, {<br />&nbsp;&nbsp;day:    'numeric',<br />&nbsp;&nbsp;month:  'numeric',<br />&nbsp;&nbsp;year:   'numeric',<br />&nbsp;&nbsp;hour:   '2-digit',<br />&nbsp;&nbsp;minute: '2-digit',<br />}); | "7/22/2016, 04:21 AM"   | Display localized date and time based on options provided |
+
 # Event in React with TypeScript
 
 https://www.newline.co/@bespoyasov/how-to-handle-keyboard-input-events-in-react-typescript-application--9b21764e
