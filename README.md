@@ -1,3 +1,9 @@
+# `RouteProps` & `RouteComponentProps`
+
+https://www.pluralsight.com/guides/react-router-typescript
+
+We see that a Route is a React.Component that receives props in the shape of RouteProps. It then renders the component provided to it by component prop and defines what props it will pass to that component: RouteComponentProps.
+
 # A Complete Guide to Testing React Hooks
 
 https://www.toptal.com/react/testing-react-hooks-tutorial
