@@ -690,6 +690,23 @@ ODirection.Up;
 // Using the enum as a parameter
 function walk(dir: EDirection) {}
 
+// type Typeof = {
+//   readonly Up: 0;
+//   readonly Down: 1;
+//   readonly Left: 2;
+//   readonly Right: 3;
+// };
+type Typeof = typeof ODirection;
+
+// type Keyof = "Up" | "Down" | "Left" | "Right"
+type Keyof = keyof typeof ODirection;
+
+type LeftRight = typeof ODirection["Left" | "Right"];
+const leftRight: LeftRight = 2;
+
+// type TypeofKeyof = 0 | 1 | 2 | 3
+type TypeofKeyof = typeof ODirection[keyof typeof ODirection];
+
 // It requires an extra line to pull out the keys
 type Direction = typeof ODirection[keyof typeof ODirection];
 function run(dir: Direction) {}
