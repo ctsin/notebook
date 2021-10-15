@@ -1,3 +1,15 @@
+#  Footnotes now supported in Markdown fields
+
+https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/
+
+```md
+Here is a simple footnote[^1]. With some additional text after it.
+
+[^1]: My reference.
+```
+
+![footnotes in markdown](https://i1.wp.com/user-images.githubusercontent.com/2503052/135463148-0231966e-8631-41a1-b1a7-66746100d20a.gif?ssl=1)
+
 # `RouteProps` & `RouteComponentProps`
 
 https://www.pluralsight.com/guides/react-router-typescript
