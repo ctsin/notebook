@@ -1,3 +1,24 @@
+# Convert arrays to human-readable lists
+
+https://www.amitmerchant.com/how-to-convert-arrays-to-human-readable-lists-in-javascript/
+
+```ts
+const books = [
+    'Harry Potter',
+    'Bhagavad Gita',
+    'The Alchemist',
+    'Birthday Girl'
+]
+
+const listFormatter = new Intl.ListFormat('en-GB', {
+    style: 'short',
+    type: 'disjunction'
+})
+
+console.log(listFormatter.format(books));
+// Harry Potter, Bhagavad Gita, The Alchemist, or Birthday Girl
+```
+
 #  Footnotes now supported in Markdown fields
 
 https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/
