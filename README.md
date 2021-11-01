@@ -1220,6 +1220,59 @@ my-app/
 yarn add -D -W typescript // -W to install the dependency in WorkSpace root
 ```
 
+# styled-components theme with TypeScript support
+
+- [styled-components docs](https://styled-components.com/docs/api#typescript)
+- [Youtube Tutorial](https://www.youtube.com/watch?v=ngVU74daJ8Y)
+- ["types" config in TypeScript](https://www.typescriptlang.org/tsconfig#types)
+
+```ts
+import {
+  createGlobalStyle,
+  DefaultTheme,
+  ThemeProvider
+} from "styled-components";
+
+const theme: DefaultTheme = {
+  balabala: "red"
+};
+
+const GlobalBalabala = createGlobalStyle`
+  h3 {
+    outline: 1px solid ${({ theme }) => theme.balabala};
+  }
+`;
+
+const Root = () => (
+  <ThemeProvider theme={theme}>
+    <GlobalBalabala />
+    <App />
+  </ThemeProvider>
+);
+```
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "types": [
+      "./src/types/**/*"
+    ]
+  },
+}
+```
+
+```ts
+// src/types/defaultTheme.d.ts
+import "styled-components"; 
+
+declare module "styled-components" {
+  export interface DefaultTheme {
+    balabala: string;
+  }
+}
+```
+
 # Styled Components Best Practices
 
 https://www.robinwieruch.de/styled-components
