@@ -78,3 +78,30 @@ describe('<Footer />', () => {
 });
 
 ```
+
+# Test Hooks
+
+```ts
+import * as redux from "react-redux"
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useLocation: () => ({
+    pathname: "./",
+    state: {
+      /* state object */
+    }
+  })
+}))
+
+describe("", () => {
+  const spyOnUseSelector = jest.spyOn(redux, "useSelector");
+
+  it("", () => {
+    spyOnSelector.mockReturnValue({/* mock value */});
+
+    const result = render(<SomeComponent />);
+    expect(result).toBe()
+  })
+})
+```
