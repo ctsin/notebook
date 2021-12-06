@@ -1,3 +1,29 @@
+# How to Trim Strings in JavaScript
+
+https://dmitripavlutin.com/javascript-string-trim/
+
+The whitespaces and line terminators
+
+the whitespace is any character from the following list:
+
+- SPACE (U+0020 code point)
+- CHARACTER TABULATION (U+0009 code point)
+- LINE TABULATION (U+000BU code point)
+- FORM FEED (FF) (U+000C code point)
+- NO-BREAK SPACE (U+00A0 code point)
+- ZERO WIDTH NO-BREAK SPACE (U+FEFFU code point)
+- Any other character from Space Separator category
+
+the whitespace is any character from the following list:
+
+- SPACE (U+0020 code point)
+- CHARACTER TABULATION (U+0009 code point)
+- LINE TABULATION (U+000BU code point)
+- FORM FEED (FF) (U+000C code point)
+- NO-BREAK SPACE (U+00A0 code point)
+- ZERO WIDTH NO-BREAK SPACE (U+FEFFU code point)
+- Any other character from Space Separator category
+
 # Convert arrays to human-readable lists
 
 https://www.amitmerchant.com/how-to-convert-arrays-to-human-readable-lists-in-javascript/
