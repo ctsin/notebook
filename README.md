@@ -1,3 +1,7 @@
+# Show hidden files in MacOS
+
+<kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>.</kbd>
+
 # How to Trim Strings in JavaScript
 
 https://dmitripavlutin.com/javascript-string-trim/
