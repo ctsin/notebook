@@ -1,3 +1,8 @@
+# Input emoji
+
+- Windows: <kbd>win</kbd> + <kbd>.</kbd>
+- MacOS: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>space</kbd>
+
 # Show hidden files in MacOS
 
 <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>.</kbd>
