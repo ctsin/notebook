@@ -1,3 +1,15 @@
+# Unicode Segmentation in JavaScrip
+
+https://h3manth.com/posts/unicode-segmentation-in-javascript/
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
+
+```ts
+let segmenter = new Intl.Segmenter("kn-IN", {granularity: "word"});
+let input = "ಆವು ಈವಿನ ನಾವು ನೀವಿಗೆ ಆನು ತಾನದ ತನನನಾ";
+let segments = segmenter.segment(input);
+```
+
 # Input emoji
 
 - Windows: <kbd>win</kbd> + <kbd>.</kbd>
