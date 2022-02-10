@@ -1,3 +1,9 @@
+# Format a list with `Intl`
+
+https://twitter.com/ericclemmons/status/1488558951008509963
+
+![](https://pbs.twimg.com/media/FKhsUkPWYAMlr-i?format=jpg&name=medium)
+
 # Unicode Segmentation in JavaScrip
 
 https://h3manth.com/posts/unicode-segmentation-in-javascript/
