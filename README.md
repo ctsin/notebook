@@ -1,3 +1,12 @@
+# Good advice on JSX conditionals
+https://thoughtspile.github.io/2022/01/17/jsx-conditionals/
+
+- `{number && <JSX />}` renders 0 instead of nothing. Use `{number > 0 && <JSX />}` instead.
+- Don’t forget the parentheses around or-conditions: `{(cond1 || cond2) && <JSX />}`
+- Ternaries don’t scale beyond 2 branches — try an && block per branch, or extract a function and use `if / else`.
+- You can’t tell if `props.children` (or any interpolated element) actually contains some content — CSS `:empty` is your best bet.
+- `{condition ? <Tag props1 /> : <Tag props2 />}` will not remount Tag — use unique `key` or separate `&&` branches if you want the remount.
+
 # Format a list with `Intl`
 
 https://twitter.com/ericclemmons/status/1488558951008509963
