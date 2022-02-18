@@ -1,3 +1,66 @@
+# Protected Route with React Route
+https://www.robinwieruch.de/react-router-private-routes/
+
+```ts
+import {
+  Routes,
+  Route,
+  Link,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
+
+const ProtectedRoute = ({ user, redirectPath = '/landing' }) => {
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return <Outlet />;
+};
+
+const App = () => {
+  ...
+
+  return (
+    <>
+      ...
+
+      <Routes>
+        <Route index element={<Landing />} />
+        <Route path="landing" element={<Landing />} />
+        <Route element={<ProtectedRoute user={user} />}>
+          <Route path="home" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="admin" element={<Admin />} />
+        <Route path="*" element={<p>There's nothing here: 404!</p>} />
+      </Routes>
+    </>
+  );
+};
+```
+
+The difference between `for..of` and `for..in`
+https://weeklyjstips.com
+
+The `for..in` loop iterates over the object's enumerable properties.
+
+`for..of`, on the other hand, iterates over an iterable. In Javascript, an iterable is any object that defines a `[Symbol.iterator]` function that returns a conforming iterator. This lets the object define how to return its elements.
+
+```ts
+const iterable = {
+  [Symbol.iterator]: function*() {
+    yield 5;
+    yield 6;
+    yield 7;
+  }
+}
+for (let i of iterable) {
+  console.log(i); // 5, 6, 7
+}
+```
+
 # Good advice on JSX conditionals
 https://thoughtspile.github.io/2022/01/17/jsx-conditionals/
 
