@@ -1,3 +1,54 @@
+# Possible reason on Prettier and ESLint conflict
+
+## In `extends` statement
+
+Place the `Prettier` at the very end of `extends` statement in `.eslintrc` configuration file;
+
+https://github.com/prettier/eslint-config-prettier/issues/198#issuecomment-899262448
+
+```diff
+{
+  "extends": ["plugin:prettier/recommended"],
+  "parserOptions": { "ecmaVersion": 2018 },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": { "project": ["./tsconfig.json"] },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
++	    	"prettier"
+      ]
+    }
+  ]
+}
+```
+
+## In `rules` statement
+
+`rules` statement will receive the very first priority, and override the `extends` configurations.
+
+The following `trailingComma` rule in `.prettierrc` will be overridden by `rules` in `.eslintrc`.
+
+```json
+// .eslintrc
+{
+  "rules": {
+    "comma-dangle": {
+      "comma-dangle": ["error", "always-multiline"],
+    }
+  }
+}
+
+// .prettierrc
+{
+  "trailingComma": "es5"
+}
+```
+
+Ref: https://dev.to/s2engineers/how-to-make-eslint-work-with-prettier-avoiding-conflicts-and-problems-57pi
+
 # Protected Route with React Route
 https://www.robinwieruch.de/react-router-private-routes/
 
