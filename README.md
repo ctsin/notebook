@@ -1,3 +1,4 @@
+- [Destruct dynamic property from an object](#destruct-dynamic-property-from-an-object)
 - [Memorize the setter in hooks](#memorize-the-setter-in-hooks)
 - [Possible reason on Prettier and ESLint conflict](#possible-reason-on-prettier-and-eslint-conflict)
   - [In `extends` statement](#in-extends-statement)
@@ -165,6 +166,27 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Destruct dynamic property from an object
+
+```ts
+const deleteUser = (id) =>
+  new Promise((resolve, reject) => {
+    //     👇👇👇👇
+    const { [id]: user, ...rest } = users;
+
+    if (!user) {
+      return setTimeout(
+        () => reject(new Error('User not found')),
+        250
+      );
+    }
+
+    users = { ...rest };
+
+    return setTimeout(() => resolve(true), 250);
+  });
+```
 
 # Memorize the setter in hooks
 
