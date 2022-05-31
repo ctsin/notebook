@@ -55,3 +55,22 @@ export const SayHello = () => (
   <Hello<{items: string[]}> items={[1, 2]} />
 )
 ```
+
+# `Extends` in TypeScript
+
+```ts
+const obj = {
+  foo: {
+    a: 1,
+    b: 2,
+  },
+  bar: {
+    c: 3,
+    d: 4,
+  }
+}
+
+declare const getDeepValue = <Obj, FirstKey extends keyof Obj, SecondKey extends keyof FirstKey>(obj: Obj, firstKey: FirstKey, secondKey: SecondKey) : Obj[FirstKey][SecondKey];
+
+const result = getDeepValue(obj, 'foo', 'a');
+```

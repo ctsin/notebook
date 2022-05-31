@@ -1,3 +1,25 @@
+# Mock module if it is re-exported from `index`
+
+```ts
+// src/util/Dummy.ts
+export const Dummy = () => {};
+
+// src/util/index.ts
+export {Dummy} from "./Dummy";
+
+// src/Components/Host.ts
+import {Dummy} from "./src/util";
+
+// src/Components/Host.spec.ts
+import {Dummy} "./src/util";
+
+// jest.mock can access final code, even though it is used from `index`
+jest.mock("./src/util/Dummy");
+const mockDummy = Dummy as jest.mock;
+
+mockDummy.mockReturnValue({});
+```
+
 # Solve the Enzyme config issue in codesandbox.io
 
 **Issue**
