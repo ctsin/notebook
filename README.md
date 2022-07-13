@@ -1,3 +1,4 @@
+- [zsh alias](#zsh-alias)
 - [Destruct dynamic property from an object](#destruct-dynamic-property-from-an-object)
 - [Memorize the setter in hooks](#memorize-the-setter-in-hooks)
 - [Possible reason on Prettier and ESLint conflict](#possible-reason-on-prettier-and-eslint-conflict)
@@ -166,6 +167,13 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# zsh alias
+
+```sh
+alias ..="cd .."
+alias ...="cd ../.."
+```
 
 # Destruct dynamic property from an object
 
