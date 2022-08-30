@@ -1,3 +1,4 @@
+- [TypeScript for API contract](#typescript-for-api-contract)
 - [zsh alias](#zsh-alias)
 - [Destruct dynamic property from an object](#destruct-dynamic-property-from-an-object)
 - [Memorize the setter in hooks](#memorize-the-setter-in-hooks)
@@ -167,6 +168,72 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# TypeScript for API contract
+
+https://www.jonmellman.com/posts/typescript-for-api-contracts
+
+Type Parameters: Axios
+
+Now we can start using these type parameters in a simple example: an API like GET /api/users/:userId.
+
+The API client might look like:
+
+```ts
+// client/api/users.ts
+import axios from 'axios';
+
+type User = {
+  userId: number;
+  name: string;
+};
+
+export const getUser = async (userId: number): Promise<User> => {
+  const { data } = await axios.get<User>(`/api/users/${userId}`);
+
+  // 🚫 Property 'userName' does not exist on type 'User'.
+  console.log(data.userName);
+
+  // ✅ `data` matches the return type of the method signature.
+  return data;
+};
+```
+Type Parameters: Express
+
+On the express side, it’s a little more complicated. But not much.
+
+Consider:
+
+```ts
+// server/routes/users.ts
+type User = {
+  userId: number;
+  name: string;
+};
+
+export const usersRouter = express.Router();
+
+usersRouter.get<
+  /* path params: */ { userId: number },
+  /* response: */ User
+>(
+  '/api/users/:userId',
+  async (req, res) => {
+    // 🚫 Property 'id' does not exist on type '{ userId: number; }'
+    const { id } = req.params;
+
+    // ✅ `userId` is of type `number`
+    const { userId } = req.params;
+    const user = await dao.getUser(userId);
+
+    // 🚫 Type 'undefined' is not assignable to type 'string'
+    user.name = undefined;
+
+    // ✅ Our response type matches the router's type signature.
+    res.status(200).json(user);
+  }
+);
+```
 
 # zsh alias
 
