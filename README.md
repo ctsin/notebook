@@ -1,3 +1,4 @@
+- [VS Code Shortcut](#vs-code-shortcut)
 - [TypeScript for API contract](#typescript-for-api-contract)
 - [zsh alias](#zsh-alias)
 - [Destruct dynamic property from an object](#destruct-dynamic-property-from-an-object)
@@ -168,6 +169,10 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# VS Code Shortcut
+
+- `For Windows`: `cursorWordPartLeft(Right) ctrl alt <-` 
 
 # TypeScript for API contract
 
