@@ -1,3 +1,4 @@
+- [Radius tip in design](#radius-tip-in-design)
 - [VS Code Shortcut](#vs-code-shortcut)
 - [TypeScript for API contract](#typescript-for-api-contract)
 - [zsh alias](#zsh-alias)
@@ -169,6 +170,12 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Radius tip in design
+
+nested border radii look really funky if they're the same. To maintain the same curvature, the outer radius = inner radius + padding.
+
+![radius](radius.png)
 
 # VS Code Shortcut
 
