@@ -1,3 +1,15 @@
+# Cherry-pick
+
+```sh
+# commit ID in source branch: 10001 10002
+
+# in target branch
+git cherry-pick 10001 10002
+
+# cherry pick without committing
+git cherry-pick 10001 -n # --no-commit
+```
+
 # Add-exclude-files
 
 https://stackoverflow.com/a/51914162
