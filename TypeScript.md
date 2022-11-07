@@ -1,3 +1,28 @@
+# Indexed access types
+
+```ts
+interface ColorType {
+  primary: 'red';
+  secondary: 'blue';
+  tertiary: 'green';
+}
+
+// type ColorValue = "red" | "blue" | "green"
+type ColorValue = ColorType[keyof ColorType]
+
+const color = ['red', 'blue', 'green'] as const;
+// type Color = "red" | "blue" | "green"
+type Color = typeof color[number]
+
+interface UserRoleConfig {
+  user: ['read', 'update'];
+  superuser: ['read', 'create', 'update', 'remove']
+}
+
+// type Actions = "read" | "update" | "create" | "remove"
+type Actions = UserRoleConfig[keyof UserRoleConfig][number]
+```
+
 # Deriving types from an array of object
 
 ```ts
