@@ -1,3 +1,19 @@
+# `extends` in 4 scenarios
+
+```ts
+// Class
+class Dog extends Animal {}
+
+// Interface
+interface Dog extends Animal {}
+
+// Generic
+type Dog<T extends {domesticated: boolean}> = T & Animal;
+
+// Conditional Types
+type Dog<T> = T extends {legs: number} ? Animal : never;
+```
+
 # Indexed access types
 
 ```ts
