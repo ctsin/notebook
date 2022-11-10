@@ -1,3 +1,30 @@
+# TypeScript tips and Tricks with Matt
+
+https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtWIu2&index=1&t=2132s
+
+## A hack for Generic in arrow function
+
+```js
+//              🔻 the comma
+const Table = <T,>(props: T) => return null;
+```
+
+## Retrieve from Generic params
+
+```js
+const getDeepProperty = <
+O, 
+FirstParam extends keyof O, 
+SecondParam extends keyof O[FirstParams]
+>(obj: O, firstParam: FirstParam, secondParam: SecondParam) => {}
+```
+
+## Zod
+
+ TypeScript-first schema validation with static type inference 
+
+https://www.npmjs.com/package/zod
+
 # Retrieve value from an Object type
 
 ```ts
