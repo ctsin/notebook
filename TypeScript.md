@@ -1,3 +1,20 @@
+# Narrow `string` down to literals types
+
+```ts
+type Fruits = 'banana' | 'apple' | 'orange';
+let apple = 'apple'
+
+// error: typeof "fruits" = string;
+// type "string" is not assignable to type Fruits
+let fruits: Fruits = 'banana';
+
+// Fix
+fruits = <const>apple; 
+fruits: Fruits = <const> 'banana'; 
+```
+
+> **Bonum Tip** `<const> true` and `<const> false` to represent a boolean that must be `true` or `false`.
+
 # TypeScript tips and Tricks with Matt
 
 https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtWIu2&index=1&t=2132s
