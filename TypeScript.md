@@ -1,3 +1,24 @@
+# Use `Context` with type safe
+
+```js
+interface User {
+  name: string;
+  age: number;
+}
+
+const userContext = createContext<User | null 🌟>(null)
+
+const useUser = () => {
+  const context = useContext(userContext);
+
+  if (!context 🌟) {
+    throw new Error('Context should be used within a provider.');
+  }
+
+  return context;
+}
+```
+
 # Narrow `string` down to literals types
 
 ```ts
