@@ -1,5 +1,7 @@
 - [Radius tip in design](#radius-tip-in-design)
 - [VS Code Shortcut](#vs-code-shortcut)
+  - [Windows](#windows)
+  - [MacOS](#macos)
 - [TypeScript for API contract](#typescript-for-api-contract)
 - [zsh alias](#zsh-alias)
 - [Destruct dynamic property from an object](#destruct-dynamic-property-from-an-object)
@@ -17,7 +19,7 @@
 - [How to Trim Strings in JavaScript](#how-to-trim-strings-in-javascript)
 - [Convert arrays to human-readable lists](#convert-arrays-to-human-readable-lists)
 - [Footnotes now supported in Markdown fields](#footnotes-now-supported-in-markdown-fields)
-- [`RouteProps` & `RouteComponentProps`](#routeprops--routecomponentprops)
+- [`RouteProps` \& `RouteComponentProps`](#routeprops--routecomponentprops)
 - [A Complete Guide to Testing React Hooks](#a-complete-guide-to-testing-react-hooks)
 - [Download with `<a></a>`](#download-with-aa)
 - [A `setTimeout` demo in create-snowpack-app](#a-settimeout-demo-in-create-snowpack-app)
@@ -86,7 +88,7 @@
 - [How to use CSS3 variables in styled-components](#how-to-use-css3-variables-in-styled-components)
 - [Handling Static Assets in Jest](#handling-static-assets-in-jest)
 - [ES2021 Logical assignment operators](#es2021-logical-assignment-operators)
-- [MacOS](#macos)
+- [MacOS](#macos-1)
 - [React Native 0.64](#react-native-064)
   - [Inline Requires enabled by default for better performance.](#inline-requires-enabled-by-default-for-better-performance)
   - [React 17](#react-17)
@@ -101,7 +103,7 @@
 - [Re-export a component as default](#re-export-a-component-as-default)
 - [Generic type support default type](#generic-type-support-default-type)
 - [`Intl` API](#intl-api)
-- [Static property for both class component & function component](#static-property-for-both-class-component--function-component)
+- [Static property for both class component \& function component](#static-property-for-both-class-component--function-component)
 - [Use derived types](#use-derived-types)
 - [Search and replace in VSCode](#search-and-replace-in-vscode)
 - [Tips from React Native document](#tips-from-react-native-document)
@@ -179,7 +181,12 @@ nested border radii look really funky if they're the same. To maintain the same 
 
 # VS Code Shortcut
 
-- `For Windows`: `cursorWordPartLeft(Right) ctrl alt <-` 
+## Windows
+- `cursorWordPartLeft(Right)`: `ctrl alt <-` when textInputFocus
+- `View: Move Editor into Next Group`: `ctrl+k right arrow`
+
+## MacOS
+- `View: Move Editor into Next Group`: `ctrl+cmd+right`
 
 # TypeScript for API contract
 

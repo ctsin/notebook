@@ -1,3 +1,48 @@
+# Config TypeScript for NodeJS in 2023
+
+https://www.youtube.com/watch?v=H91aqUHn8sE&t=2s
+
+Install dependencies
+
+```shell
+yarn add -D typescript @types@node
+```
+
+Update `package.json`
+
+```json
+{
+  "type": "module", 🚀
+  "scripts": [
+    "build": "tsc"
+  ]
+}
+```
+
+In `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "NodeNext" /* Specify what module code is generated. */,
+    "moduleResolution": "NodeNext" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+  },
+  "include": ["./src/**/*"]
+}
+```
+
+With the `"moduleResolution": "NodeNext"` option, the `import` statement is required to specify extension explicitly.
+
+```ts
+// Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean './helper.js'?ts(2835)
+import { helper } from "./helper"; 
+
+// `.js`, not `.ts`! Even though the source is `helper.ts`
+import { helper } from "./helper.js"; 
+```
+
 # Use `Context` with type safe
 
 ```js
