@@ -2,7 +2,7 @@ https://kentcdodds.com/blog/typescript-function-syntaxes
 
 # Basics
 
-```ts
+```js
 // Simple type for a function, use =>
 type FnType = (arg: ArgType) => ReturnType
 
@@ -22,7 +22,7 @@ const fnImplementation = (arg: ArgType): ReturnType => {
 
 # Can be useful if you want to add a typed property to the function
 
-```ts
+```js
 type MathFn = {
   (a: number, b: number): number
   operator: string
@@ -33,7 +33,7 @@ sum.operator = '+'
 
 This can also be done with an interface:
 
-```ts
+```js
 interface MathFn {
   (a: number, b: number): number
   operator: string

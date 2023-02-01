@@ -1,3 +1,5 @@
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html
+
 # Template Literal Types
 
 ❗️ `in` operator in Enums
@@ -52,7 +54,7 @@ setAlignment("top-middel"); // error!
 
 Produce mostly identical types
 
-```ts
+```js
 type PropEventSource<T> = {
     on(eventName: `${string & keyof T}Changed`, callback: () => void): void;
     //                  1️⃣       2️⃣
@@ -63,8 +65,9 @@ type PropEventSource<T> = {
 declare function makeWatchedObject<T>(obj: T): T & PropEventSource<T>;
 ```
 # Key Remapping in Mapped Types
+> Also seen: https://www.typescriptlang.org/docs/handbook/2/mapped-types.html#key-remapping-via-as
 
-```ts
+```js
 type Getters<T> = {
     //                        👇 1️⃣
     [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K]

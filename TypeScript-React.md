@@ -181,7 +181,7 @@ class Title extends Component<TitleProps, TitleState> {
 
 https://felixgerschau.com/react-typescript-events/
 
-```ts
+```js
 import React, { ChangeEventHandler, ChangeEvent } from 'react';
 
 // This

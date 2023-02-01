@@ -75,34 +75,17 @@ let apple = 'apple'
 let fruits: Fruits = 'banana';
 
 // Fix
-fruits = <const>apple; 
+fruits = <const>apple; // works outside of .tsx files
 fruits: Fruits = <const> 'banana'; 
 ```
 
 > **Bonum Tip** `<const> true` and `<const> false` to represent a boolean that must be `true` or `false`.
 
-# TypeScript tips and Tricks with Matt
+> Seen also: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-inference
 
-https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtWIu2&index=1&t=2132s
+> https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions
 
-## A hack for Generic in arrow function
-
-```js
-//              🔻 the comma
-const Table = <T,>(props: T) => return null;
-```
-
-## Retrieve from Generic params
-
-```js
-const getDeepProperty = <
-O, 
-FirstParam extends keyof O, 
-SecondParam extends keyof O[FirstParams]
->(obj: O, firstParam: FirstParam, secondParam: SecondParam) => {}
-```
-
-## Zod
+# Zod
 
  TypeScript-first schema validation with static type inference 
 
@@ -119,6 +102,7 @@ type Fruit =
 
 type FruitName = Fruit["name"];
 type TransformedFruit = {
+  // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types
   [F in Fruit as F['name']]: `${F['name']}:${F['color']}`;
 }[FruitName]
 
@@ -155,6 +139,7 @@ type ColorValue = ColorType[keyof ColorType]
 
 const color = ['red', 'blue', 'green'] as const;
 // type Color = "red" | "blue" | "green"
+// https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
 type Color = typeof color[number]
 
 interface UserRoleConfig {
@@ -209,3 +194,38 @@ const course: Course = {
   url: "",
 }
 ```
+
+# Object literal may only specify known properties
+
+https://stackoverflow.com/questions/61698807/interesting-behaviour-object-literal-may-only-specify-known-properties
+
+There're similar questions here and I can understand the nature of this error:
+```ts
+type Person = { name: string };
+
+// Error: Object literal may only specify known properties, and 'age' does not exist in type 'Person'.
+const person: Person = { name: 'Sarah', age: 13 };
+```
+
+So this fails, because property age is not a part of type Person which makes sense.
+
+However, I can do this without any problems:
+
+```ts
+type Person = { name: string };
+
+const obj = { name: 'Sarah', age: 13 };
+const person: Person = obj;
+
+console.log(person); // { name: 'Sarah', age: 13 }
+```
+
+Why the first one is failing and the second is not - shouldn't these 2 examples both fail or both pass?
+
+As for me these 2 code snippets are identical. Aren't they?
+
+Here's an explanation of this behavior from [Typescript Handbook](https://www.typescriptlang.org/docs/handbook/interfaces.html#excess-property-checks):
+
+> Object literals get special treatment and undergo excess property checking when assigning them to other variables, or passing them as arguments. If an object literal has any properties that the “target type” doesn’t have, you’ll get an error.
+
+**TLDR**: when initializing with a literal the TSC is strict

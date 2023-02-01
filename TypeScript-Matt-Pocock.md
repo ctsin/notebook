@@ -30,10 +30,10 @@ type SizeOmitted = 'xs' | 'md' | Omit<string, "xs" | 'md'>
 
 // 'xs' | 'md' available for auto complete
 const s1: SizeOmitted = 'md'
-// also works rather than the types explictly defined
+// also works rather than the types explicitly defined
 const s2: SizeOmitted = 'something'
 
-// step futher with Generic Types
+// step further with Generic Types
 type LooseString<T extends string> = T | Omit<string, T>
 const s3: LooseString<Size> = 'md'
 ```
@@ -73,4 +73,46 @@ const obj = {
 declare const getDeepValue = <Obj, FirstKey extends keyof Obj, SecondKey extends keyof FirstKey>(obj: Obj, firstKey: FirstKey, secondKey: SecondKey) : Obj[FirstKey][SecondKey];
 
 const result = getDeepValue(obj, 'foo', 'a');
+```
+
+# Tips with `const` assertion
+
+```js
+const useFirstName = () => {
+  const [firstName, setFirstName] = useState("");
+
+  return [firstName, setFirstName] as const 🚀;
+}
+
+const createUser = () => ({
+  name: "Tsing",
+  role: "admin" as const 🚀,
+})
+```
+
+# A hack for Generic in arrow function
+
+https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtWIu2&index=1&t=2132s
+
+```js
+//              🔻 the comma
+const Table = <T,>(props: T) => null;
+```
+
+# Retrieve from Generic params
+
+```js
+const getDeepProperty = <
+O, 
+FirstParam extends keyof O, 
+SecondParam extends keyof O[FirstParams]
+>(obj: O, firstParam: FirstParam, secondParam: SecondParam) => {}
+```
+
+# Type-safe on `Object.keys()`
+
+![](https://pbs.twimg.com/media/FpAgLBIXwAASxH4?format=jpg&name=small)
+
+```ts
+const objKeys = <T extends object>(obj: T) => (Object.keys(obj) as (keyof T)[])
 ```

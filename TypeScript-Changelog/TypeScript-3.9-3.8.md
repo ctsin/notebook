@@ -1,8 +1,9 @@
-💡 **How to guard Promise**
+## How to guard Promise
 
 ```ts
 declare const values: Promise<Animals>
 ```
+
 # Improvements in Inference and Promise.all
 
 ```ts
