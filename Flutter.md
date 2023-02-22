@@ -1,3 +1,39 @@
+# Environment Setup
+
+## Useful commands
+
+`echo $SHELL` : Echo the pwd of current Bash
+
+<kbd>cmd + shift + .</kbd> : show hidden files on Mac
+
+### RESET Android Studio configuration
+
+![](reset-config.png)
+
+Receives the following info at the end of setup wizard:
+
+> SDK Folder: /Users/chris_xing/Library/Android/sdk
+> 
+> JDK Location: /Applications/Android Studio.app/Contents/jbr/Contents/Home
+
+### Youtube
+
+https://www.youtube.com/watch?v=h8SvicbC1YE
+
+https://www.youtube.com/watch?v=GkhCirFXh_I
+
+### Setup Java Env.
+
+- Execute `/usr/libexec/java_home` in bash, then echo 
+  > `/Users/chris_xing/Library/Java/JavaVirtualMachines/openjdk-19.0.2/Contents/Home`
+- `echo $SHELL` to echo current shell used, and create or edit RC file(`.zshrc`): 
+   > export JAVA_HOME="/Users/chris_xing/Library/Java/JavaVirtualMachines/openjdk-19.0.2/Contents/Home"
+- Create soft link: https://stackoverflow.com/a/68575967
+  > cd /Applications/Android\ Studio.app/Contents
+  >
+  > ln -s jbr jre
+
+
 # Useful interface
 
 ```dart
