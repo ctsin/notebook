@@ -33,6 +33,12 @@ https://www.youtube.com/watch?v=GkhCirFXh_I
   >
   > ln -s jbr jre
 
+Finally, the `.zshrc` have: 
+
+>  export JAVA_HOME="/Users/chris_xing/Library/Java/JavaVirtualMachines/openjdk-19.0.2/Contents/Home"
+>
+> export PATH="\$PATH:$HOME/flutter/bin"
+
 
 # Useful interface
 

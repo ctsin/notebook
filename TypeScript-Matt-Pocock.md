@@ -1,3 +1,105 @@
+# Blazing Fast Tips: React & TypeScript
+https://www.youtube.com/watch?v=37PafxU_uzQ
+
+## Event handler
+
+```ts
+import { FocusEventHandler, FormEventHandler, MouseEventHandler } from "react";
+interface ComponentProps {
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  onFocus: FocusEventHandler<HTMLButtonElement>;
+  onBlur: FocusEventHandler<HTMLButtonElement>;
+  onChange: FormEventHandler<HTMLButtonElement>;
+}
+```
+
+## React `children`
+
+```ts
+import { ReactNode } from "react";
+interface ComponentProps {
+  children?: ReactNode;
+}
+```
+
+## useState
+
+```ts
+import { useState } from "react";
+
+interface User {}
+
+const Name = () => {
+  // const name: User | undefined
+  const [name, setName] = useState<User 💡 no need `null` here>();
+
+  return null;
+};
+```
+
+## Custom Hooks with `as`
+
+```ts
+import { useState } from "react";
+
+const useHome = () => {
+  const [state, setState] = useState(0);
+
+  return [state, setState] as const; 🚀
+};
+
+const Home = () => {
+  const [home, setHome] = useHome()
+
+  setHome(9)
+  
+  return null;
+}
+```
+
+## Discriminated union in props
+
+Supposing that `confirmButtonMassage` only belongs to `confirm` type. A union type can be used instead of an optional props indicator.
+
+```ts
+interface ModalProps {
+  type: "alert" | "confirm";
+  confirmButtonMassage?: string;
+}
+
+// 🚀
+type ModalPropsUnion =
+  | {
+      type: "alert";
+    }
+  | {
+      type: "confirm";
+      confirmButtonMassage: string;
+    };
+```
+
+## Generic Components
+
+```ts
+import React, { useState } from "react";
+
+type TableProps<T> = {
+  data: T[];
+  onRowClick(row: T): void;
+};
+
+const Table = <T,>(props: TableProps<T>) => null;
+
+const Parent = () => (
+  <Table
+    data={[{ name: "Foo" }]}
+    onRowClick={(row) => {
+      void row.name; 🚀
+    }}
+  />
+);
+```
+
 # 13 `import` statement
 
 https://twitter.com/i/status/1508408811635322883
