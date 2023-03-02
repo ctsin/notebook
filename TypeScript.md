@@ -1,3 +1,27 @@
+# `satisfied` operator
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#the-satisfies-operator
+
+https://www.youtube.com/watch?v=ShPBpi7Vxr0
+
+```ts
+type Name = Record<string, number | string>;
+
+const n1: Name = {
+    age: 19,
+};
+
+// const age1: string | number 🤔
+const age1 = n1.age;
+
+const n2 = {
+    age: 19,
+} satisfies Name;
+
+// const age: number 💯
+const age2 = n2.age;
+```
+
 # Config TypeScript for NodeJS in 2023
 
 https://www.youtube.com/watch?v=H91aqUHn8sE&t=2s

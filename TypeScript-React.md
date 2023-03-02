@@ -1,3 +1,30 @@
+# React.ComponentType
+
+```ts
+import React, {ComponentType} from "react";
+declare const Login: ComponentType;
+
+interface ProfileProps {
+    name: string;
+}
+declare const Profile: ComponentType<ProfileProps>;
+
+interface PrivateProps<T>{
+    isLoggedin: boolean;
+    component: ComponentType<T>;
+}
+
+const Private = ({isLoggedin, component: Component}: PrivateProps<ProfileProps>) => {
+    if(isLoggedin) {
+        return <Component name="Foo" />;
+    }
+
+    return <Login />
+}
+
+const App = () => <Private isLoggedin={true} component={Profile} />
+```
+
 # Type a React form onSubmit handler
 
 https://epicreact.dev/how-to-type-a-react-form-on-submit-handler/

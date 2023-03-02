@@ -9,9 +9,11 @@
   cy.contains('Pay electric bill').should('not.exist');
 ```
 
-# TypeScript
+# IDE Integration
 
-Use inline types definition comment
+Triple slash directives
+
+https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives
 
 ```ts
 /// <reference types="cypress" />
@@ -19,12 +21,14 @@ Use inline types definition comment
 
 Or setting in `tsconfig.json`: 
 
+https://docs.cypress.io/guides/tooling/IDE-integration#Reference-type-declarations-via-tsconfig
+
 ```json
 {
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress"] // 👈 https://docs.cypress.io/guides/tooling/typescript-support#Configure-tsconfig-json
+    "types": ["cypress"] 
   },
   "include": ["**/*.ts"]
 }
