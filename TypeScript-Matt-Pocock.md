@@ -1,4 +1,37 @@
+# Dynamic function arguments with GENERICS
+
+https://www.youtube.com/watch?v=YE_3WwX-Dl8
+
+```ts
+type Evt =
+  | {
+      type: "SIGN_IN";
+      payload: {
+        userID: string;
+      };
+    }
+  | { type: "SIGN_OUT" };
+
+// const sendEvent = (eventType: Evt["type"], payload?: any) => {}
+declare function sendEvent<T extends Evt["type"]>(
+  ...args: Extract<Evt, { type: T }> extends { payload: infer Payload }
+    ? [type: T, payload: Payload]
+    : [type: T]
+): void;
+
+// Correct
+sendEvent("SIGN_OUT");
+sendEvent("SIGN_IN", { userID: "123" });
+
+// Should Error
+sendEvent("SIGN_OUT", {});
+sendEvent("SIGN_IN", { userID: 123 });
+sendEvent("SIGN_IN", {});
+sendEvent("SIGN_IN");
+```
+
 # Blazing Fast Tips: React & TypeScript
+
 https://www.youtube.com/watch?v=37PafxU_uzQ
 
 ## Event handler
@@ -52,7 +85,7 @@ const Home = () => {
   const [home, setHome] = useHome()
 
   setHome(9)
-  
+
   return null;
 }
 ```
@@ -106,20 +139,24 @@ https://twitter.com/i/status/1508408811635322883
 
 ```ts
 // ./constants.ts
-export const TODO_ADD = "ADD"
-export const TODO_REMOVE = "REMOVE"
-export const TODO_EDIT = "EDIT"
+export const TODO_ADD = "ADD";
+export const TODO_REMOVE = "REMOVE";
+export const TODO_EDIT = "EDIT";
 
 // ./index.ts
-// 🚀 
-type Actions = typeof import('./constants')
+// 🚀
+type Actions = typeof import("./constants");
 
 // Actions will receive an object types.
-const actions: Actions = {TODO_EDIT: "EDIT", TODO_ADD: "ADD", TODO_REMOVE: "REMOVE"}
+const actions: Actions = {
+  TODO_EDIT: "EDIT",
+  TODO_ADD: "ADD",
+  TODO_REMOVE: "REMOVE",
+};
 
-// alias 
+// alias
 // type Keys = "ADD" | "REMOVE" | "EDIT"
-type Keys = Actions[keyof Actions]
+type Keys = Actions[keyof Actions];
 ```
 
 # 12 Make a loose auto completed
@@ -127,17 +164,17 @@ type Keys = Actions[keyof Actions]
 https://twitter.com/i/status/1506607945445949446
 
 ```ts
-type Size = 'xs' | 'md'
-type SizeOmitted = 'xs' | 'md' | Omit<string, "xs" | 'md'>
+type Size = "xs" | "md";
+type SizeOmitted = "xs" | "md" | Omit<string, "xs" | "md">;
 
 // 'xs' | 'md' available for auto complete
-const s1: SizeOmitted = 'md'
+const s1: SizeOmitted = "md";
 // also works rather than the types explicitly defined
-const s2: SizeOmitted = 'something'
+const s2: SizeOmitted = "something";
 
 // step further with Generic Types
-type LooseString<T extends string> = T | Omit<string, T>
-const s3: LooseString<Size> = 'md'
+type LooseString<T extends string> = T | Omit<string, T>;
+const s3: LooseString<Size> = "md";
 ```
 
 # 8 Generic for React Components
@@ -147,15 +184,19 @@ https://twitter.com/i/status/1503352924537339904
 ```ts
 type HelloProps<T> = {
   items: T[];
+};
+
+export function Hello<T>({ items }: HelloProps<T>) {
+  return (
+    <div>
+      {items.map((item) => (
+        <div key={String(item)}>{item}</div>
+      ))}
+    </div>
+  );
 }
 
-export function Hello <T>({items}: HelloProps<T>) {
-  return (<div>{items.map(item => <div key={String(item)}>{item}</div>)}</div>)
-}
-
-export const SayHello = () => (
-  <Hello<{items: string[]}> items={[1, 2]} />
-)
+export const SayHello = () => <Hello<{ items: string[] }> items={[1, 2]} />;
 ```
 
 # `Extends` in TypeScript
@@ -198,15 +239,15 @@ https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtW
 
 ```js
 //              🔻 the comma
-const Table = <T,>(props: T) => null;
+const Table = <T>(props: T) => null;
 ```
 
 # Retrieve from Generic params
 
 ```js
 const getDeepProperty = <
-O, 
-FirstParam extends keyof O, 
+O,
+FirstParam extends keyof O,
 SecondParam extends keyof O[FirstParams]
 >(obj: O, firstParam: FirstParam, secondParam: SecondParam) => {}
 ```
@@ -216,5 +257,5 @@ SecondParam extends keyof O[FirstParams]
 ![](https://pbs.twimg.com/media/FpAgLBIXwAASxH4?format=jpg&name=small)
 
 ```ts
-const objKeys = <T extends object>(obj: T) => (Object.keys(obj) as (keyof T)[])
+const objKeys = <T extends object>(obj: T) => Object.keys(obj) as (keyof T)[];
 ```
