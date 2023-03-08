@@ -1,3 +1,4 @@
+- [Handle Rejection of Promise](#handle-rejection-of-promise)
 - [Radius tip in design](#radius-tip-in-design)
 - [VS Code Shortcut](#vs-code-shortcut)
   - [Windows](#windows)
@@ -173,6 +174,48 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+# Handle Rejection of Promise
+
+https://weeklyjstips.com
+
+tamas.sallai@advancedweb.hu
+
+Live: https://gist.run/?id=05c1665355c4df054096634a5be5f72c&mc_cid=51f8a86c89&mc_eid=afaf576ce2
+
+```js
+// Rejected 1
+// Rejected 3
+console.log = (msg) => document.write(`${msg}<br/>`);
+
+// then().catch()
+Promise.resolve()
+  .then(() => {
+    return Promise.reject();
+  })
+  .catch(() => {
+    console.log("Rejected 1"); // Rejected
+  });
+
+// then(..., ...)
+Promise.resolve().then(
+  () => {
+    return Promise.reject(); // Unhandled rejection
+  },
+  () => {
+    console.log("Rejected 2");
+  }
+);
+
+// then().then(undefined, ...)
+Promise.resolve()
+  .then(() => {
+    return Promise.reject();
+  })
+  .then(undefined, () => {
+    console.log("Rejected 3"); // Rejected
+  });
+```
+
 # Radius tip in design
 
 nested border radii look really funky if they're the same. To maintain the same curvature, the outer radius = inner radius + padding.
@@ -182,10 +225,12 @@ nested border radii look really funky if they're the same. To maintain the same 
 # VS Code Shortcut
 
 ## Windows
+
 - `cursorWordPartLeft(Right)`: `ctrl alt <-` when textInputFocus
 - `View: Move Editor into Next Group`: `ctrl+k right arrow`
 
 ## MacOS
+
 - `View: Move Editor into Next Group`: `ctrl+cmd+right`
 
 # TypeScript for API contract
@@ -200,7 +245,7 @@ The API client might look like:
 
 ```ts
 // client/api/users.ts
-import axios from 'axios';
+import axios from "axios";
 
 type User = {
   userId: number;
@@ -217,6 +262,7 @@ export const getUser = async (userId: number): Promise<User> => {
   return data;
 };
 ```
+
 Type Parameters: Express
 
 On the express side, it’s a little more complicated. But not much.
@@ -232,11 +278,8 @@ type User = {
 
 export const usersRouter = express.Router();
 
-usersRouter.get<
-  /* path params: */ { userId: number },
-  /* response: */ User
->(
-  '/api/users/:userId',
+usersRouter.get</* path params: */ { userId: number }, /* response: */ User>(
+  "/api/users/:userId",
   async (req, res) => {
     // 🚫 Property 'id' does not exist on type '{ userId: number; }'
     const { id } = req.params;
@@ -270,10 +313,7 @@ const deleteUser = (id) =>
     const { [id]: user, ...rest } = users;
 
     if (!user) {
-      return setTimeout(
-        () => reject(new Error('User not found')),
-        250
-      );
+      return setTimeout(() => reject(new Error("User not found")), 250);
     }
 
     users = { ...rest };
@@ -288,14 +328,14 @@ https://usehooks.com/useToggle/
 
 ```ts
 const useToggle = (initialState = false) => {
-    // Initialize the state
-    const [state, setState] = useState(initialState);
-    
-    // Define and memorize toggler function in case we pass down the component,
-    const toggle = useCallback(() => setState(state => !state), []);
-    
-    return [state, toggle]
-}
+  // Initialize the state
+  const [state, setState] = useState(initialState);
+
+  // Define and memorize toggler function in case we pass down the component,
+  const toggle = useCallback(() => setState((state) => !state), []);
+
+  return [state, toggle];
+};
 ```
 
 # Possible reason on Prettier and ESLint conflict
@@ -350,6 +390,7 @@ The following `trailingComma` rule in `.prettierrc` will be overridden by `rules
 Ref: https://dev.to/s2engineers/how-to-make-eslint-work-with-prettier-avoiding-conflicts-and-problems-57pi
 
 # Protected Route with React Route
+
 https://www.robinwieruch.de/react-router-private-routes/
 
 ```ts
@@ -393,6 +434,7 @@ const App = () => {
 ```
 
 # The difference between `for..of` and `for..in`
+
 https://weeklyjstips.com
 
 The `for..in` loop iterates over the object's enumerable properties.
@@ -401,18 +443,19 @@ The `for..in` loop iterates over the object's enumerable properties.
 
 ```ts
 const iterable = {
-  [Symbol.iterator]: function*() {
+  [Symbol.iterator]: function* () {
     yield 5;
     yield 6;
     yield 7;
-  }
-}
+  },
+};
 for (let i of iterable) {
   console.log(i); // 5, 6, 7
 }
 ```
 
 # Good advice on JSX conditionals
+
 https://thoughtspile.github.io/2022/01/17/jsx-conditionals/
 
 - `{number && <JSX />}` renders 0 instead of nothing. Use `{number > 0 && <JSX />}` instead.
@@ -434,7 +477,7 @@ https://h3manth.com/posts/unicode-segmentation-in-javascript/
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 
 ```ts
-let segmenter = new Intl.Segmenter("kn-IN", {granularity: "word"});
+let segmenter = new Intl.Segmenter("kn-IN", { granularity: "word" });
 let input = "ಆವು ಈವಿನ ನಾವು ನೀವಿಗೆ ಆನು ತಾನದ ತನನನಾ";
 let segments = segmenter.segment(input);
 ```
@@ -480,22 +523,22 @@ https://www.amitmerchant.com/how-to-convert-arrays-to-human-readable-lists-in-ja
 
 ```ts
 const books = [
-    'Harry Potter',
-    'Bhagavad Gita',
-    'The Alchemist',
-    'Birthday Girl'
-]
+  "Harry Potter",
+  "Bhagavad Gita",
+  "The Alchemist",
+  "Birthday Girl",
+];
 
-const listFormatter = new Intl.ListFormat('en-GB', {
-    style: 'short',
-    type: 'disjunction'
-})
+const listFormatter = new Intl.ListFormat("en-GB", {
+  style: "short",
+  type: "disjunction",
+});
 
 console.log(listFormatter.format(books));
 // Harry Potter, Bhagavad Gita, The Alchemist, or Birthday Girl
 ```
 
-#  Footnotes now supported in Markdown fields
+# Footnotes now supported in Markdown fields
 
 https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/
 
@@ -526,7 +569,9 @@ https://shkspr.mobi/blog/2021/08/to-download-this-page-click-here/
 
 <a href="/pictures/kitten.jpg" download>Download a kitten photo!!!</a>
 
-<a href="/6f12ec75-c4ff-401e-a542" download="puppy.png">Download a random puppy!</a>
+<a href="/6f12ec75-c4ff-401e-a542" download="puppy.png"
+  >Download a random puppy!</a
+>
 ```
 
 # A `setTimeout` demo in create-snowpack-app
@@ -549,7 +594,6 @@ export const useAuth = () => useContext(AuthContext);
 # React Children And Iteration Methods
 
 https://www.smashingmagazine.com/2021/08/react-children-iteration-methods/
-
 
 - The `React.Children` utility methods. We saw two of them: `React.Children.map` to see how to use it to make compound components, and `React.Children.toArray` in depth.
 - We saw how `React.Children.toArray` converts opaque children prop — which could be either object, array or function — into a flat array, so that one could operate over it in required manner — sort, filter, splice, etc…
@@ -580,7 +624,6 @@ function App() {
   );
 }
 
-
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
@@ -595,8 +638,8 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
                 pathname: "/",
                 state: {
                   // access location from "props", instead of "useHistory"
-                  from: props.location 
-                }
+                  from: props.location,
+                },
               }}
             />
           );
@@ -733,7 +776,7 @@ https://stackoverflow.com/questions/45194598/using-process-env-in-typescript
 
 ```ts
 export interface ProcessEnv {
-    [key: string]: string | undefined
+  [key: string]: string | undefined;
 }
 ```
 
@@ -807,7 +850,8 @@ https://dmitripavlutin.com/ecmascript-modules-dynamic-import/
 export const concat = (paramA, paramB) => paramA + paramB;
 
 async function loadMyModule() {
-  const { concat } = await import('./namedConcat.js');  concat('b', 'c'); // => 'bc'
+  const { concat } = await import("./namedConcat.js");
+  concat("b", "c"); // => 'bc'
 }
 ```
 
@@ -816,8 +860,8 @@ async function loadMyModule() {
 export default (paramA, paramB) => paramA + paramB;
 
 async function loadMyModule() {
-  const { default: defaultImport } = await import('./defaultConcat.js');
-  defaultImport('b', 'c'); // => 'bc'
+  const { default: defaultImport } = await import("./defaultConcat.js");
+  defaultImport("b", "c"); // => 'bc'
 }
 ```
 
@@ -840,71 +884,73 @@ x && (x = y);
 x ??= y;
 x ?? (x = y);
 
-const updateID = user => {
-
+const updateID = (user) => {
   // We can do this
-  if (!user.id) user.id = 1
+  if (!user.id) user.id = 1;
 
   // Or this
-  user.id = user.id || 1
+  user.id = user.id || 1;
 
   // Or use logical assignment operator.
-  user.id ||= 1
-}
+  user.id ||= 1;
+};
 
 function setOpts(opts) {
-  opts.cat ??= 'meow'
-  opts.dog ??= 'bow';
+  opts.cat ??= "meow";
+  opts.dog ??= "bow";
 }
 
-setOpts({ cat: 'meow' })
+setOpts({ cat: "meow" });
 ```
 
 Numeric Separators
 
 ```ts
-1_000_000_000           // Ah, so a billion
-101_475_938.38          // And this is hundreds of millions
+1_000_000_000; // Ah, so a billion
+101_475_938.38; // And this is hundreds of millions
 
-let fee = 123_00;       // $123 (12300 cents, apparently)
-let fee = 12_300;       // $12,300 (woah, that fee!)
-let amount = 12345_00;  // 12,345 (1234500 cents, apparently)
-let amount = 123_4500;  // 123.45 (4-fixed financial)
+let fee = 123_00; // $123 (12300 cents, apparently)
+let fee = 12_300; // $12,300 (woah, that fee!)
+let amount = 12345_00; // 12,345 (1234500 cents, apparently)
+let amount = 123_4500; // 123.45 (4-fixed financial)
 let amount = 1_234_500; // 1,234,500
 
-0.000_001 // 1 millionth
-1e10_000  // 10^10000 -- granted, far less useful / in-range...
-0xA0_B0_C0;
+0.000_001; // 1 millionth
+1e10_000; // 10^10000 -- granted, far less useful / in-range...
+0xa0_b0_c0;
 ```
 
 Promise.any and AggregateError
 
 ```ts
 Promise.any([
-  fetch('https://v8.dev/').then(() => 'home'),
-  fetch('https://v8.dev/blog').then(() => 'blog'),
-  fetch('https://v8.dev/docs').then(() => 'docs')
-]).then((first) => {
-  // Any of the promises was fulfilled.
-  console.log(first);
-  // → 'home'
-}).catch((error) => {
-  // All of the promises were rejected.
-  console.log(error);
-});
+  fetch("https://v8.dev/").then(() => "home"),
+  fetch("https://v8.dev/blog").then(() => "blog"),
+  fetch("https://v8.dev/docs").then(() => "docs"),
+])
+  .then((first) => {
+    // Any of the promises was fulfilled.
+    console.log(first);
+    // → 'home'
+  })
+  .catch((error) => {
+    // All of the promises were rejected.
+    console.log(error);
+  });
 ```
+
 String.prototype.replaceAll
 
 ```ts
 // String.prototype.replaceAll(searchValue, replaceValue)
 
-'x'.replace('', '_');
+"x".replace("", "_");
 // → '_x'
 
-'xxx'.replace(/(?:)/g, '_');
+"xxx".replace(/(?:)/g, "_");
 // → '_x_x_x_'
 
-'xxx'.replaceAll('', '_');
+"xxx".replaceAll("", "_");
 // → '_x_x_x_'
 ```
 
@@ -916,9 +962,8 @@ let wr = new WeakRef(target);
 
 //wr and target aren't the same
 
-
 // Creating a new registry
-const registry = new FinalizationRegistry(heldValue => {
+const registry = new FinalizationRegistry((heldValue) => {
   // ....
 });
 
@@ -932,21 +977,21 @@ registry.unregister(myObject);
 https://swizec.com/blog/a-surprising-feature-of-javascript-optional-chaining/
 
 ```ts
-object?.deepProp?.[console.log("runs if deepProp defined")]
+object?.deepProp?.[console.log("runs if deepProp defined")];
 ```
 
 # The extended types can be narrower than its parent ones only
 
 ```ts
 interface Base {
-  common: string // 👉 string | boolean will makes the Ex works
+  common: string; // 👉 string | boolean will makes the Ex works
 }
 
 /**
  * Interface 'Ex' incorrectly extends interface 'Base'.
  *  Types of property 'common' are incompatible.
  *   Type 'boolean' is not assignable to type 'string'.(2430)
-*/
+ */
 interface Ex extends Base {
   common: boolean;
 }
@@ -962,37 +1007,37 @@ https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#defining-a-un
 
 > A union type is a type formed from two or more other types, representing values that may be any one of those types.
 
-and: 
+and:
 
 https://www.tslang.cn/docs/handbook/advanced-types.html
 
 > 联合类型表示一个值可以是几种类型之一。
-> 
+>
 > ...
-> 
+>
 > 如果一个值是联合类型，我们只能访问此联合类型的所有类型里**共有**的成员。
 
 ```ts
 interface Bird {
-    fly();
-    layEggs();
+  fly();
+  layEggs();
 }
 
 interface Fish {
-    swim();
-    layEggs();
+  swim();
+  layEggs();
 }
 
 function getSmallPet(): Fish | Bird {
-    // ...
+  // ...
 }
 
 let pet = getSmallPet();
 pet.layEggs(); // okay
-pet.swim();    // errors
+pet.swim(); // errors
 ```
 
-> 如果一个值的类型是 A | B，我们能够 确定的是它包含了 A 和 B中共有的成员。 这个例子里， Bird具有一个 fly成员。 我们不能确定一个 Bird | Fish类型的变量是否有 fly方法。 如果变量在运行时是 Fish类型，那么调用 pet.fly()就出错了。
+> 如果一个值的类型是 A | B，我们能够 确定的是它包含了 A 和 B 中共有的成员。 这个例子里， Bird 具有一个 fly 成员。 我们不能确定一个 Bird | Fish 类型的变量是否有 fly 方法。 如果变量在运行时是 Fish 类型，那么调用 pet.fly()就出错了。
 
 It's explained with one more example in document:
 
@@ -1009,15 +1054,15 @@ type X = {
   name: string;
   age: number;
 } & {
-  gender: 'M' | "F"
-  age: string
-}
+  gender: "M" | "F";
+  age: string;
+};
 
 declare const x: X;
 
 // Age will receives `never` types, with error:
 // Type 'string' is not assignable to type 'never'.(2322)
-x.age = '' 
+x.age = "";
 ```
 
 ### For Union Types
@@ -1025,18 +1070,20 @@ x.age = ''
 ```ts
 // X receives ONE property: `age`.
 // Age props with different types
-type X = {
-  name: string;
-  age: number;
-} | {
-  gender: 'M' | "F"
-  age: string
-}
+type X =
+  | {
+      name: string;
+      age: number;
+    }
+  | {
+      gender: "M" | "F";
+      age: string;
+    };
 
 declare const x: X;
 
 // Age will receives `string | number` types, without error.
-x.age = '' 
+x.age = "";
 ```
 
 # 3 Useful TypeScript Patterns to Keep in Your Back Pocket
@@ -1052,7 +1099,7 @@ type JobTitles = "Welder" | "Carpenter" | "Plumber";
 const JobAssignments: { [Key in Names]: JobTitles } = {
   Bob: "Welder",
   Bill: "Carpenter",
-  Ben: "Plumber"
+  Ben: "Plumber",
 };
 ```
 
@@ -1063,22 +1110,22 @@ function inputDoubler(input: string): string;
 function inputDoubler(input: number): number;
 
 function inputDoubler(input: string | number) {
-  if (typeof input === "string"){
+  if (typeof input === "string") {
     return `${input}${input}`;
   } else {
     return input * 2;
   }
-};
+}
 ```
 
 ## Pattern 3: Custom Type Guards
 
 ```ts
-function isPizza (food: Pizza | Burrito): food is Pizza {
+function isPizza(food: Pizza | Burrito): food is Pizza {
   return (<Pizza>food).ingredients.topping !== undefined;
   // Or
   return (food as Pizza).ingredients.topping !== undefined;
-};
+}
 ```
 
 # React uncontrolled input issue
@@ -1098,7 +1145,7 @@ The following code demonstrates this. (The input is locked at first but becomes 
 ```ts
 ReactDOM.render(<input value="hi" />, mountNode);
 
-setTimeout(function() {
+setTimeout(function () {
   ReactDOM.render(<input value={null} />, mountNode);
 }, 1000);
 ```
@@ -1159,7 +1206,7 @@ TypeScript compiles this down to the following JavaScript:
 "use strict";
 var Enum;
 (function (Enum) {
-    Enum[Enum["A"] = 0] = "A";
+  Enum[(Enum["A"] = 0)] = "A";
 })(Enum || (Enum = {}));
 let a = Enum.A;
 let nameOfA = Enum[a]; // "A"
@@ -1189,11 +1236,11 @@ const ODirection = {
 } as const;
 
 EDirection.Up;
-           
+
 (enum member) EDirection.Up = 0
 
 ODirection.Up;
-           
+
 (property) Up: 0
 
 // Using the enum as a parameter
@@ -1230,7 +1277,7 @@ run(ODirection.Right);
 const people = {
   name: "Peter",
   age: 9,
-}
+};
 
 type People = typeof people; // { name: string; age: number;}
 type KeyofPeople = keyof People; // "name" | "age"
@@ -1245,9 +1292,8 @@ https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url
 {
   "compilerOptions": {
     "baseUrl": "src"
-  },
+  }
 }
-
 ```
 
 The above configuration makes:
@@ -1288,17 +1334,17 @@ Implemented side aligned grid with as less as two element.
 }
 
 .Bgzgmd li {
-    margin: 0;
+  margin: 0;
 }
 
 .Bgzgmd a {
-    padding: 6px 16px; // 👈  padding
+  padding: 6px 16px; // 👈  padding
 }
 ```
 
 ![Google sign in  layout](google-signin-grid.png)
 
-#  HTML Tips
+# HTML Tips
 
 https://markodenic.com/html-tips/
 
@@ -1306,33 +1352,30 @@ https://markodenic.com/html-tips/
 
 Performance tip. You can use the loading=lazy attribute to defer the loading of the image until the user scrolls to them.
 
-```html        
-<img src='image.jpg' loading='lazy' alt='Alternative Text'>
+```html
+<img src="image.jpg" loading="lazy" alt="Alternative Text" />
 ```
 
 ## Email, call, and SMS links:
 
-```html  
+```html
 <a href="mailto:{email}?subject={**subject**}&body={content}">
   Send us an email
 </a>
 
-<a href="tel:{phone}">
-  Call us
-</a>
+<a href="tel:{phone}"> Call us </a>
 
-<a href="sms:{phone}?body={content}">
-  Send us a message
-</a>           
+<a href="sms:{phone}?body={content}"> Send us a message </a>
 ```
+
 ## Ordered lists `start` attribute.
 
 Use the `start` attribute to change the starting point for your ordered lists.
 
 ```html
 <ol start="11">
-<li>HTML</li>
-<li>CSS</li>
+  <li>HTML</li>
+  <li>CSS</li>
 </ol>
 ```
 
@@ -1342,31 +1385,53 @@ You can use the `meter` element to display quantities. No JavaScript/CSS needed.
 
 ```html
 <label for="value1">Low</label>
-<meter id="value1" min="0" max="100" low="30" high="75" optimum="80" value="25"></meter>
+<meter
+  id="value1"
+  min="0"
+  max="100"
+  low="30"
+  high="75"
+  optimum="80"
+  value="25"
+></meter>
 
 <label for="value2">Medium</label>
-<meter id="value2" min="0" max="100" low="30" high="75" optimum="80" value="50"></meter>
+<meter
+  id="value2"
+  min="0"
+  max="100"
+  low="30"
+  high="75"
+  optimum="80"
+  value="50"
+></meter>
 
 <label for="value3">High</label>
-<meter id="value3" min="0" max="100" low="30" high="75" optimum="80" value="80"></meter>
+<meter
+  id="value3"
+  min="0"
+  max="100"
+  low="30"
+  high="75"
+  optimum="80"
+  value="80"
+></meter>
 ```
 
 ## HTML Native Search
 
 ```html
 <div class="wrapper">
-  <h1>
-    Native HTML Search
-  </h1>
-  
-  <input list="items">
-  
+  <h1>Native HTML Search</h1>
+
+  <input list="items" />
+
   <datalist id="items">
-    <option value="Marko Denic">
-    <option value="FreeCodeCamp">
-    <option value="FreeCodeTools">
-    <option value="Web Development">
-    <option value="Web Developer">
+    <option value="Marko Denic"></option>
+    <option value="FreeCodeCamp"></option>
+    <option value="FreeCodeTools"></option>
+    <option value="Web Development"></option>
+    <option value="Web Developer"></option>
   </datalist>
 </div>
 ```
@@ -1380,13 +1445,13 @@ You can use the `fieldset` element to group several controls as well as labels (
   <fieldset>
     <legend>Choose your favorite language</legend>
 
-    <input type="radio" id="javascript" name="language">
-    <label for="javascript">JavaScript</label><br/>
+    <input type="radio" id="javascript" name="language" />
+    <label for="javascript">JavaScript</label><br />
 
-    <input type="radio" id="python" name="language">
-    <label for="python">Python</label><br/>
+    <input type="radio" id="python" name="language" />
+    <label for="python">Python</label><br />
 
-    <input type="radio" id="java" name="language">
+    <input type="radio" id="java" name="language" />
     <label for="java">Java</label>
   </fieldset>
 </form>
@@ -1398,18 +1463,18 @@ If you want to open all links in the document in a new tab, you can use `base` e
 
 ```html
 <head>
-   <base target="_blank">
+  <base target="_blank" />
 </head>
 <!-- This link will open in a new tab. -->
 <div class="wrapper">
   This link will be opened in a new tab: &nbsp;
-  <a href="https://freecodetools.org/">
-    Free Code Tools
-  </a>
+  <a href="https://freecodetools.org/"> Free Code Tools </a>
 
   <p>
-    Read more: <br><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">
-    MDN Documentation
+    Read more: <br /><a
+      href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base"
+    >
+      MDN Documentation
     </a>
   </p>
 </div>
@@ -1422,18 +1487,19 @@ To refresh your website’s favicon you can force browsers to download a new ver
 This is especially helpful in production to make sure the users get the new version.
 
 ```html
-<link rel="icon" href="/favicon.ico?v=2" />           
+<link rel="icon" href="/favicon.ico?v=2" />
 ```
+
 ## The `spellcheck` attribute
 
 Use the spellcheck attribute to define whether the element may be checked for spelling errors.
 
 ```html
 <label for="input1">spellcheck="true"</label>
-<input type="text" id="input1" spellcheck="true">
+<input type="text" id="input1" spellcheck="true" />
 
 <label for="input2">spellcheck="false"</label>
-<input type="text" id="input2" spellcheck="false">
+<input type="text" id="input2" spellcheck="false" />
 ```
 
 ## Native HTML sliders
@@ -1442,10 +1508,10 @@ You can use `<input type="range">` to create sliders.
 
 ```html
 <label for="volume">Volume: </label>
-<input type="range" id="volume" name="volume" min="0" max="20">
+<input type="range" id="volume" name="volume" min="0" max="20" />
 
 <label for="result">Your choice: </label>
-<input type="number" id="result" name="result">
+<input type="number" id="result" name="result" />
 ```
 
 ## HTML Accordion
@@ -1455,13 +1521,9 @@ You can use the `details` element to create a native HTML accordion.
 ```html
 <div class="wrapper">
   <details>
-    <summary>
-      Click me to see more details
-    </summary>
+    <summary>Click me to see more details</summary>
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
   </details>
 </div>
 ```
@@ -1475,26 +1537,24 @@ You can use the `<mark>` tag to highlight text.
 You can use the `download` attribute in your links to download the file instead of navigating to it.
 
 ```html
-<a href='path/to/file' download>
-  Download
-</a>
+<a href="path/to/file" download> Download </a>
 ```
 
-##  Performance tip
+## Performance tip
 
 Use the `.webp` image format to make images smaller and boost the performance of your website.
 
 ```html
 <picture>
   <!-- load .webp image if supported -->
-  <source srcset="logo.webp" type="image/webp">
-  
+  <source srcset="logo.webp" type="image/webp" />
+
   <!-- 
 	Fallback if `.webp` images or <picture> tag 
 	not supported by the browser.
   -->
-  <img src="logo.png" alt="logo">
-</picture>           
+  <img src="logo.png" alt="logo" />
+</picture>
 ```
 
 ## input type="search"
@@ -1510,11 +1570,7 @@ https://medium.com/technogise/journey-of-improving-react-app-performance-by-10x-
 ```ts
 class Parent extends Component {
   render() {
-    return (
-      <Child
-        onClick={() => console.log('You clicked!')}
-     />
-    );
+    return <Child onClick={() => console.log("You clicked!")} />;
   }
 }
 ```
@@ -1539,6 +1595,7 @@ class Parent extends Component {
     );
 }
 ```
+
 Avoided rendering these components until they are needed i.e. [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html).
 
 This decreased the memory footprint from 500Mb to 150Mb. 😄
@@ -1574,14 +1631,10 @@ Solution: We identified that most of the API calls can be made to execute in par
 This decreased the initial page load time and other pages by 30%.
 
 ```ts
-const [
-  userSubscription,
-  userDetails,
-  userNotifications
-] = await Promise.all([
+const [userSubscription, userDetails, userNotifications] = await Promise.all([
   getUserSubscription(),
   getUserDetails(),
-  getUserNotifications()
+  getUserNotifications(),
 ]);
 ```
 
@@ -1600,46 +1653,46 @@ https://blog.saeloun.com/2021/04/23/react-keyboard-event-code
 ```ts
 // Before
 const handleKeyDown = (event) => {
-    const key = event.nativeEvent.code;
-    switch (key) {
-      case 'KeyW':
-        //moveTop();
-        break;
-      case 'KeyA':
-        //moveLeft();
-        break;
-      case 'KeyS':
-        //moveDown();
-        break;
-      case 'KeyD':
-        //moveRight();
-        break;
-      default:
-      //custom logic  
-    }
+  const key = event.nativeEvent.code;
+  switch (key) {
+    case "KeyW":
+      //moveTop();
+      break;
+    case "KeyA":
+      //moveLeft();
+      break;
+    case "KeyS":
+      //moveDown();
+      break;
+    case "KeyD":
+      //moveRight();
+      break;
+    default:
+    //custom logic
   }
+};
 
 // After
 const handleKeyDown = (event) => {
-    // We replaced the native event with the synthetic keyboard event
-    const key = event.code; 
-    switch (key) {
-      case 'KeyW':
-        //moveTop();
-        break;
-      case 'KeyA':
-        //moveLeft();
-        break;
-      case 'KeyS':
-        //moveDown();
-        break;
-      case 'KeyD':
-        //moveRight();
-        break;
-      default:
-      //custom logic  
-    }
+  // We replaced the native event with the synthetic keyboard event
+  const key = event.code;
+  switch (key) {
+    case "KeyW":
+      //moveTop();
+      break;
+    case "KeyA":
+      //moveLeft();
+      break;
+    case "KeyS":
+      //moveDown();
+      break;
+    case "KeyD":
+      //moveRight();
+      break;
+    default:
+    //custom logic
   }
+};
 ```
 
 # Yarn WorkSpace
@@ -1683,6 +1736,7 @@ my-app/
 ```
 
 `package.json` in every WorkSpace module
+
 ```sh
 {
   "name": "@my-app/app",
@@ -1706,11 +1760,11 @@ yarn add -D -W typescript // -W to install the dependency in WorkSpace root
 import {
   createGlobalStyle,
   DefaultTheme,
-  ThemeProvider
+  ThemeProvider,
 } from "styled-components";
 
 const theme: DefaultTheme = {
-  balabala: "red"
+  balabala: "red",
 };
 
 const GlobalBalabala = createGlobalStyle`
@@ -1731,16 +1785,14 @@ const Root = () => (
 // tsconfig.json
 {
   "compilerOptions": {
-    "types": [
-      "./src/types/**/*"
-    ]
-  },
+    "types": ["./src/types/**/*"]
+  }
 }
 ```
 
 ```ts
 // src/types/defaultTheme.d.ts
-import "styled-components"; 
+import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
@@ -1756,15 +1808,15 @@ https://www.robinwieruch.de/styled-components
 ## Use `css` utility
 
 ```js
-import styled, { css } from 'styled-components';
- 
+import styled, { css } from "styled-components";
+
 const red = css`
   color: red;
 `;
- 
+
 const Headline = styled.h1`
   ${red}
- 
+
   font-size: 20px;
 `;
 ```
@@ -1778,20 +1830,20 @@ const Section = styled.section`
   border-bottom: 1px solid grey;
   padding: 20px;
 `;
- 
+
 const Headline = styled.h1`
   color: red;
 `;
- 
+
 const Text = styled.span`
   padding: 10px;
 `;
- 
+
 const Content = ({ title, children }) => {
   return (
     <Section>
       <Headline>{title}</Headline>
- 
+
       <Text>{children}</Text>
     </Section>
   );
@@ -1804,38 +1856,37 @@ On the other side of the spectrum,
 const Container = styled.section`
   border-bottom: 1px solid grey;
   padding: 20px;
- 
+
   h1 {
     color: red;
   }
- 
+
   .text {
     padding: 10px;
   }
 `;
- 
+
 const Content = ({ title, children }) => {
   return (
     <Container>
       <h1>{title}</h1>
- 
+
       <span className="text">{children}</span>
     </Container>
   );
 };
 ```
 
-
 # How to use CSS3 variables in styled-components
 
 https://epicreact.dev/css-variables/
 
 ```css
-body[data-theme='light'] {
+body[data-theme="light"] {
   --colors-primary: deeppink;
   --colors-background: white;
 }
-body[data-theme='dark'] {
+body[data-theme="dark"] {
   --colors-primary: lightpink;
   --colors-background: black;
 }
@@ -1844,9 +1895,9 @@ body[data-theme='dark'] {
 ```ts
 const PrimaryText = styled.div({
   padding: 20,
-  color: 'var(--colors-primary)',
-  backgroundColor: 'var(--colors-background)',
-})
+  color: "var(--colors-primary)",
+  backgroundColor: "var(--colors-background)",
+});
 ```
 
 # Handling Static Assets in Jest
@@ -1876,7 +1927,7 @@ module.exports = {};
 ```ts
 // __mocks__/fileMock.js
 
-module.exports = 'test-file-stub';
+module.exports = "test-file-stub";
 ```
 
 > See also: [Mocking CSS Modules](https://jestjs.io/docs/webpack#mocking-css-modules)
@@ -1894,14 +1945,15 @@ Logical assignment operators work differently from other compound assignment ope
 | a ??= b             | a ?? (a = b)   | Nullish              |
 
 Why is `a||= b` equivalent to the following expression?
+
 ```ts
-a || (a = b)
+a || (a = b);
 ```
 
 Why not to this expression?
 
 ```ts
-a = a || b
+a = a || b;
 ```
 
 The former expression has the benefit of short-circuiting: The assignment is only evaluated if a evaluates to false. Therefore, the assignment is only performed if it’s necessary. In contrast, the latter expression always performs an assignment.
@@ -1917,12 +1969,12 @@ In LaunchPad, holding <kbd>Option</kbd> key can uninstall apps instantly.
 Before:
 
 ```ts
-import { MyFunction } from 'my-module';
+import { MyFunction } from "my-module";
 
 const MyComponent = (props) => {
   const result = MyFunction();
 
-  return (<Text>{result}</Text>);
+  return <Text>{result}</Text>;
 };
 ```
 
@@ -1930,9 +1982,9 @@ After:
 
 ```ts
 const MyComponent = (props) => {
-  const result = require('my-module').MyFunction();
+  const result = require("my-module").MyFunction();
 
-  return (<Text>{result}</Text>);
+  return <Text>{result}</Text>;
 };
 ```
 
@@ -1957,9 +2009,9 @@ https://jakearchibald.com/2021/function-callback-risks/
 const controller = new AbortController();
 const { signal } = controller;
 
-el.addEventListener('mousemove', callback, { signal });
-el.addEventListener('pointermove', callback, { signal });
-el.addEventListener('touchmove', callback, { signal });
+el.addEventListener("mousemove", callback, { signal });
+el.addEventListener("pointermove", callback, { signal });
+el.addEventListener("touchmove", callback, { signal });
 
 // Later, remove all three listeners:
 controller.abort();
@@ -1990,6 +2042,7 @@ npx pod-install
 ```
 
 Once this is complete, re-build the app binary to start using your new library:
+
 ```ts
 npx react-native run-ios
 ```
@@ -2007,7 +2060,7 @@ npx react-native run-android
 In DevTools, `$$` is shorthand for
 
 ```ts
-Array.from(document.querySelectorAll())
+Array.from(document.querySelectorAll());
 ```
 
 Leran more https://developers.google.com/web/tools/chrome-devtools/console/utilities
@@ -2034,7 +2087,6 @@ export { MyComponent as default 👈 } from "./ManyComponents.js";
 # Generic type support default type
 
 https://www.smashingmagazine.com/2021/01/dynamic-static-typing-typescript/
-
 
 ```ts
 type ServerRequest<Met extends Methods, Par extends string = string> = {
@@ -2080,7 +2132,6 @@ In the two input boxes below the search box, you can enter patterns to include o
 - `**` to match any number of path segments, including none
 - `{}` to group conditions (for example {\*\*/\*.html,\*\*/\*.txt} matches all HTML and text files)
 - `[]` to declare a range of characters to match (example.[0-9] to match on example.0, example.1, …)
-
 
 # Tips from React Native document
 
@@ -2144,7 +2195,7 @@ https://reactnative.dev/docs/scrollview#contentcontainerstyle
 
 While designing customer component, we can use `contentContainerStyle` to define the component's container style.
 
-```ts
+````ts
 export const C = ({ contentContainerStyle, style }) => (
   <View style={[styles.container, ...contentContainerStyle 👈]}>
     <Text style={[styles.content, ...styles 👈]}>Hello</Text>
@@ -2167,7 +2218,7 @@ const TextInANest = () => {
     </Text>
   );
 };
-```
+````
 
 ## Styling on `<View />`
 
@@ -2209,8 +2260,9 @@ const onBlur = ({ nativeEvent: { text } }) => console.log(text);
 How to fix
 
 1️⃣ access the value from some kind of store.
+
 ```ts
-const [value, setValue] = useState('');
+const [value, setValue] = useState("");
 
 const onChangeText = (text) => setValue(text);
 const onFocus = () => console.log(value);
@@ -2223,7 +2275,6 @@ const onEndEditing = () => console.log(value);
 
 https://react-query.tanstack.com/guides/query-keys#if-your-query-function-depends-on-a-variable-include-it-in-your-query-key
 
-
 React Query use query keys to unique the cache for data.
 
 All the variables which effect the query should be listed in the query keys.
@@ -2234,7 +2285,6 @@ All the variables which effect the query should be listed in the query keys.
 
 2️⃣ The first string type item is ❓ optional, the variables are enough to make the cache invalidate.
 
-
 ```ts
 export const useTransferWiseQuote = (initialParams) => {
   const { data: TransferWiseUser } = useQuery(queryKeys.twUser, getTwId);
@@ -2244,25 +2294,23 @@ export const useTransferWiseQuote = (initialParams) => {
   const customerId = `tw_customer_id=${twCustomerId}`;
 
   const [
-    {
-      sourceAmount, sourceCurrency, targetAmount, targetCurrency,
-    },
+    { sourceAmount, sourceCurrency, targetAmount, targetCurrency },
     setParams,
   ] = useState(initialParams);
 
   const initialData = useMemo(
     () => ({
       fee: 0,
-      formattedEstimatedDelivery: '',
-      id: '',
+      formattedEstimatedDelivery: "",
+      id: "",
       rate: 0,
-      rateType: '',
+      rateType: "",
       targetAmount: 0,
       ...initialParams,
     }),
-    [initialParams],
+    [initialParams]
   );
-  const amountKey = sourceAmount ? 'sourceAmount' : 'targetAmount';
+  const amountKey = sourceAmount ? "sourceAmount" : "targetAmount";
   const amountValue = sourceAmount || targetAmount;
   const amountString = `${amountKey}=${amountValue}`;
   const sourceCurrencyString = `sourceCurrency=${sourceCurrency}`;
@@ -2272,13 +2320,13 @@ export const useTransferWiseQuote = (initialParams) => {
     amountString,
     sourceCurrencyString,
     targetCurrencyString,
-  ].join('&');
+  ].join("&");
 
   const url = `${ApiEndpointTransferWise}/quotes/v1/getQuote?${joined}`;
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote, // 2️⃣  Optional 
+      queryKeys.twQuote, // 2️⃣  Optional
       {
         sourceAmount, // 1️⃣ Order does NOT matters
         sourceCurrency,
@@ -2287,19 +2335,19 @@ export const useTransferWiseQuote = (initialParams) => {
       },
     ],
     () => httpRequest.get(url),
-    { initialData },
+    { initialData }
   );
 
   const { error, data } = useQuery(
     [
-      queryKeys.twQuote, // 2️⃣ Optional 
+      queryKeys.twQuote, // 2️⃣ Optional
       sourceAmount, // 1️⃣ Order matters
       sourceCurrency,
       targetAmount,
       targetCurrency,
     ],
     () => httpRequest.get(url),
-    { initialData },
+    { initialData }
   );
 
   return [data, setParams];
@@ -2317,7 +2365,7 @@ Try to avoid use inline arrow function, or wrap it with `useCallback`
 # Destructuring Object conditionally
 
 ```ts
-const conditionallyProperty = {...(bool ? {foo: 'Foo'} : {})};
+const conditionallyProperty = { ...(bool ? { foo: "Foo" } : {}) };
 ```
 
 # Define `Enums` in JSDoc
@@ -2333,7 +2381,7 @@ https://stackoverflow.com/questions/19093935/how-to-document-a-string-type-in-js
  * @param format {MetricFormat}
  */
 export function fetchMetric(format) {
-    return fetch((`/`), format);
+  return fetch(`/`, format);
 }
 ```
 
@@ -2370,7 +2418,7 @@ printImportant("ERROR", "This is a message");
 
 https://es6.ruanyifeng.com/#docs/function#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE
 
-如果传入undefined，将触发该参数等于默认值，null则没有这个效果。
+如果传入 undefined，将触发该参数等于默认值，null 则没有这个效果。
 
 # Styled-Components features not support in React Native
 
@@ -2389,9 +2437,9 @@ Component will be styled with height and box shadow(Android only)
 Although TypeScript complains that those two props are not available
 
 ```ts
-<View 
+<View
   height={100} 👈
-  elevation={10} 👈 
+  elevation={10} 👈
   style={{backgroundColor: 'white'}} />
 ```
 
@@ -2414,6 +2462,7 @@ const Container = styled.FlatList<ContainerProps>`
 # Styled-components for React Native
 
 ### `attrs` method DO NOT support `style` props
+
 ```ts
 type ViewStyledProps = {
   x?: number;
@@ -2442,7 +2491,7 @@ const AnimatedViewStyled = styled(Animated.View)
 # customize component display name
 
 ```ts
-AnimatedViewStyled.displayName = 'Hello';
+AnimatedViewStyled.displayName = "Hello";
 ```
 
 # Default `backgroundColor` for `<View />` is `#FAFAFA`
@@ -2454,11 +2503,11 @@ export const renderReactions = (
   reactions,
   supportedReactions,
   reactionCounts,
-  handleReaction,
+  handleReaction
 ) => {
   const reactionsByType = {}; // 👈  a store
   reactions &&
-    reactions.forEach(item => {
+    reactions.forEach((item) => {
       if (reactions[item.type] === undefined) {
         return (reactionsByType[item.type] = [item]);
       } else {
@@ -2471,9 +2520,9 @@ export const renderReactions = (
     });
 
   const emojiDataByType = {};
-  supportedReactions.forEach(e => (emojiDataByType[e.id] = e));
+  supportedReactions.forEach((e) => (emojiDataByType[e.id] = e));
 
-  const reactionTypes = supportedReactions.map(e => e.id);
+  const reactionTypes = supportedReactions.map((e) => e.id);
 
   // 👇 map the store to view
   return Object.keys(reactionsByType).map((type, index) =>
@@ -2485,7 +2534,7 @@ export const renderReactions = (
         reactionCounts={reactionCounts}
         emojiDataByType={emojiDataByType}
       />
-    ) : null,
+    ) : null
   );
 };
 ```
@@ -2498,9 +2547,10 @@ https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-nat
 
   ```ts
   module.exports = {
-    assets: ['./assets/fonts/'],
+    assets: ["./assets/fonts/"],
   };
   ```
+
 - place font files in the folder above.
 - run `npx react-native link`.
 - apply font in style
@@ -2508,7 +2558,7 @@ https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-nat
   ```ts
   const styles = StyleSheet.create({
     title: {
-      fontFamily: 'Lato-Regular',
+      fontFamily: "Lato-Regular",
     },
   });
   ```
@@ -2552,25 +2602,25 @@ https://fishshell.com/docs/current/index.html#autosuggestions
 
 To accept the autosuggestion (replacing the command line contents), press right arrow or Control+F. To accept the first suggested word, press Alt+→,Right or Alt+F. If the autosuggestion is not what you want, just ignore it: it won't execute unless you accept it.
 
--    Tab completes the current token. Shift, Tab completes the current token and starts the pager's search mode.
--   Alt+←,Left and Alt+→,Right move the cursor one word left or right (to the next space or punctuation mark), or moves forward/backward in the directory history if the command line is empty. If the cursor is already at the end of the line, and an autosuggestion is available, Alt+→,Right (or Alt+F) accepts the first word in the suggestion.
--    Shift,←,Left and Shift,→,Right move the cursor one word left or right, without stopping on punctuation.
--   ↑ (Up) and ↓ (Down) (or Control+P and Control+N for emacs aficionados) search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match. See the history section for more information on history searching.
--   Alt+↑,Up and Alt+↓,Down search the command history for the previous/next token containing the token under the cursor before the search was started. If the commandline was not on a token when the search started, all tokens match. See the history section for more information on history searching.
--   Control+C cancels the entire line.
--   Control+D delete one character to the right of the cursor. If the command line is empty, Control+D will exit fish.
--   Control+U moves contents from the beginning of line to the cursor to the killring.
--   Control+L clears and repaints the screen.
--   Control+W moves the previous path component (everything up to the previous "/", ":" or "@") to the killring.
--   Control+X copies the current buffer to the system's clipboard, Control+V inserts the clipboard contents.
--   Alt+d moves the next word to the killring.
--   Alt+h (or F1) shows the manual page for the current command, if one exists.
--   Alt+l lists the contents of the current directory, unless the cursor is over a directory argument, in which case the contents of that directory will be listed.
--   Alt+p adds the string '| less;' to the end of the job under the cursor. The result is that the output of the command will be paged.
--   Alt+w prints a short description of the command under the cursor.
--   Alt+e edit the current command line in an external editor. The editor is chosen from the first available of the $VISUAL or $EDITOR variables.
--   Alt+v Same as Alt+e.
--   Alt+s Prepends sudo to the current commandline.
+- Tab completes the current token. Shift, Tab completes the current token and starts the pager's search mode.
+- Alt+←,Left and Alt+→,Right move the cursor one word left or right (to the next space or punctuation mark), or moves forward/backward in the directory history if the command line is empty. If the cursor is already at the end of the line, and an autosuggestion is available, Alt+→,Right (or Alt+F) accepts the first word in the suggestion.
+- Shift,←,Left and Shift,→,Right move the cursor one word left or right, without stopping on punctuation.
+- ↑ (Up) and ↓ (Down) (or Control+P and Control+N for emacs aficionados) search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match. See the history section for more information on history searching.
+- Alt+↑,Up and Alt+↓,Down search the command history for the previous/next token containing the token under the cursor before the search was started. If the commandline was not on a token when the search started, all tokens match. See the history section for more information on history searching.
+- Control+C cancels the entire line.
+- Control+D delete one character to the right of the cursor. If the command line is empty, Control+D will exit fish.
+- Control+U moves contents from the beginning of line to the cursor to the killring.
+- Control+L clears and repaints the screen.
+- Control+W moves the previous path component (everything up to the previous "/", ":" or "@") to the killring.
+- Control+X copies the current buffer to the system's clipboard, Control+V inserts the clipboard contents.
+- Alt+d moves the next word to the killring.
+- Alt+h (or F1) shows the manual page for the current command, if one exists.
+- Alt+l lists the contents of the current directory, unless the cursor is over a directory argument, in which case the contents of that directory will be listed.
+- Alt+p adds the string '| less;' to the end of the job under the cursor. The result is that the output of the command will be paged.
+- Alt+w prints a short description of the command under the cursor.
+- Alt+e edit the current command line in an external editor. The editor is chosen from the first available of the $VISUAL or $EDITOR variables.
+- Alt+v Same as Alt+e.
+- Alt+s Prepends sudo to the current commandline.
 
 # Cold boot virtual android device in Android Studio
 
@@ -2584,18 +2634,18 @@ Toggle class name to `.lightMode`to fire light mode.
 // by default dark theme
 
 :root {
-    --bg-color: #171923;
-    --bg-light: #232535;
-    --font-color: #c5cddb;
-    --font-light: #ffffff;
+  --bg-color: #171923;
+  --bg-light: #232535;
+  --font-color: #c5cddb;
+  --font-light: #ffffff;
 }
 
 // light theme colors
 
 .lightMode {
-  --bg-color: #E8E6DC;
-  --bg-light: #DCDACA;
-  --font-color: #3D3D3D;
+  --bg-color: #e8e6dc;
+  --bg-light: #dcdaca;
+  --font-color: #3d3d3d;
   --font-light: #202020;
 }
 ```
@@ -2638,8 +2688,8 @@ The `slice()` method returns a **shallow copy** of a portion of an array into a 
 
 # Debug practices
 
-- 对于时间、id等可能为字符串或数值类型的情况，做强转防御。
-- 适度抛错，便于QA排查。
+- 对于时间、id 等可能为字符串或数值类型的情况，做强转防御。
+- 适度抛错，便于 QA 排查。
 
 # How to Update Angular
 
@@ -2664,13 +2714,14 @@ With the following comments: `// @ts-nocheck`, `// @ts-check`, and `// @ts-ignor
 **Heads up:** if you have a `tsconfig.json`, JS checking will respect strict flags like `noImplicitAny`, `strictNullChecks`, etc.
 
 # DOM 事件的行内回调形式
-行内回调的语句可以拿到 `event` 对象: 
+
+行内回调的语句可以拿到 `event` 对象:
 
 ```html
 <input onkeyup="peopleStore[1].name = event.target.value" />
 ```
 
-# Prettier End of Line 
+# Prettier End of Line
 
 https://prettier.io/docs/en/options.html#end-of-line
 
@@ -2688,7 +2739,7 @@ expo install react-native-safe-area-context
 ```
 
 ```ts
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function SomeComponent() {
   return (
@@ -2726,7 +2777,7 @@ The actions from both GitLens `Restore` and Git `git restore` recover the unexpe
 
 # Make `yarn golbal add` works
 
-If Yarn is installed with `npm install -g yarn`, it's `bin` will not be added to Windows Environment Variables by default. 
+If Yarn is installed with `npm install -g yarn`, it's `bin` will not be added to Windows Environment Variables by default.
 
 It makes the following error cause:
 
@@ -2764,7 +2815,7 @@ h1 {
 ```ts
 const arr = [1, 5, 2, 7, 0];
 
-const result = arr.sort((a, b) => b - a) // [ 7, 5, 2, 1, 0 ]
+const result = arr.sort((a, b) => b - a); // [ 7, 5, 2, 1, 0 ]
 ```
 
 (a = 1 b = 5) 2⏳ 7 0 👉 [5, 1, 2, 7, 0]
@@ -2782,7 +2833,6 @@ const result = arr.sort((a, b) => b - a) // [ 7, 5, 2, 1, 0 ]
 7 5 2 (a = 1 b = 0)🏁 👉 [7, 5, 2, 1, 0]
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-
 
 # How to await for multiple results in parallel
 
@@ -2811,13 +2861,12 @@ const result = arr.sort((a, b) => b - a)
 
 ```ts
 const fn = async () => {
-  throw new Error('Error Happened')
-}
+  throw new Error("Error Happened");
+};
 
-fn().catch(err => {
-  console.table(err)
-  
-})
+fn().catch((err) => {
+  console.table(err);
+});
 ```
 
 # Make sure property exist
@@ -2852,12 +2901,12 @@ https://callstack.github.io/react-native-testing-library/docs/redux-integration
 
 https://github.com/twilio/twilio-video-app-react
 
-
 # Testing React components that update asynchronously with React Testing Library
 
 https://www.30secondsofcode.org/blog/s/testing-async-react-components
 
 **Recap**
+
 - A message about code that causes React state updates not being wrapped in `act(...)` might indicate that **a component updated after the test ended**.
 - Using `waitFor()` can solve the issue by making tests asynchronous, but you might need to bump your react-testing-library version if you are using older versions of react-scripts.
 - If you see errors related to `MutationObserver`, you might need to change your test script to include `--env=jsdom-fourteen` as a parameter.
@@ -2868,11 +2917,11 @@ https://www.30secondsofcode.org/blog/s/testing-async-react-components
 const [updating, setUpdating] = useState(false);
 
 const onRefresh = useCallback(() => {
-    setUpdating(true);
-    getLatestBalance(nouAccountId).then((res) => {
-      setUpdating(false);
-    });
-  }, [updating]);
+  setUpdating(true);
+  getLatestBalance(nouAccountId).then((res) => {
+    setUpdating(false);
+  });
+}, [updating]);
 ```
 
 # Multifolder in VS Code
@@ -2892,23 +2941,22 @@ https://github.com/styled-components/styled-components/issues/1858#issuecomment-
   Also these would work:
   ```scss
   box-shadow: 2px 4px 12px red;
-  boxShadow: 2px 4px 12px red;
+  boxshadow: 2px 4px 12px red;
   ```
   These would not work (neither with rgb):
   ```scss
   box-shadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
-  boxShadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
+  boxshadow: 2px 4px 12px rgba(202, 202, 214, 0.25);
   ```
-  
+
 # Highlight Git diff in Markdown
- 
+
 https://blog.alispit.tel/create-a-git-diff-in-markdown/
- 
-```ts
+
+````ts
 ```diff 👈 use "diff" as language indicator
  function addTwoNumbers (num1, num2) {
 -  return 1 + 2
 +  return num1 + num2
 }
-```
- 
+````

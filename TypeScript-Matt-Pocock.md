@@ -1,3 +1,40 @@
+# Turn MODULES INTO TYPES with typeof import
+
+https://www.youtube.com/watch?v=sswUBXaoXSI
+
+```ts
+// constants.ts
+export const ADD_TODO = "ADD_TODO";
+export const REMOVE_TODO = "REMOVE_TODO";
+export const EDIT_TODO = "EDIT_TODO";
+
+// consumer.ts
+export type ActionModule = typeof import("./t1");
+
+/**
+ * export const ADD_TODO = "ADD";
+export const REMOVE_TODO = "REMOVE";
+export const EDIT_TODO = "EDIT";
+
+ * export const actionModule: ActionModule = {
+  ADD_TODO: "ADD",
+  REMOVE_TODO: "REMOVE",
+  EDIT_TODO: "EDIT",
+};
+ */
+export const actionModuleFoo: ActionModule = {
+  ADD_TODO: "ADD",
+  REMOVE_TODO: "REMOVE",
+  EDIT_TODO: "EDIT",
+};
+
+// type ActionKeys = "ADD_TODO" | "REMOVE_TODO" | "EDIT_TODO"
+export type ActionKeys = keyof ActionModule;
+
+// type Action = "ADD" | "REMOVE" | "EDIT"
+export type Action = ActionModule[keyof ActionModule];
+```
+
 # Dynamic function arguments with GENERICS
 
 https://www.youtube.com/watch?v=YE_3WwX-Dl8
