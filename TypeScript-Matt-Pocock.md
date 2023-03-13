@@ -1,3 +1,62 @@
+# 10 Tips for Mastering TypeScript Generics
+
+## Constraints in functions
+
+https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-constraints
+
+https://www.youtube.com/watch?v=dLPgQRbVquo&t=499s
+
+We need to actually constrain this `O` object because you can't call `object.keys` on a number, or on a string. So we actually need to constrain it to be something that `object.keys` can handle.
+
+```ts
+// This type parameter might need an `extends {}` constraint.
+// This type parameter might need an `extends object` constraint.
+const getKeys = <O,>(obj: O) => Object.keys(obj);
+
+// Resolved
+const getKeys = <O extends Record<string, number>>(obj: O) => Object.keys(obj);
+```
+
+When you have a generic function, you're usually going to put a constrain on it. 
+- This give you control over what user inputs.
+- Less logic statements.
+
+## `as`: you know better than TypeScript
+
+https://www.youtube.com/watch?v=dLPgQRbVquo&t=607s
+
+```ts
+// Type 'string[]' is not assignable to type '(keyof O)[]'.
+// Type 'string' is not assignable to type 'keyof O'.
+// Type 'string' is not assignable to type 'never'.
+const getKeys = <O extends {}>(obj: O): Array<keyof O> => Object.keys(obj);
+
+// Resolved
+const getKeys = <O extends {}>(obj: O): Array<keyof O> => Object.keys(obj) as (keyof O)[];
+```
+
+## Work with Zod
+
+https://www.youtube.com/watch?v=dLPgQRbVquo&t=900s
+
+> NOT CLEAR YET
+
+```ts
+const makeZodSafeFetch = <TData,>(
+  url: string,
+  schema: z.Schema<TData>
+): Promise<TData> => {
+  return fetch(url)
+    .then((res) => res.json())
+    .then((res) => schema.parse(res));
+};
+
+const result = makeZodSafeFetch<Record<"firstName" | "lastName", string>>(
+  "",
+  {}
+);
+```
+
 # Turn MODULES INTO TYPES with typeof import
 
 https://www.youtube.com/watch?v=sswUBXaoXSI
