@@ -18,8 +18,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "9b23bfd06512f8a6",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.16"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -147,7 +158,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f82fd569fbd2b2f8",
+  "active": "9b23bfd06512f8a6",
   "lastOpenFiles": [
     "TypeScript-Matt-Pocock.md",
     "TypeScript.md",
