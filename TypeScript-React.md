@@ -1,3 +1,51 @@
+# Typesafe on HTML elements
+
+https://www.youtube.com/watch?v=4GchlC06ca0
+
+```ts
+import React, { InputHTMLAttributes, ComponentProps } from "react";
+
+interface InputPropsWithInputHTMLAttributes
+  extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+}
+
+interface InputPropsWithComponentProps extends ComponentProps<"input"> {
+  label: string;
+}
+
+export const Input = ({ label, ...props }: InputPropsWithComponentProps) => {
+  // InputPropsWithComponentProps
+  // (parameter) props: {
+  //   ref?: React.LegacyRef<HTMLInputElement> | undefined;
+  //   key?: React.Key | null | undefined;
+  //   accept?: string | undefined;
+  //   alt?: string | undefined;
+  //   ... 286 more ...;
+  //   onTransitionEndCapture?: React.TransitionEventHandler<...> | undefined;
+  // }
+
+  // InputPropsWithInputHTMLAttributes
+  // (parameter) props: {
+  //   accept?: string | undefined;
+  //   alt?: string | undefined;
+  //   autoComplete?: string | undefined;
+  //   autoFocus?: boolean | undefined;
+  //   capture?: boolean | "user" | "environment" | undefined;
+  //   ... 283 more ...;
+  //   onTransitionEndCapture?: React.TransitionEventHandler<...> | undefined;
+  // }
+
+  return (
+    <>
+      <label>{label}</label>
+      <input {...props} />
+    </>
+  );
+};
+
+```
+
 # React.ComponentType
 
 ```ts

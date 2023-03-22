@@ -13,24 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TypeScript.md",
+                "file": "TypeScript-Matt-Pocock.md",
                 "mode": "preview",
                 "source": false
               }
             }
-          },
-          {
-            "id": "9b23bfd06512f8a6",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.1.16"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "never",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "TypeScript.md",
+                "file": "TypeScript-Matt-Pocock.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "TypeScript.md",
+                "file": "TypeScript-Matt-Pocock.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "TypeScript.md"
+                "file": "TypeScript-Matt-Pocock.md"
               }
             }
           }
@@ -158,10 +146,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9b23bfd06512f8a6",
+  "active": "f82fd569fbd2b2f8",
   "lastOpenFiles": [
-    "TypeScript-Matt-Pocock.md",
     "TypeScript.md",
+    "TypeScript-React.md",
+    "TypeScript-Matt-Pocock.md",
     "TypeScript-Changelog/TypeScript-4.1.md",
     "TypeScript-Changelog/TypeScript-4.0.md",
     "TypeScript-Changelog/TypeScript-3.9-3.8.md",
