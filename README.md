@@ -1,3 +1,4 @@
+- [Work with Yup type errors](#work-with-yup-type-errors)
 - [Handle Rejection of Promise](#handle-rejection-of-promise)
 - [Radius tip in design](#radius-tip-in-design)
 - [VS Code Shortcut](#vs-code-shortcut)
@@ -168,6 +169,18 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Work with Yup type errors
+
+https://stackoverflow.com/a/63795693
+
+https://github.com/jquense/yup#schematypeerrormessage-string-schema
+
+For a custom message to number type you should call the typeError() function:
+
+```ts
+numberField: Yup.number().typeError(numberErrorMessage).required(requiredErrorMessage),
+```
 
 # Handle Rejection of Promise
 
