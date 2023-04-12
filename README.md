@@ -1,3 +1,4 @@
+- [Customize Theme in Ant Design](#customize-theme-in-ant-design)
 - [Setting JAVA\_HOME and PATH Variables](#setting-java_home-and-path-variables)
 - [Work with Yup type errors](#work-with-yup-type-errors)
 - [Handle Rejection of Promise](#handle-rejection-of-promise)
@@ -170,6 +171,55 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Customize Theme in Ant Design
+
+https://ant.design/docs/react/customize-theme
+
+Customize theme with ConfigProvider
+
+```ts
+import { Button, ConfigProvider } from 'antd';
+import React from 'react';
+
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      token: {
+        colorPrimary: '#00b96b',
+      },
+    }}
+  >
+    <Button />
+  </ConfigProvider>
+);
+
+export default App;
+```
+
+Customize Component Token
+
+```ts
+import { Checkbox, ConfigProvider, Radio } from 'antd';
+import React from 'react';
+
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Radio: {
+          colorPrimary: '#00b96b',
+        },
+      },
+    }}
+  >
+    <Radio>Radio</Radio>
+    <Checkbox>Checkbox</Checkbox>
+  </ConfigProvider>
+);
+
+export default App;
+```
 
 # Setting JAVA_HOME and PATH Variables
 
