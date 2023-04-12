@@ -1,3 +1,4 @@
+- [Setting JAVA\_HOME and PATH Variables](#setting-java_home-and-path-variables)
 - [Work with Yup type errors](#work-with-yup-type-errors)
 - [Handle Rejection of Promise](#handle-rejection-of-promise)
 - [Radius tip in design](#radius-tip-in-design)
@@ -169,6 +170,34 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Setting JAVA_HOME and PATH Variables
+
+https://docs.daml.com/getting-started/path-variables.html#mac-os
+
+```sh
+echo $SHELL
+```
+
+For bash
+
+```sh
+echo 'export JAVA_HOME="$(/usr/libexec/java_home)"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.daml/bin:$PATH"' >> ~/.bash_profile
+```
+
+For zsh
+
+```sh
+echo 'export JAVA_HOME="$(/usr/libexec/java_home)"' >> ~/.zprofile
+echo 'export PATH="$HOME/.daml/bin:$PATH"' >> ~/.zprofile
+```
+
+Verify Java configuration
+
+```sh
+echo $JAVA_HOME
+```
 
 # Work with Yup type errors
 
