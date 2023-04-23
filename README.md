@@ -1,3 +1,4 @@
+- [What's new in ECMAScript 2023](#whats-new-in-ecmascript-2023)
 - [Customize Theme in Ant Design](#customize-theme-in-ant-design)
 - [Setting JAVA\_HOME and PATH Variables](#setting-java_home-and-path-variables)
 - [Work with Yup type errors](#work-with-yup-type-errors)
@@ -171,6 +172,78 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# What's new in ECMAScript 2023
+
+Array find from last
+
+```ts
+const isEven = (number) => number % 2 === 0;
+const numbers = [1, 2, 3, 4];
+
+// from first to the last lookup
+console.log(numbers.find(isEven));
+// 2
+console.log(numbers.findIndex(isEven));
+// 1
+
+// from last to the first lookup
+console.log(numbers.findLast(isEven));
+// 4
+console.log(numbers.findLastIndex(isEven));
+// 3
+```
+
+Symbols as WeakMap keys
+
+```ts
+const weak = new WeakMap();
+const key = Symbol("ref");
+weak.set(key, "ECMAScript 2023");
+
+console.log(weak.get(key));
+// ECMAScript 2023
+```
+
+Change Array by Copy
+
+```ts
+const original = [1, 2, 3, 4];
+const reversed = original.toReversed();
+
+console.log(original);
+// [ 1, 2, 3, 4 ]
+
+console.log(reversed);
+// [ 4, 3, 2, 1 ]
+
+const original = [1, 3, 2, 4];
+const sorted = original.toSorted();
+
+console.log(original);
+// [ 1, 3, 2, 4 ]
+
+console.log(sorted);
+// [ 1, 2, 3, 4 ]
+
+const original = [1, 4];
+const spliced = original.toSpliced(1, 0, 2, 3);
+
+console.log(original);
+// [ 1, 4 ]
+
+console.log(spliced);
+// [ 1, 2, 3, 4 ]
+
+const original = [1, 2, 2, 4];
+const withThree = original.with(2, 3);
+
+console.log(original);
+// [ 1, 2, 2, 4 ]
+
+console.log(withThree);
+// [ 1, 2, 3, 4 ]
+```
 
 # Customize Theme in Ant Design
 
