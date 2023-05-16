@@ -81,6 +81,10 @@
 - [navigate directories faster with bash](#navigate-directories-faster-with-bash)
 - [React 17 adds support for KeyboardEvent.code property to SyntheticEvent](#react-17-adds-support-for-keyboardeventcode-property-to-syntheticevent)
 - [Yarn WorkSpace](#yarn-workspace)
+- [Emotion Official Docs](#emotion-official-docs)
+- [Object Styles](#object-styles)
+- [`keyframes` in Emotion with AntDesign overwrite](#keyframes-in-emotion-with-antdesign-overwrite)
+- [Pass `props` to the children](#pass-props-to-the-children)
 - [styled-components theme with TypeScript support](#styled-components-theme-with-typescript-support)
 - [Styled Components Best Practices](#styled-components-best-practices)
   - [Use `css` utility](#use-css-utility)
@@ -1819,6 +1823,143 @@ my-app/
 
 ```sh
 yarn add -D -W typescript // -W to install the dependency in WorkSpace root
+```
+
+# Emotion Official Docs
+
+Support default props, even with different default value.
+
+--- 
+
+Use function API
+
+https://emotion.sh/docs/styled#changing-based-on-props
+
+```js
+import styled from '@emotion/styled'
+
+const Button = styled.button`
+  color: ${({primary = false}) => (primary ? 'hotpink' : 'turquoise')};
+  
+  font-size: ${({primary =true }) => (primary ? '18px' : '.19em')};
+`
+
+const Container = styled.div(({column = true}) => ({
+  // This Object can be replace with ES6 template string
+  // `display: flex;`
+  display: 'flex',
+  flexDirection: column && 'column'
+}))
+
+render(
+  <Container>
+    <Button>This is a regular button.</Button>
+    <Button primary={false}>This is a primary button.</Button>
+  </Container>
+)
+```
+
+---
+
+Use Object API
+
+https://emotion.sh/docs/styled#changing-based-on-props
+
+```js
+import styled from '@emotion/styled'
+
+const H1 = styled.h1(
+  {
+    fontSize: 20
+  },
+  // The dynamic part happens here
+  props => ({ color: props.color })
+)
+
+render(<H1 color="lightgreen">This is lightgreen.</H1>)
+```
+
+--- 
+
+CSS API
+
+```js
+import styled from '@emotion/styled'
+import { css } from '@emotion/react'
+
+const dynamicStyle = props =>
+  css`
+    color: ${props.color};
+  `
+
+const Container = styled.div`
+  ${dynamicStyle};
+`
+render(<Container color="lightgreen">This is lightgreen.</Container>)
+```
+
+# Object Styles
+
+```js
+render(
+  <div
+    css={{
+      color: 'darkorchid',
+      '& .name': { // 🚀🚀🚀🚀🚀🚀
+        color: 'orange'
+      }
+    }}
+  >
+    This is darkorchid.
+    <div className="name">This is orange</div>
+  </div>
+)
+```
+
+# `keyframes` in Emotion with AntDesign overwrite
+
+```ts
+export const ButtonStyled = styled(Button)`
+  &.ant-btn {
+    @keyframes waveEffect {
+      100% {
+        box-shadow: 0 0 0 ${$4E4B66};
+        box-shadow: 0 0 0 6px ${$4E4B66};
+      }
+    }
+    @keyframes fadeEffect {
+      100% {
+        opacity: 0;
+      }
+    }
+```
+
+# Pass `props` to the children
+
+React report the following message as styling an React Component with `props`:
+
+> React does not recognize the `isError` prop on a DOM element.
+
+Resolution:
+
+No. 1 [Customizing prop forwarding](https://emotion.sh/docs/styled#customizing-prop-forwarding) by `shouldForwardProp` and `@emotion/is-prop-valid`
+
+See also:
+
+- https://dev-yakuza.posstree.com/en/react/emotion/does-not-recognize-props/
+- https://github.com/sumup-oss/circuit-ui/blob/f2be16b8b56fa7f4c11487cdb1bec15a1129755f/packages/circuit-ui/components/Body/Body.tsx#L92
+
+No. 2 Omit the `props`
+
+```js
+const Component: FC<StyledComponentProps> = ({
+  // destructure the props to omit them.
+  bgColor: _,
+  isError: __,
+  ...rest
+}) => {
+  return <NumericFormat {...rest} />;
+};
 ```
 
 # styled-components theme with TypeScript support
