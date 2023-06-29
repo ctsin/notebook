@@ -1,4 +1,92 @@
-# Typesafe on HTML elements
+# Inspired by Formik
+
+> packages/formik/src/Formik.tsx:1009
+
+```js
+<FormikProvider value={formikbag}>
+  {component
+    ? React.createElement(component as any, formikbag)
+    : render
+    ? render(formikbag)
+    : children // children come last, always called
+    ? isFunction(children)
+      ? (children as (bag: FormikProps<Values>) => React.ReactNode)(
+          formikbag as FormikProps<Values>
+        )
+      : !isEmptyChildren(children)
+      ? React.Children.only(children)
+      : null
+    : null}
+</FormikProvider>
+```
+
+```js
+import { ComponentType, ReactNode } from "react";
+
+interface Values {
+  email: string;
+  password: string;
+}
+
+interface MilkProps<T> {
+  initialValue?: T;
+  onClick?(value: T): void;
+  component?: ComponentType<T> | ReactNode;
+  children?: ((props: T) => ReactNode) | ReactNode;
+}
+
+export const Milk = <T,>({
+  initialValue,
+  component,
+  children,
+}: MilkProps<T>) => {
+  return null;
+};
+
+export const Host = () => {
+  return (
+    <>
+      {/* 猜测这里 T 的推断是以先实例化者为依据 */}
+      {/* 例如，在定义 `initialValue` 时，`PreEmail` 的类型定义已经实例化。
+          所以，`initialValue` 要受到 `Values` 类型的约束
+      */}
+      {/* component: ComponentType<T> */}
+      <Milk initialValue={{ email: "", password: "" }} component={PreEmail} />
+
+      {/* component: ReactNode */}
+      <Milk component={<PreEmail email="" password="" />} />
+
+      {/* 而在这里，`initialValue` 已经实例化。所以，`props` 受到 `{ name: string; }` 约束 */}
+      {/* children: ((props: T) => ReactNode) */}
+      <Milk initialValue={{ name: "" }}>{(props) => null}</Milk>
+
+      {/* 同样，`onClick` 回调先行实例化。所以，`value` 受到 `{ balabala: string; }` 类型的类型约束 */}
+      {/* children: ReactNode; */}
+      <Milk
+        onClick={(value: { balabala: string }) => value}
+        initialValue={{ balabala: "" }}
+      >
+        <Email />
+      </Milk>
+    </>
+  );
+};
+
+const PreEmail = ({ password, email }: Values) => {
+  return (
+    <>
+      <pre>{JSON.stringify(password)}</pre>
+      <pre>{JSON.stringify(email)}</pre>
+    </>
+  );
+};
+
+const Email = () => {
+  return <pre>"Email Component"</pre>;
+};
+```
+
+# Type-safe on HTML elements
 
 https://www.youtube.com/watch?v=4GchlC06ca0
 
@@ -58,19 +146,19 @@ interface ProfileProps {
 declare const Profile: ComponentType<ProfileProps>;
 
 interface PrivateProps<T>{
-    isLoggedin: boolean;
+    isLoggedIn: boolean;
     component: ComponentType<T>;
 }
 
-const Private = ({isLoggedin, component: Component}: PrivateProps<ProfileProps>) => {
-    if(isLoggedin) {
+const Private = ({isLoggedIn, component: Component}: PrivateProps<ProfileProps>) => {
+    if(isLoggedIn) {
         return <Component name="Foo" />;
     }
 
     return <Login />
 }
 
-const App = () => <Private isLoggedin={true} component={Profile} />
+const App = () => <Private isLoggedIn={true} component={Profile} />
 ```
 
 # Type a React form onSubmit handler

@@ -1,3 +1,25 @@
+- [10 Tips for Mastering TypeScript Generics](#10-tips-for-mastering-typescript-generics)
+  - [Constraints in functions](#constraints-in-functions)
+  - [`as`: you know better than TypeScript](#as-you-know-better-than-typescript)
+  - [Work with Zod](#work-with-zod)
+- [Turn MODULES INTO TYPES with typeof import](#turn-modules-into-types-with-typeof-import)
+- [Dynamic function arguments with GENERICS](#dynamic-function-arguments-with-generics)
+- [Blazing Fast Tips: React \& TypeScript](#blazing-fast-tips-react--typescript)
+  - [Event handler](#event-handler)
+  - [React `children`](#react-children)
+  - [useState](#usestate)
+  - [Custom Hooks with `as`](#custom-hooks-with-as)
+  - [Discriminated union in props](#discriminated-union-in-props)
+  - [Generic Components](#generic-components)
+- [13 `import` statement](#13-import-statement)
+- [12 Make a loose auto completed](#12-make-a-loose-auto-completed)
+- [8 Generic for React Components](#8-generic-for-react-components)
+- [`Extends` in TypeScript](#extends-in-typescript)
+- [Tips with `const` assertion](#tips-with-const-assertion)
+- [A hack for Generic in arrow function](#a-hack-for-generic-in-arrow-function)
+- [Retrieve from Generic params](#retrieve-from-generic-params)
+- [Type-safe on `Object.keys()`](#type-safe-on-objectkeys)
+
 # 10 Tips for Mastering TypeScript Generics
 
 ## Constraints in functions
@@ -11,13 +33,14 @@ We need to actually constrain this `O` object because you can't call `object.key
 ```ts
 // This type parameter might need an `extends {}` constraint.
 // This type parameter might need an `extends object` constraint.
-const getKeys = <O,>(obj: O) => Object.keys(obj);
+const getKeys = <O>(obj: O) => Object.keys(obj);
 
 // Resolved
 const getKeys = <O extends Record<string, number>>(obj: O) => Object.keys(obj);
 ```
 
-When you have a generic function, you're usually going to put a constrain on it. 
+When you have a generic function, you're usually going to put a constrain on it.
+
 - This give you control over what user inputs.
 - Less logic statements.
 
@@ -32,7 +55,8 @@ https://www.youtube.com/watch?v=dLPgQRbVquo&t=607s
 const getKeys = <O extends {}>(obj: O): Array<keyof O> => Object.keys(obj);
 
 // Resolved
-const getKeys = <O extends {}>(obj: O): Array<keyof O> => Object.keys(obj) as (keyof O)[];
+const getKeys = <O extends {}>(obj: O): Array<keyof O> =>
+  Object.keys(obj) as (keyof O)[];
 ```
 
 ## Work with Zod
@@ -42,7 +66,7 @@ https://www.youtube.com/watch?v=dLPgQRbVquo&t=900s
 > NOT CLEAR YET
 
 ```ts
-const makeZodSafeFetch = <TData,>(
+const makeZodSafeFetch = <TData>(
   url: string,
   schema: z.Schema<TData>
 ): Promise<TData> => {
@@ -207,7 +231,29 @@ type ModalPropsUnion =
     };
 ```
 
+> Discriminated type requires the `type` property to be assigned.
+> ```ts
+> type Props =
+>   | {
+>       type?: "text";
+>     }
+>   | {
+>       type?: "password";
+>       visible: boolean;
+>     };
+>
+> declare function input(props: Props): void;
+>
+> // `visible` will not report an error as lack of `type` 
+> void input({ visible: true });
+>
+> void input({ type: "password", visible: true }); // 💯
+> void input({ type: "text", visible: true }); // 🚨
+> ```
+
 ## Generic Components
+
+> https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/#generic-components
 
 ```ts
 import React, { useState } from "react";
