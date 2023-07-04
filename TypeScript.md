@@ -1,3 +1,7 @@
+# Extracting Array Member
+
+![](./extract-array.jpg)
+
 # Narrowing
 
 https://www.typescriptlang.org/docs/handbook/2/narrowing.html
