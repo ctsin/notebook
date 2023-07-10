@@ -1,3 +1,4 @@
+- [8 Tips from the TS Wizard - using, as const, never](#8-tips-from-the-ts-wizard---using-as-const-never)
 - [10 Tips for Mastering TypeScript Generics](#10-tips-for-mastering-typescript-generics)
   - [Constraints in functions](#constraints-in-functions)
   - [`as`: you know better than TypeScript](#as-you-know-better-than-typescript)
@@ -19,6 +20,26 @@
 - [A hack for Generic in arrow function](#a-hack-for-generic-in-arrow-function)
 - [Retrieve from Generic params](#retrieve-from-generic-params)
 - [Type-safe on `Object.keys()`](#type-safe-on-objectkeys)
+
+# 8 Tips from the TS Wizard - using, as const, never
+
+https://www.youtube.com/live/8HoOxOd86M4?feature=share&t=338
+
+```ts
+interface O {
+  name: string;
+  school: string;
+  age: number;
+}
+
+type K = "name" | "school" | never;
+
+// type X = "name" | "school"
+// Filter `never` with `[keyof O]`
+type V = {
+  [K in keyof O]: O[K] extends string ? K : never;
+}[keyof O]
+```
 
 # 10 Tips for Mastering TypeScript Generics
 
