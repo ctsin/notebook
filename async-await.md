@@ -49,3 +49,17 @@ f().catch(alert); // TypeError: failed to fetch // (*)
 ```
 
 If we forget to add .catch there, then we get an unhandled promise error (viewable in the console). We can catch such errors using a global unhandledrejection event handler as described in the chapter Error handling with promises.
+
+# An example for error handling in [mongoose](https://mongoosejs.com/docs/connections.html)
+
+```js
+mongoose.connect('mongodb://127.0.0.1:27017/test').
+  catch(error => handleError(error));
+
+// Or:
+try {
+  await mongoose.connect('mongodb://127.0.0.1:27017/test');
+} catch (error) {
+  handleError(error);
+}
+```
