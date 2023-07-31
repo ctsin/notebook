@@ -266,6 +266,10 @@ const useUser = () => {
 }
 ```
 
+One more way to type guard `Context`:
+
+![ContextAPI](assets/typed-ContextProvider.png)
+
 # Narrow `string` down to literals types
 
 ```ts
