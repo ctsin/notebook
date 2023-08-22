@@ -278,10 +278,19 @@ let apple = "apple";
 
 // error: typeof "fruits" = string;
 // type "string" is not assignable to type Fruits
-let fruits: Fruits = "banana";
+let fruits: Fruits = apple;
 
 // Fix
-fruits = <const>apple; // works outside of .tsx files
+// 1 or
+let apple = "apple" as const;
+
+// 2 or
+const apple = "apple";
+let fruits: Fruits = apple;
+
+// 3
+// works outside of .tsx files
+fruits = <const>apple; 
 fruits: Fruits = <const>"banana";
 ```
 
