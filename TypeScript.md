@@ -308,6 +308,8 @@ https://www.npmjs.com/package/zod
 
 # Retrieve value from an Object type
 
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types
+
 ```ts
 type Fruit =
   | { name: "apple"; color: "red" }
@@ -316,11 +318,40 @@ type Fruit =
 
 type FruitName = Fruit["name"];
 type TransformedFruit = {
-  // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types
   [F in Fruit as F["name"]]: `${F["name"]}:${F["color"]}`;
 }[FruitName];
 
 type Expected = "apple:red" | "banana:yellow" | "orange:orange";
+
+// Break down step by step
+// `F in Fruit`` equals
+type Apple = { name: "apple"; color: "red" };
+type Banana = { name: "banana"; color: "yellow" };
+type Orange = { name: "orange"; color: "orange" };
+
+// `as F["name"]` equals
+// `as` clause to remap property name.
+type AppleName = Apple["name"]
+type BananaName = Banana["name"]
+type OrangeName = Orange["name"]
+
+// Those two are same
+type Name1 = AppleName | BananaName | OrangeName
+type Name2 = Fruit["name"]
+
+/**
+ * type FruitMapped = {
+    apple: "apple:red";
+    banana: "banana:yellow";
+    orange: "orange:orange";
+ * }
+ */
+type FruitMapped = {
+  [F in Fruit as F["name"]/* Filter keys */]: `${F["name"]}:${F["color"]}`
+}
+
+// OR type Result = FruitMapped[Name2]
+type Result = FruitMapped[Name1]
 ```
 
 # `extends` in 4 scenarios
