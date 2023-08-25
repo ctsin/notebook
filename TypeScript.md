@@ -1,3 +1,17 @@
+# Inline Error Raising with the Nullish Coalescing Operator
+
+https://double-trouble.dev/post/typescript-tips/
+
+```js
+const raise = (err: string): never => {
+  throw new Error(err);
+};
+
+const Page = (props: { params: { id?: string } }) => {
+  const id = props.params.id ?? raise("No id provided");
+};
+```
+
 # Extracting Array Member
 
 ![](./extract-array.jpg)
@@ -45,12 +59,12 @@ JavaScript has an operator for determining if an object has a property with a na
 ```ts
 type Fish = { swim: () => void };
 type Bird = { fly: () => void };
- 
+
 function move(animal: Fish | Bird) {
   if ("swim" in animal) {
     return animal.swim();
   }
- 
+
   return animal.fly();
 }
 ```
@@ -166,7 +180,7 @@ https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#d
 
 A common technique for working with unions is to have a single field which uses literal types which you can use to let TypeScript narrow down the possible current type.
 
-你可以合并单例类型，联合类型，类型保护和类型别名来创建一个叫做 可辨识联合的高级模式，它也称做 标签联合或 代数数据类型。 可辨识联合在函数式编程很有用处。 一些语言会自动地为你辨识联合；而TypeScript则基于已有的JavaScript模式。 它具有3个要素：
+你可以合并单例类型，联合类型，类型保护和类型别名来创建一个叫做 可辨识联合的高级模式，它也称做 标签联合或 代数数据类型。 可辨识联合在函数式编程很有用处。 一些语言会自动地为你辨识联合；而 TypeScript 则基于已有的 JavaScript 模式。 它具有 3 个要素：
 
 - 具有普通的单例类型属性— 可辨识的特征。
 - 一个类型别名包含了那些类型的联合— 联合。
@@ -290,7 +304,7 @@ let fruits: Fruits = apple;
 
 // 3
 // works outside of .tsx files
-fruits = <const>apple; 
+fruits = <const>apple;
 fruits: Fruits = <const>"banana";
 ```
 
@@ -331,13 +345,13 @@ type Orange = { name: "orange"; color: "orange" };
 
 // `as F["name"]` equals
 // `as` clause to remap property name.
-type AppleName = Apple["name"]
-type BananaName = Banana["name"]
-type OrangeName = Orange["name"]
+type AppleName = Apple["name"];
+type BananaName = Banana["name"];
+type OrangeName = Orange["name"];
 
 // Those two are same
-type Name1 = AppleName | BananaName | OrangeName
-type Name2 = Fruit["name"]
+type Name1 = AppleName | BananaName | OrangeName;
+type Name2 = Fruit["name"];
 
 /**
  * type FruitMapped = {
@@ -347,11 +361,11 @@ type Name2 = Fruit["name"]
  * }
  */
 type FruitMapped = {
-  [F in Fruit as F["name"]/* Filter keys */]: `${F["name"]}:${F["color"]}`
-}
+  [F in Fruit as F["name"] /* Filter keys */]: `${F["name"]}:${F["color"]}`;
+};
 
 // OR type Result = FruitMapped[Name2]
-type Result = FruitMapped[Name1]
+type Result = FruitMapped[Name1];
 ```
 
 # `extends` in 4 scenarios
@@ -385,7 +399,7 @@ type ColorValue = ColorType[keyof ColorType];
 const color = ["red", "blue", "green"] as const;
 // type Color = "red" | "blue" | "green"
 // https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
-type Color = typeof color[number];
+type Color = (typeof color)[number];
 
 interface UserRoleConfig {
   user: ["read", "update"];
@@ -411,7 +425,7 @@ const duration = [
 ] as const;
 
 // 1 | 3
-type DurationValue = typeof duration[number]["value"];
+type DurationValue = (typeof duration)[number]["value"];
 ```
 
 # Use TypeScript's `never` to enforce "one or the other" properties on a type
