@@ -1,3 +1,4 @@
+- [Node version management](#node-version-management)
 - [What's new in ECMAScript 2023](#whats-new-in-ecmascript-2023)
 - [Customize Theme in Ant Design](#customize-theme-in-ant-design)
 - [Setting JAVA\_HOME and PATH Variables](#setting-java_home-and-path-variables)
@@ -176,6 +177,12 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Node version management
+
+https://developers.cloudflare.com/d1/get-started/#prerequisites
+
+Use a Node version manager like [Volta](https://volta.sh/) or [nvm](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions.
 
 # What's new in ECMAScript 2023
 
