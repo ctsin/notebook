@@ -1,3 +1,4 @@
+- [Build an API with Node.js, Express, and TypeScript](#build-an-api-with-nodejs-express-and-typescript)
 - [Node version management](#node-version-management)
 - [What's new in ECMAScript 2023](#whats-new-in-ecmascript-2023)
 - [Customize Theme in Ant Design](#customize-theme-in-ant-design)
@@ -177,6 +178,22 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Build an API with Node.js, Express, and TypeScript
+
+https://www.split.io/blog/node-js-typescript-express-tutorial/
+
+```sh
+npm i -D nodemon ts-node
+```
+
+```json
+"scripts": {
+    "serve": "nodemon app.ts"
+  }
+```
+
+> Remember, the `ts-node` package makes this possible under the hood.
 
 # Node version management
 
