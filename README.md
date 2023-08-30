@@ -1,3 +1,4 @@
+- [How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac](#how-to-fix-cannot-be-opened-because-the-developer-cannot-be-verified-error-on-mac)
 - [Build an API with Node.js, Express, and TypeScript](#build-an-api-with-nodejs-express-and-typescript)
 - [Node version management](#node-version-management)
 - [What's new in ECMAScript 2023](#whats-new-in-ecmascript-2023)
@@ -178,6 +179,10 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac
+
+https://www.lifewire.com/fix-developer-cannot-be-verified-error-5183898
 
 # Build an API with Node.js, Express, and TypeScript
 
