@@ -1,3 +1,4 @@
+- [Conditional Object Properties Using Spread in JavaScript](#conditional-object-properties-using-spread-in-javascript)
 - [How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac](#how-to-fix-cannot-be-opened-because-the-developer-cannot-be-verified-error-on-mac)
 - [Build an API with Node.js, Express, and TypeScript](#build-an-api-with-nodejs-express-and-typescript)
 - [Node version management](#node-version-management)
@@ -179,6 +180,12 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Conditional Object Properties Using Spread in JavaScript
+
+https://medium.com/@slamflipstrom/conditional-object-properties-using-spread-in-javascript-714e0a12f496
+
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*K6cJMxkDovDZw2d7CmOrSg.png)
 
 # How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac
 
