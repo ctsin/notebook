@@ -1,3 +1,29 @@
+# Filtering undefined elements from an array in TypeScript
+
+https://www.benmvp.com/blog/filtering-undefined-elements-from-array-typescript/
+
+https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
+
+```js
+// Dirty
+const productIds = [123, 456, 789]
+const products = productIds
+  .map(getProduct)
+  .filter((item) => item) as Product[]
+
+// Great
+const isProduct = (item: Product | undefined): item is Product => {  return !!item}
+const productIds = [123, 456, 789]
+const products = productIds.map(getProduct).filter(isProduct)
+
+// OR
+
+const productIds = [123, 456, 789]
+const products = productIds
+  .map(getProduct)
+  .filter((item): item is Product => !!item)
+```
+
 # Inline Error Raising with the Nullish Coalescing Operator
 
 https://double-trouble.dev/post/typescript-tips/
