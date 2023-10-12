@@ -1,3 +1,41 @@
+# URL Query Parameters
+
+https://nextjs.org/docs/app/building-your-application/routing/route-handlers#url-query-parameters
+
+```js
+import { type NextRequest } from 'next/server'
+ 
+export function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams
+  const query = searchParams.get('query')
+  // query is "hello" for /api/search?query=hello
+}
+```
+
+# Request Body
+
+https://nextjs.org/docs/app/building-your-application/routing/route-handlers#request-body
+
+```js
+export async function POST(request: Request) {
+  const res = await request.json()
+  return Response.json({ res })
+}
+```
+
+# Request Body FormData
+
+https://nextjs.org/docs/app/building-your-application/routing/route-handlers#request-body-formdata
+
+```js
+export async function POST(request: Request) {
+  const formData = await request.formData()
+  const name = formData.get('name')
+  const email = formData.get('email')
+  return Response.json({ name, email })
+}
+```
+
 - Files indicated in [File Conventions](https://beta.nextjs.org/docs/routing/fundamentals#file-conventions) CAN NOT be state with `use client`;
 - client components CAN NOT be state with `async`;
 
