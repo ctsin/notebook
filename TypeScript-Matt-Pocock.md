@@ -25,7 +25,7 @@
 
 https://www.youtube.com/live/8HoOxOd86M4?feature=share&t=338
 
-```ts
+```js
 interface O {
   name: string;
   school: string;
@@ -51,7 +51,7 @@ https://www.youtube.com/watch?v=dLPgQRbVquo&t=499s
 
 We need to actually constrain this `O` object because you can't call `object.keys` on a number, or on a string. So we actually need to constrain it to be something that `object.keys` can handle.
 
-```ts
+```js
 // This type parameter might need an `extends {}` constraint.
 // This type parameter might need an `extends object` constraint.
 const getKeys = <O>(obj: O) => Object.keys(obj);
@@ -69,7 +69,7 @@ When you have a generic function, you're usually going to put a constrain on it.
 
 https://www.youtube.com/watch?v=dLPgQRbVquo&t=607s
 
-```ts
+```js
 // Type 'string[]' is not assignable to type '(keyof O)[]'.
 // Type 'string' is not assignable to type 'keyof O'.
 // Type 'string' is not assignable to type 'never'.
@@ -86,7 +86,7 @@ https://www.youtube.com/watch?v=dLPgQRbVquo&t=900s
 
 > NOT CLEAR YET
 
-```ts
+```js
 const makeZodSafeFetch = <TData>(
   url: string,
   schema: z.Schema<TData>
@@ -106,13 +106,13 @@ const result = makeZodSafeFetch<Record<"firstName" | "lastName", string>>(
 
 https://www.youtube.com/watch?v=sswUBXaoXSI
 
-```ts
-// constants.ts
+```js
+// constants.js
 export const ADD_TODO = "ADD_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 
-// consumer.ts
+// consumer.js
 export type ActionModule = typeof import("./t1");
 
 /**
@@ -143,7 +143,7 @@ export type Action = ActionModule[keyof ActionModule];
 
 https://www.youtube.com/watch?v=YE_3WwX-Dl8
 
-```ts
+```js
 type Evt =
   | {
       type: "SIGN_IN";
@@ -177,7 +177,7 @@ https://www.youtube.com/watch?v=37PafxU_uzQ
 
 ## Event handler
 
-```ts
+```js
 import { FocusEventHandler, FormEventHandler, MouseEventHandler } from "react";
 interface ComponentProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -189,7 +189,7 @@ interface ComponentProps {
 
 ## React `children`
 
-```ts
+```js
 import { ReactNode } from "react";
 interface ComponentProps {
   children?: ReactNode;
@@ -198,7 +198,7 @@ interface ComponentProps {
 
 ## useState
 
-```ts
+```js
 import { useState } from "react";
 
 interface User {}
@@ -213,7 +213,7 @@ const Name = () => {
 
 ## Custom Hooks with `as`
 
-```ts
+```js
 import { useState } from "react";
 
 const useHome = () => {
@@ -235,7 +235,7 @@ const Home = () => {
 
 Supposing that `confirmButtonMassage` only belongs to `confirm` type. A union type can be used instead of an optional props indicator.
 
-```ts
+```js
 interface ModalProps {
   type: "alert" | "confirm";
   confirmButtonMassage?: string;
@@ -252,31 +252,29 @@ type ModalPropsUnion =
     };
 ```
 
-> Discriminated type requires the `type` property to be assigned.
-> ```ts
-> type Props =
->   | {
->       type?: "text";
->     }
->   | {
->       type?: "password";
->       visible: boolean;
->     };
->
-> declare function input(props: Props): void;
->
-> // `visible` will not report an error as lack of `type` 
-> void input({ visible: true });
->
-> void input({ type: "password", visible: true }); // 💯
-> void input({ type: "text", visible: true }); // 🚨
-> ```
+Discriminated type requires the `type` property to be assigned.
+
+```js
+type Props =
+  | {
+      type?: "text";
+    }
+  | {
+      type?: "password";
+      visible: boolean;
+    };
+declare function input(props: Props): void;
+// `visible` will not report an error as lack of `type` 
+void input({ visible: true });
+void input({ type: "password", visible: true }); // 💯
+void input({ type: "text", visible: true }); // 🚨
+```
 
 ## Generic Components
 
 > https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase/#generic-components
 
-```ts
+```js
 import React, { useState } from "react";
 
 type TableProps<T> = {
@@ -300,13 +298,13 @@ const Parent = () => (
 
 https://twitter.com/i/status/1508408811635322883
 
-```ts
-// ./constants.ts
+```js
+// ./constants.js
 export const TODO_ADD = "ADD";
 export const TODO_REMOVE = "REMOVE";
 export const TODO_EDIT = "EDIT";
 
-// ./index.ts
+// ./index.js
 // 🚀
 type Actions = typeof import("./constants");
 
@@ -326,7 +324,7 @@ type Keys = Actions[keyof Actions];
 
 https://twitter.com/i/status/1506607945445949446
 
-```ts
+```js
 type Size = "xs" | "md";
 type SizeOmitted = "xs" | "md" | Omit<string, "xs" | "md">;
 
@@ -344,7 +342,7 @@ const s3: LooseString<Size> = "md";
 
 https://twitter.com/i/status/1503352924537339904
 
-```ts
+```js
 type HelloProps<T> = {
   items: T[];
 };
@@ -364,7 +362,7 @@ export const SayHello = () => <Hello<{ items: string[] }> items={[1, 2]} />;
 
 # `Extends` in TypeScript
 
-```ts
+```js
 const obj = {
   foo: {
     a: 1,
@@ -402,7 +400,7 @@ https://www.youtube.com/watch?v=hBk4nV7q6-w&list=PLed0-rd1pwrdEcPWmwG50Pt_FLiEtW
 
 ```js
 //              🔻 the comma
-const Table = <T>(props: T) => null;
+const Table = <T,>(props: T) => null;
 ```
 
 # Retrieve from Generic params
@@ -419,6 +417,6 @@ SecondParam extends keyof O[FirstParams]
 
 ![](https://pbs.twimg.com/media/FpAgLBIXwAASxH4?format=jpg&name=small)
 
-```ts
+```js
 const objKeys = <T extends object>(obj: T) => Object.keys(obj) as (keyof T)[];
 ```

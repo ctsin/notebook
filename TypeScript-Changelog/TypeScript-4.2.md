@@ -1,5 +1,9 @@
 # Leading/Middle Rest Elements in Tuple Types
 
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-2.html#leadingmiddle-rest-elements-in-tuple-types
+
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#labeled-tuple-elements
+
 In TypeScript, tuple types are meant to model arrays with specific lengths and element types.
 
 ```ts

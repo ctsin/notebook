@@ -14,7 +14,7 @@ https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#t
 
 Multiple candidates for the same type variable in co-variant positions causes a union type to be inferred:
 
-```ts
+```js
 type Foo<T> = T extends { a: infer U; b: infer U } ? U : never;
 type T10 = Foo<{ a: string; b: string }>; // string
 type T11 = Foo<{ a: string; b: number }>; // string | number
@@ -22,7 +22,7 @@ type T11 = Foo<{ a: string; b: number }>; // string | number
 
 and:
 
-```ts
+```js
 type Bar<T> = T extends { a: (x: infer U) => void; b: (x: infer U) => void }
   ? U
   : never;
@@ -32,7 +32,7 @@ type T21 = Bar<{ a: (x: string) => void; b: (x: number) => void }>; // string & 
 
 It is not possible to use infer declarations in constraint clauses for regular type parameters:
 
-```ts
+```js
 // Error, not supported
 type ReturnType<T extends (...args: any[]) => infer R> = R; 
 ```
@@ -41,3 +41,8 @@ type ReturnType<T extends (...args: any[]) => infer R> = R;
 
 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-8.html#improved-inference-for-infer-types-in-template-string-types
 
+# V2.0
+
+# The `never` type
+
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#the-never-type

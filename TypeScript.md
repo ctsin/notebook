@@ -1,3 +1,54 @@
+- [Object argument in function](#object-argument-in-function)
+- [Filtering undefined elements from an array in TypeScript](#filtering-undefined-elements-from-an-array-in-typescript)
+- [Inline Error Raising with the Nullish Coalescing Operator](#inline-error-raising-with-the-nullish-coalescing-operator)
+- [Extracting Array Member](#extracting-array-member)
+- [Narrowing](#narrowing)
+  - [`typeof` type guards](#typeof-type-guards)
+  - [Truthiness narrowing](#truthiness-narrowing)
+- [`!!` and `Boolean`](#-and-boolean)
+  - [Equality narrowing](#equality-narrowing)
+  - [The in operator narrowing](#the-in-operator-narrowing)
+  - [`instanceof` narrowing](#instanceof-narrowing)
+  - [Assignments](#assignments)
+  - [Using type predicates](#using-type-predicates)
+- [Reminds on Union and Intersection Types in TypeScript](#reminds-on-union-and-intersection-types-in-typescript)
+  - [What's Union Types](#whats-union-types)
+  - [As same key with different types happens](#as-same-key-with-different-types-happens)
+    - [For Intersection Types](#for-intersection-types)
+    - [For Union Types](#for-union-types)
+- [Type inference in conditional types](#type-inference-in-conditional-types)
+- [Unions and Intersection Types](#unions-and-intersection-types)
+  - [Discriminating Unions（可辨识联合类型）](#discriminating-unions可辨识联合类型)
+  - [Intersection Types](#intersection-types)
+- [`satisfied` operator](#satisfied-operator)
+- [Config TypeScript for NodeJS in 2023](#config-typescript-for-nodejs-in-2023)
+- [Use `Context` with type safe](#use-context-with-type-safe)
+- [Narrow `string` down to literals types](#narrow-string-down-to-literals-types)
+- [Zod](#zod)
+- [Retrieve value from an Object type](#retrieve-value-from-an-object-type)
+- [`extends` in 4 scenarios](#extends-in-4-scenarios)
+- [Indexed access types](#indexed-access-types)
+- [Deriving types from an array of object](#deriving-types-from-an-array-of-object)
+- [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
+- [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
+- [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# Object argument in function
+
+```js
+const o = {name: "foo"} 
+
+function rename(obj) {
+  // 🪄
+  obj.name = "bar"
+}
+
+rename(o)
+
+console.log(o) // bar
+```
+
+
 # Filtering undefined elements from an array in TypeScript
 
 https://www.benmvp.com/blog/filtering-undefined-elements-from-array-typescript/
@@ -70,7 +121,7 @@ https://www.typescriptlang.org/docs/handbook/2/narrowing.html
 
 The shorter double-Boolean negation has the advantage that TypeScript infers a narrow literal boolean type `true`, while inferring the `Boolean()` as type boolean.
 
-```ts
+```js
 // both of these result in 'true'
 Boolean("hello"); // type: boolean, value: true
 !!"world"; // type: true,    value: true
@@ -82,7 +133,7 @@ Boolean("hello"); // type: boolean, value: true
 
 JavaScript has an operator for determining if an object has a property with a name: the in operator. TypeScript takes this into account as a way to narrow down potential types.
 
-```ts
+```js
 type Fish = { swim: () => void };
 type Bird = { fly: () => void };
 
@@ -121,7 +172,7 @@ https://www.tslang.cn/docs/handbook/advanced-types.html
 >
 > 如果一个值是联合类型，我们只能访问此联合类型的所有类型里**共有**的成员。
 
-```ts
+```js
 interface Bird {
   fly();
   layEggs();
@@ -151,7 +202,7 @@ It's explained with one more example in document:
 
 ### For Intersection Types
 
-```ts
+```js
 // X receives THREE properties: `name`, `age`, and `gender`.
 // Age props with different types
 type X = {
@@ -171,7 +222,7 @@ x.age = "";
 
 ### For Union Types
 
-```ts
+```js
 // X receives ONE property: `age`.
 // Age props with different types
 type X =
@@ -222,7 +273,7 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/#the-satisfi
 
 https://www.youtube.com/watch?v=ShPBpi7Vxr0
 
-```ts
+```js
 type Name = Record<string, number | string>;
 
 const n1: Name = {
@@ -277,7 +328,7 @@ In `tsconfig.json`
 
 With the `"moduleResolution": "NodeNext"` option, the `import` statement is required to specify extension explicitly.
 
-```ts
+```js
 // Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean './helper.js'?ts(2835)
 import { helper } from "./helper";
 
@@ -312,7 +363,7 @@ One more way to type guard `Context`:
 
 # Narrow `string` down to literals types
 
-```ts
+```js
 type Fruits = "banana" | "apple" | "orange";
 let apple = "apple";
 
@@ -350,7 +401,7 @@ https://www.npmjs.com/package/zod
 
 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types
 
-```ts
+```js
 type Fruit =
   | { name: "apple"; color: "red" }
   | { name: "banana"; color: "yellow" }
@@ -396,7 +447,7 @@ type Result = FruitMapped[Name1];
 
 # `extends` in 4 scenarios
 
-```ts
+```js
 // Class
 class Dog extends Animal {}
 
@@ -412,7 +463,7 @@ type Dog<T> = T extends { legs: number } ? Animal : never;
 
 # Indexed access types
 
-```ts
+```js
 interface ColorType {
   primary: "red";
   secondary: "blue";
@@ -438,7 +489,7 @@ type Actions = UserRoleConfig[keyof UserRoleConfig][number];
 
 # Deriving types from an array of object
 
-```ts
+```js
 const duration = [
   {
     label: "Foo",
@@ -456,7 +507,7 @@ type DurationValue = (typeof duration)[number]["value"];
 
 # Use TypeScript's `never` to enforce "one or the other" properties on a type
 
-```ts
+```js
 type Base = {
   name: string;
 };
@@ -485,7 +536,7 @@ const course: Course = {
 
 https://stackoverflow.com/questions/61698807/interesting-behaviour-object-literal-may-only-specify-known-properties
 
-```ts
+```js
 type Person = { name: string };
 
 // Error: Object literal may only specify known properties, and 'age' does not exist in type 'Person'.
@@ -496,7 +547,7 @@ So this fails, because property age is not a part of type Person which makes sen
 
 However, I can do this without any problems:
 
-```ts
+```js
 type Person = { name: string };
 
 const obj = { name: "Sarah", age: 13 };
@@ -519,7 +570,7 @@ Object literals get special treatment and undergo excess property checking when 
 
 https://bobbyhadz.com/blog/typescript-object-literal-may-only-specify-known-properties#being-more-specific-with-the-type-of-the-values
 
-```ts
+```js
 type Employee = {
   id: number;
   [key: string]: string | number;
@@ -535,7 +586,7 @@ const emp: Employee = {
 
 When using this approach, you aren't able to add string keys that have a value of type other than `string | number`.
 
-```ts
+```js
 type Employee = {
   id: number;
   [key: string]: string | number;
@@ -549,7 +600,7 @@ With our index signature of `[key: string]: string | number`, we told TypeScript
 
 To get around this, you have to add `number[]` to the union type.
 
-```ts
+```js
 type Employee = {
   id: number;
   [key: string]: string | number | number[]; // 🚀

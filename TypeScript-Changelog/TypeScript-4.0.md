@@ -1,5 +1,9 @@
 # Labeled Tuple Elements
 
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#labeled-tuple-elements
+
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-2.html#leadingmiddle-rest-elements-in-tuple-types
+
 ```ts
 type Foo = [first: number, second?: string, ...rest: any[]];
 ```

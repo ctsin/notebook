@@ -44,7 +44,7 @@ sum.operator = '+'
 
 And then there's `declare function` and `declare namespace`:
 
-```ts
+```js
 declare function MathFn(a: number, b: number): number
 declare namespace MathFn {
   let operator: '+'
@@ -96,7 +96,7 @@ const math: {sum: MathFn} = {
 
 Furthermore, if you want to add a property on it like some of the above examples, that is impossible to do within the object literal. You have to extract the function definition completely:
 
-```ts
+```js
 type MathFn = {
   (a: number, b: number): number
   operator: string

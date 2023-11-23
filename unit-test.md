@@ -1,6 +1,6 @@
 # `isEmpty` in Lodash
 
-```ts
+```js
 console.log('[0]', _.isEmpty(0)); // true as no `length` props
 console.log('[1]', _.isEmpty(1)); // true as no `length` props
 console.log('[String]', _.isEmpty("Foo")); // false 
@@ -15,7 +15,7 @@ console.log('Fn', _.isEmpty(() => undefined)); // true
 
 # Mock module if it is re-exported from `index`
 
-```ts
+```js
 // src/util/Dummy.ts
 export const Dummy = () => {};
 
@@ -45,14 +45,14 @@ Enzyme Internal Error: Enzyme expects an adapter to be configured, but found non
 
 **Fix** ([Source](https://codesandbox.io/s/determined-chaplygin-8jt5f?file=/src/components/__tests__/RemotePizza_di.spec.js))
 
-```ts
+```js
 // This line is only needed for CodeSandbox
    import '../../../src/setupTests.js';
 ```
 
 # How to Test React Hooks
 
-```ts
+```js
   const setState = jest.fn();
   const useStateMock = (initState) => [initState, setState];
   jest.spyOn(React, 'useState').mockImplementation(useStateMock);
@@ -62,7 +62,7 @@ Enzyme Internal Error: Enzyme expects an adapter to be configured, but found non
 
 # React HOC Test
 
-```ts
+```js
 // "export" one more time for unit test, beside "export default"
 export const UserProfile = ({ navigation, userFirstName }) => (
 
@@ -75,7 +75,7 @@ export default inject(({ globalStoreV2: { userInfo } }) => ({
 
 # Test asynchronous fn in FC
 
-```ts
+```js
 export const Footer = ({
   globalStoreV2: { getUserInfo, userInfo: { phone } },
 }) => {
@@ -118,7 +118,7 @@ describe('<Footer />', () => {
 
 # Test Hooks
 
-```ts
+```js
 import * as redux from "react-redux"
 
 jest.mock("react-router-dom", () => ({

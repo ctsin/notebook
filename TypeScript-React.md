@@ -1,8 +1,25 @@
+- [Inspired by Formik](#inspired-by-formik)
+- [Type-safe on HTML elements](#type-safe-on-html-elements)
+- [React.ComponentType](#reactcomponenttype)
+- [Type a React form onSubmit handler](#type-a-react-form-onsubmit-handler)
+- [Use Context effectively](#use-context-effectively)
+- [Time and Date in JavaScript](#time-and-date-in-javascript)
+  - [Using JavaScript Date Object’s Localization Functions](#using-javascript-date-objects-localization-functions)
+- [Event in React with TypeScript](#event-in-react-with-typescript)
+- [Two methods to define props type](#two-methods-to-define-props-type)
+- [What's the differences between the method above](#whats-the-differences-between-the-method-above)
+- [FC vs FunctionComponent](#fc-vs-functioncomponent)
+- [TypeScript with Class component](#typescript-with-class-component)
+- [Event interface](#event-interface)
+- [What if there is no matching type definition?](#what-if-there-is-no-matching-type-definition)
+- [Tip: How to find type definitions for any event](#tip-how-to-find-type-definitions-for-any-event)
+
+
 # Inspired by Formik
 
 > packages/formik/src/Formik.tsx:1009
 
-```js
+```jsx
 <FormikProvider value={formikbag}>
   {component
     ? React.createElement(component as any, formikbag)
@@ -20,7 +37,7 @@
 </FormikProvider>
 ```
 
-```js
+```jsx
 import { ComponentType, ReactNode } from "react";
 
 interface Values {
@@ -90,7 +107,7 @@ const Email = () => {
 
 https://www.youtube.com/watch?v=4GchlC06ca0
 
-```ts
+```js
 import React, { InputHTMLAttributes, ComponentProps } from "react";
 
 interface InputPropsWithInputHTMLAttributes
@@ -136,7 +153,7 @@ export const Input = ({ label, ...props }: InputPropsWithComponentProps) => {
 
 # React.ComponentType
 
-```ts
+```js
 import React, {ComponentType} from "react";
 declare const Login: ComponentType;
 
@@ -165,7 +182,7 @@ const App = () => <Private isLoggedIn={true} component={Profile} />
 
 https://epicreact.dev/how-to-type-a-react-form-on-submit-handler/
 
-```ts
+```js
 import * as React from 'react'
 interface FormElements extends HTMLFormControlsCollection {
   usernameInput: HTMLInputElement
@@ -199,7 +216,7 @@ function UsernameForm({
 
 https://kentcdodds.com/blog/how-to-use-react-context-effectively
 
-```ts
+```js
 type Action = {type: 'increment' | 'decrement'}
 type Dispatch = (action: Action) => void
 type State = {count: number}
@@ -263,7 +280,7 @@ https://www.toptal.com/software/definitive-guide-to-datetime-manipulation
 
 https://www.newline.co/@bespoyasov/how-to-handle-keyboard-input-events-in-react-typescript-application--9b21764e
 
-```ts
+```js
 const log = (e: SyntheticEvent<HTMLInputElement>): void => {
   // ...
 }
@@ -284,7 +301,7 @@ https://felixgerschau.com/react-typescript-components/
 
 With `FC`: 
 
-```ts
+```js
 interface TitleProps {
   title: string;
 }
@@ -303,7 +320,7 @@ export default Title;
 
 With inline type definition
 
-```ts
+```js
 const Title = ({ title, subtitle }: TitleProps) => {
   // ...
 }
@@ -317,13 +334,13 @@ The reason why you might want to use a generic type like FC is that this comes w
 
 A quick look at React's type definitions revealed that FC is just the shorthand for FunctionComponent. Both refer to the same interface.
 
-```ts
+```js
 type FC<P = {}> = FunctionComponent<P>;
 ```
 
 # TypeScript with Class component
 
-```ts
+```js
 interface TitleProps {
   title: string;
   subtitle?: string;

@@ -10,7 +10,7 @@ https://reactjs.org/docs/hooks-faq.html
 
 演示：https://stackblitz.com/edit/react-ts-useeffect-bug
 
-```ts
+```js
 function Counter() {
   const [count, setCount] = useState(0); // 初始 count
   console.log("Outside", count);
@@ -32,7 +32,7 @@ function Counter() {
 
 **一个 `useRef` 场景**
 
-```ts
+```js
 function Example(props) {
   // Keep latest props in a ref.
   const latestProps = useRef(props);
@@ -49,11 +49,12 @@ function Example(props) {
     const id = setInterval(tick, 1000); // 在异步访问 Props 的过程中，通过 latestProps.current 保持引用。
     return () => clearInterval(id);
   }, []); // This effect never re-runs}
+}
 ```
 
 # How do I implement shouldComponentUpdate?
 
-```ts
+```js
 const Button = React.memo((props) => {
   // your component
 });
@@ -61,7 +62,7 @@ const Button = React.memo((props) => {
 
 # How to memoize calculations?
 
-```ts
+```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
