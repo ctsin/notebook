@@ -1,3 +1,4 @@
+- [Resolve TypeScript Errors](#resolve-typescript-errors)
 - [TS 5.3 Tips](#ts-53-tips)
 - [8 Tips from the TS Wizard - using, as const, never](#8-tips-from-the-ts-wizard---using-as-const-never)
 - [10 Tips for Mastering TypeScript Generics](#10-tips-for-mastering-typescript-generics)
@@ -21,6 +22,10 @@
 - [A hack for Generic in arrow function](#a-hack-for-generic-in-arrow-function)
 - [Retrieve from Generic params](#retrieve-from-generic-params)
 - [Type-safe on `Object.keys()`](#type-safe-on-objectkeys)
+
+# Resolve TypeScript Errors
+
+https://www.totaltypescript.com/tutorials/solving-typescript-errors/errors/fixing-x-is-not-assignable-to-y
 
 # TS 5.3 Tips
 
