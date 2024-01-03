@@ -1,3 +1,4 @@
+- [hack `map` / `filter` with `flatMap`](#hack-map--filter-with-flatmap)
 - [Object argument in function](#object-argument-in-function)
 - [Filtering undefined elements from an array in TypeScript](#filtering-undefined-elements-from-an-array-in-typescript)
 - [Inline Error Raising with the Nullish Coalescing Operator](#inline-error-raising-with-the-nullish-coalescing-operator)
@@ -32,6 +33,12 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# hack `map` / `filter` with `flatMap`
+
+https://x.com/wesbos/status/1742254224787013718?s=20
+
+![](https://pbs.twimg.com/media/GC26W_bXoAASaOG?format=jpg&name=large)
 
 # Object argument in function
 
