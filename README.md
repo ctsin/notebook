@@ -1,3 +1,4 @@
+- [make your console.log stand out by adding some CSS to it](#make-your-consolelog-stand-out-by-adding-some-css-to-it)
 - [An Interactive Guide for Flex and Grid](#an-interactive-guide-for-flex-and-grid)
 - [Conditional Object Properties Using Spread in JavaScript](#conditional-object-properties-using-spread-in-javascript)
 - [How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac](#how-to-fix-cannot-be-opened-because-the-developer-cannot-be-verified-error-on-mac)
@@ -182,6 +183,10 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# make your console.log stand out by adding some CSS to it
+
+https://twitter.com/i/status/1749439583018709448
 
 # An Interactive Guide for Flex and Grid
 
