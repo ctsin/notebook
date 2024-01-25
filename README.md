@@ -1,3 +1,4 @@
+- [Use local NodeJS version by `fnm`](#use-local-nodejs-version-by-fnm)
 - [make your console.log stand out by adding some CSS to it](#make-your-consolelog-stand-out-by-adding-some-css-to-it)
 - [An Interactive Guide for Flex and Grid](#an-interactive-guide-for-flex-and-grid)
 - [Conditional Object Properties Using Spread in JavaScript](#conditional-object-properties-using-spread-in-javascript)
@@ -183,6 +184,28 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Use local NodeJS version by `fnm`
+
+https://github.com/Schniz/fnm#fish-shell
+
+Create `.node-version` file in project root with NodeJS version.
+
+> `.npmrc` won't work.
+
+```sh
+16
+```
+
+For `fish` shell, create `~/.config/fish/conf.d/fnm.fish`` add this line to it:
+
+```sh
+fnm env --use-on-cd | source
+```
+
+Restart your shell for the changes to take effect.
+
+
 
 # make your console.log stand out by adding some CSS to it
 
