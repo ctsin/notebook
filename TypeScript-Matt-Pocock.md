@@ -1,3 +1,6 @@
+- [8 TypeScript Tips To Expand Your Mind (and improve your code)](#8-typescript-tips-to-expand-your-mind-and-improve-your-code)
+  - [Generic functions vs any](#generic-functions-vs-any)
+  - [Const Type Parameters](#const-type-parameters)
 - [Resolve TypeScript Errors](#resolve-typescript-errors)
 - [TS 5.3 Tips](#ts-53-tips)
 - [8 Tips from the TS Wizard - using, as const, never](#8-tips-from-the-ts-wizard---using-as-const-never)
@@ -22,6 +25,43 @@
 - [A hack for Generic in arrow function](#a-hack-for-generic-in-arrow-function)
 - [Retrieve from Generic params](#retrieve-from-generic-params)
 - [Type-safe on `Object.keys()`](#type-safe-on-objectkeys)
+
+# 8 TypeScript Tips To Expand Your Mind (and improve your code)
+
+https://www.youtube.com/watch?v=QSIXYMIJkQg
+
+## Generic functions vs any
+
+Generic 类型的一个很重要的用例就是类型推断(inference)，例如 [Generic Components](#generic-components)
+
+https://www.youtube.com/watch?v=QSIXYMIJkQg&t=227s
+
+## Const Type Parameters
+
+https://www.youtube.com/watch?v=QSIXYMIJkQg&t=296s
+
+```ts
+// Given
+declare function useStatus<T>(statuses: T[]): T;
+
+// loadingStatus: string
+const loadingStatus = useStatus(['loading', 'idle'])
+
+// 0
+// (T as const) run into syntax error
+declare function useStatus<T>(statuses: T[]): (T as const);
+
+
+// 1
+// A 'const' assertions can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+function useStatus<T>(statuses: T[]) {return statuses[0] as const};
+
+declare function useStatus<const T>(statuses: T[]): T;
+
+// 2 works
+// const loadingStatus: "loading" | "idle"
+const loadingStatus = useStatus(['loading', 'idle'])
+```
 
 # Resolve TypeScript Errors
 
