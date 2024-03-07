@@ -1,3 +1,4 @@
+- [JSDoc](#jsdoc)
 - [Use local NodeJS version by `fnm`](#use-local-nodejs-version-by-fnm)
 - [make your console.log stand out by adding some CSS to it](#make-your-consolelog-stand-out-by-adding-some-css-to-it)
 - [An Interactive Guide for Flex and Grid](#an-interactive-guide-for-flex-and-grid)
@@ -184,6 +185,14 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# JSDoc
+
+https://alexharri.com/blog/jsdoc-as-an-alternative-typescript-syntax
+
+Enable `checkJs`
+
+`checkJs` needs to be enabled in your `tsconfig.json` for type errors to be emitted. If you don't enable `checkJs`, your JSDoc comments will only be used for IDE annotations—not type checking. 
 
 # Use local NodeJS version by `fnm`
 
