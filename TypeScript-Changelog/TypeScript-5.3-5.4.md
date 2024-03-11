@@ -19,6 +19,20 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/
 # The `NoInfer` Utility Type
 
 ```ts
+function createStreetLight<C extends string>(colors: C[], defaultColor?: C) {
+    // ...
+}
+
+// TypeScript infers the type of C as "red" | "yellow" | "green" | "blue".
+// function createStreetLight<"red" | "yellow" | "green" | "blue">(colors: ("red" | "yellow" | "green" | "blue")[], defaultColor?: "red" | "yellow" | "green" | "blue" | undefined): void
+createStreetLight(["red", "yellow", "green"], "blue");
+```
+
+TypeScript 5.4 introduces a new `NoInfer<T>` utility type. Surrounding a type in `NoInfer<...>` gives a signal to TypeScript not to dig in and match against the inner types to find candidates for type inference.
+
+Excluding the type of `defaultColor` from being explored for inference means that "blue" never ends up as an inference candidate, and the type-checker can reject it.
+
+```ts
 function createStreetLight<C extends string>(colors: C[], defaultColor?: NoInfer<C>) {
     // ...
 }
