@@ -1,3 +1,7 @@
+- [Organizing multiple Git identities](#organizing-multiple-git-identities)
+- [Promise in dive](#promise-in-dive)
+- [Github Emoji supported](#github-emoji-supported)
+- [Improve Git perf in monorepo](#improve-git-perf-in-monorepo)
 - [JSDoc](#jsdoc)
 - [Use local NodeJS version by `fnm`](#use-local-nodejs-version-by-fnm)
 - [make your console.log stand out by adding some CSS to it](#make-your-consolelog-stand-out-by-adding-some-css-to-it)
@@ -186,13 +190,57 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+# Organizing multiple Git identities
+
+https://garrit.xyz/posts/2023-10-13-organizing-multiple-git-identities
+
+in `~/.gitconfig file:`
+
+```config
+[user]
+  name = Garrit Franke
+  email = garrit@slashdev.space
+
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/work/client2/"]
+  path = ~/.gitconfig-client2
+
+[includeIf "gitdir:~/sources/"]
+  path = ~/.gitconfig-personal
+```
+
+# Promise in dive
+
+https://www.lydiahallie.com/blog/promise-execution
+
+The Microtask Queue is a specialized queue in the event loop. When the Call Stack is empty, the event loop first processes tasks waiting in the Microtask Queue before handling tasks from the regular Task Queue (also called "callback queue" or "macrotask queue").
+
+https://res.cloudinary.com/dq8xfyhu4/video/upload/s--5m-F-2oM--/v1711289949/Screen_Recording_2024-03-24_at_9.18.14_AM_ruprvi.mp4
+
+# Github Emoji supported
+
+:white_check_mark:, :white_check_mark: and :x:.
+
+# Improve Git perf in monorepo
+
+```
+// .git/config, required git version >= 2.37.0
+[core]
+	fsmonitor = true
+	untrackedcache = true
+```
+
+https://github.blog/2022-06-29-improve-git-monorepo-performance-with-a-file-system-monitor/#:~:text=Monorepo%20performance%20can%20suffer%20due,to%20speed%20up%20monorepo%20performance.&text=If%20you%20have%20a%20monorepo,git%20status%20and%20git%20add%20.
+
 # JSDoc
 
 https://alexharri.com/blog/jsdoc-as-an-alternative-typescript-syntax
 
 Enable `checkJs`
 
-`checkJs` needs to be enabled in your `tsconfig.json` for type errors to be emitted. If you don't enable `checkJs`, your JSDoc comments will only be used for IDE annotations—not type checking. 
+`checkJs` needs to be enabled in your `tsconfig.json` for type errors to be emitted. If you don't enable `checkJs`, your JSDoc comments will only be used for IDE annotations—not type checking.
 
 # Use local NodeJS version by `fnm`
 
@@ -213,8 +261,6 @@ fnm env --use-on-cd | source
 ```
 
 Restart your shell for the changes to take effect.
-
-
 
 # make your console.log stand out by adding some CSS to it
 
@@ -341,14 +387,14 @@ https://ant.design/docs/react/customize-theme
 Customize theme with ConfigProvider
 
 ```ts
-import { Button, ConfigProvider } from 'antd';
-import React from 'react';
+import { Button, ConfigProvider } from "antd";
+import React from "react";
 
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
       token: {
-        colorPrimary: '#00b96b',
+        colorPrimary: "#00b96b",
       },
     }}
   >
@@ -362,15 +408,15 @@ export default App;
 Customize Component Token
 
 ```ts
-import { Checkbox, ConfigProvider, Radio } from 'antd';
-import React from 'react';
+import { Checkbox, ConfigProvider, Radio } from "antd";
+import React from "react";
 
 const App: React.FC = () => (
   <ConfigProvider
     theme={{
       components: {
         Radio: {
-          colorPrimary: '#00b96b',
+          colorPrimary: "#00b96b",
         },
       },
     }}
@@ -1448,7 +1494,7 @@ const people = {
 
 type People = typeof people; // { name: string; age: number;}
 type KeyofPeople = keyof People; // "name" | "age"
-type TypeofPeople = typeof people[KeyofPeople]; // string | number
+type TypeofPeople = (typeof people)[KeyofPeople]; // string | number
 ```
 
 # TypeScript Config for `import` statement shortcut
@@ -1921,34 +1967,34 @@ yarn add -D -W typescript // -W to install the dependency in WorkSpace root
 
 Support default props, even with different default value.
 
---- 
+---
 
 Use function API
 
 https://emotion.sh/docs/styled#changing-based-on-props
 
 ```js
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 const Button = styled.button`
-  color: ${({primary = false}) => (primary ? 'hotpink' : 'turquoise')};
-  
-  font-size: ${({primary =true }) => (primary ? '18px' : '.19em')};
-`
+  color: ${({ primary = false }) => (primary ? "hotpink" : "turquoise")};
 
-const Container = styled.div(({column = true}) => ({
+  font-size: ${({ primary = true }) => (primary ? "18px" : ".19em")};
+`;
+
+const Container = styled.div(({ column = true }) => ({
   // This Object can be replace with ES6 template string
   // `display: flex;`
-  display: 'flex',
-  flexDirection: column && 'column'
-}))
+  display: "flex",
+  flexDirection: column && "column",
+}));
 
 render(
   <Container>
     <Button>This is a regular button.</Button>
     <Button primary={false}>This is a primary button.</Button>
   </Container>
-)
+);
 ```
 
 ---
@@ -1958,36 +2004,36 @@ Use Object API
 https://emotion.sh/docs/styled#changing-based-on-props
 
 ```js
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 const H1 = styled.h1(
   {
-    fontSize: 20
+    fontSize: 20,
   },
   // The dynamic part happens here
-  props => ({ color: props.color })
-)
+  (props) => ({ color: props.color })
+);
 
-render(<H1 color="lightgreen">This is lightgreen.</H1>)
+render(<H1 color="lightgreen">This is lightgreen.</H1>);
 ```
 
---- 
+---
 
 CSS API
 
 ```js
-import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
-const dynamicStyle = props =>
+const dynamicStyle = (props) =>
   css`
     color: ${props.color};
-  `
+  `;
 
 const Container = styled.div`
   ${dynamicStyle};
-`
-render(<Container color="lightgreen">This is lightgreen.</Container>)
+`;
+render(<Container color="lightgreen">This is lightgreen.</Container>);
 ```
 
 # Object Styles
@@ -1996,16 +2042,17 @@ render(<Container color="lightgreen">This is lightgreen.</Container>)
 render(
   <div
     css={{
-      color: 'darkorchid',
-      '& .name': { // 🚀🚀🚀🚀🚀🚀
-        color: 'orange'
-      }
+      color: "darkorchid",
+      "& .name": {
+        // 🚀🚀🚀🚀🚀🚀
+        color: "orange",
+      },
     }}
   >
     This is darkorchid.
     <div className="name">This is orange</div>
   </div>
-)
+);
 ```
 
 # `keyframes` in Emotion with AntDesign overwrite
