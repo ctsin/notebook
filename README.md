@@ -1,3 +1,4 @@
+- [Events in React NativeGesture Handler](#events-in-react-nativegesture-handler)
 - [Organizing multiple Git identities](#organizing-multiple-git-identities)
 - [Promise in dive](#promise-in-dive)
 - [Github Emoji supported](#github-emoji-supported)
@@ -189,6 +190,10 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Events in React NativeGesture Handler
+
+https://docs.swmansion.com/react-native-gesture-handler/docs/fundamentals/states-events/#state-flows
 
 # Organizing multiple Git identities
 
