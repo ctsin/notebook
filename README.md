@@ -1,3 +1,4 @@
+- [Explanation for `align` in Flex layout](#explanation-for-align-in-flex-layout)
 - [Events in React NativeGesture Handler](#events-in-react-nativegesture-handler)
 - [Organizing multiple Git identities](#organizing-multiple-git-identities)
 - [Promise in dive](#promise-in-dive)
@@ -190,6 +191,10 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Explanation for `align` in Flex layout
+
+![](https://reactnative.dev/blog/assets/0.74-align-content.png)
 
 # Events in React NativeGesture Handler
 
