@@ -292,6 +292,75 @@ https://medium.com/@slamflipstrom/conditional-object-properties-using-spread-in-
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*K6cJMxkDovDZw2d7CmOrSg.png)
 
+**阮一峰的解释**
+
+https://es6.ruanyifeng.com/#docs/object#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6
+
+如果扩展运算符后面不是对象，则会自动将其转为对象。
+
+```ts
+// 等同于 {...Object(1)}
+{...1} // {}
+```
+
+上面代码中，扩展运算符后面是整数`1`，会自动转为数值的包装对象`Number{1}`。由于该对象没有自身属性，所以返回一个空对象。
+
+下面的例子都是类似的道理。
+
+```ts
+// 等同于 {...Object(1)}
+{...1} // {}
+
+// 等同于 {...Object(true)}
+{...true} // {}
+
+// 等同于 {...Object(undefined)}
+{...undefined} // {}
+
+// 等同于 {...Object(null)}
+{...null} // {}
+```
+
+与数组的扩展运算符一样，对象的扩展运算符后面可以跟表达式。
+
+```ts
+const obj = {
+  ...(x > 1 ? {a: 1} : {}),
+  b: 2,
+};
+```
+
+It also works on Array.
+
+扩展运算符后面还可以放置表达式。
+
+```ts
+const arr = [
+  ...(x > 0 ? ['a'] : []),
+  'b',
+];
+```
+
+如果扩展运算符后面是一个空数组，则不产生任何效果。
+
+```ts
+[...[], 1]
+// [1]
+```
+
+注意，只有函数调用时，扩展运算符才可以放在圆括号中，否则会报错。
+
+```ts
+(...[1, 2])
+// Uncaught SyntaxError: Unexpected number
+
+console.log((...[1, 2]))
+// Uncaught SyntaxError: Unexpected number
+
+console.log(...[1, 2])
+// 1 2
+```
+
 # How to Fix 'Cannot Be Opened Because the Developer Cannot be Verified' Error on Mac
 
 https://www.lifewire.com/fix-developer-cannot-be-verified-error-5183898
