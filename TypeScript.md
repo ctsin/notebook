@@ -1,3 +1,4 @@
+- [ban-types](#ban-types)
 - [hack `map` / `filter` with `flatMap`](#hack-map--filter-with-flatmap)
 - [Object argument in function](#object-argument-in-function)
 - [Filtering undefined elements from an array in TypeScript](#filtering-undefined-elements-from-an-array-in-typescript)
@@ -33,6 +34,24 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# ban-types
+
+https://typescript-eslint.io/rules/ban-types/
+
+Found this topic in the case:
+
+```ts
+// Don't use `{}` as a type. `{}` actually means "any non-nullish value".
+<T>(viewProps: T extends {} ? A : B): C
+```
+
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead.
+- If you want a type meaning "empty object", you probably want `Record<string, never>` instead.
+- If you really want a type meaning "any non-nullish value", you probably want `NonNullable<unknown>` instead.
+
+> eslint@typescript-eslint/ban-types
 
 # hack `map` / `filter` with `flatMap`
 
