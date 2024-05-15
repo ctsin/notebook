@@ -1,3 +1,4 @@
+- [Default value and non-null operator](#default-value-and-non-null-operator)
 - [Explanation for `align` in Flex layout](#explanation-for-align-in-flex-layout)
 - [Events in React NativeGesture Handler](#events-in-react-nativegesture-handler)
 - [Organizing multiple Git identities](#organizing-multiple-git-identities)
@@ -191,6 +192,28 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Default value and non-null operator
+
+```ts
+// both produces 9
+const foo = null ?? 9;
+const foo = undefined ?? 9;
+
+function foo (props = 9) { return foo};
+
+// return null
+foo(null);
+
+// return 9
+foo(undefined);
+
+const o = {a: null, b: undefined, c: 9};
+const {a = 0, b = 0, c = 0} = o;
+a; // null
+b; // 0
+c; // 9
+```
 
 # Explanation for `align` in Flex layout
 
