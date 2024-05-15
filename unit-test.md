@@ -18,40 +18,6 @@ console.log(
 
 # Mock module if it is re-exported from `index`
 
-This statement need to be re-considered as ChatGPT offer an opposite answer.
-
-> ChatGPT: For Jest to correctly mock the module, the path to the module in jest.mock() must match exactly with the import statement where the module is used. This is because Jest replaces the actual import in your file with the mock, so it needs to know the exact location of the import. Therefore, it's important to ensure the path used in the Jest mock matches the actual import path.
-> If in your component to be tested (Name.js), you are importing like import {getName} from '../../utils/getName'; then you need to mock it the exact same way jest.mock('../../utils/getName').
-
-If you instead mock it like jest.mock('../../utils') but import it in component to be tested from '../../utils/getName', the mock will not work because Jest could not find a match for the import and the mock.
-
-The import statement and the jest.mock statement should be exactly same. Matching the import path is important for Jest to correctly inject your mocked module into your test.
-
-**Conclusion**: mark4 and mark 5 need to be exactly same with mark 1. No more no less.
-
-```js
-// src/components/Name.js
-import {getName} from '../../utils/getName'; // mark 1
-getName();
-```
-
-When I test 'Name' component, which statement will works?
-
-1. 
-```js
-// NOT WORKs
-import {getName} from '../../utils'; // mark 2
-jest.mock('../../utils') // mark 3
-```
-
-2. 
-
-```js
-// WORKs
-import {getName} from '../../utils/getName'; // mark 4
-jest.mock('../../utils/getName') // mark 5
-```
-
 ```js
 // src/util/Dummy.ts
 export const Dummy = () => {};
@@ -60,17 +26,54 @@ export const Dummy = () => {};
 export {Dummy} from "./Dummy";
 
 // src/Components/Host.ts
+// Unit Test mock does NOT care what kind of pattern to import
 import {Dummy} from "./src/util";
+import {Dummy} from "./src/util/Dummy";
 
 // src/Components/Host.spec.ts
+// Works 🚀 Same pattern to import
 import {Dummy} "./src/util";
+jest.mock("./src/util");
 
-// jest.mock can access final code, even though it is used from `index`
+// Works 🚀 Same pattern to import
+import {Dummy} "./src/util/Dummy";
 jest.mock("./src/util/Dummy");
-const mockDummy = Dummy as jest.mock;
 
+// Fails 🚨 different pattern to import
+import {Dummy} "./src/util";
+jest.mock("./src/util/Dummy");
+
+// Fails 🚨 different pattern to import
+import {Dummy} "./src/util/Dummy";
+jest.mock("./src/util");
+
+const mockDummy = Dummy as jest.mock;
 mockDummy.mockReturnValue({});
 ```
+
+**Another example**
+
+```js
+import { mocked } from "jest-mock";
+import { Greeting } from "../../src/UI/Greeting";
+import { getGreeting } from "../../src/utils/getGreeting";
+
+jest.mock("../../src/utils/getGreeting");
+
+describe("Greeting", () => {
+  it("should return greeting message", () => {
+    // both two mock methods work
+    mocked(getGreeting).mockReturnValue("Hej, Tsing!");
+    getGreeting.mockReturnValue("Hej, Tsing!");
+
+    expect(Greeting()).toBe("Hej, Tsing!");
+  });
+});
+```
+
+## Conclusion
+
+In unit test file, the `jest.mock` doesn't care how the modules are used in the implementation(`/Components/Host.ts`). It should follow exactly with the `import` statement of target modules. No more, no less.
 
 # Solve the Enzyme config issue in codesandbox.io
 
