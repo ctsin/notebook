@@ -69,3 +69,43 @@ const Child = forwardRef<HTMLDivElement>(function (props, ref) {
   return <div ref={ref}>Hello, World!</div>
 })
 ```
+
+# React Memory Leaks: How useCallback and closures can bite you
+
+https://schiener.io/2024-03-03/react-closures
+
+## Closures and `useCallback`
+
+```js
+import { useState, useCallback } from "react";
+
+class BigObject {
+  public readonly data = new Uint8Array(1024 * 1024 * 10); // 10MB of data
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+  const bigData = new BigObject();
+
+  const handleEvent = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
+
+  const handleClick = () => {
+    console.log(bigData.data.length);
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick} />
+      <ExpensiveChildComponent2 onMyEvent={handleEvent} />
+    </div>
+  );
+}
+```
+
+All closures share a common context object from the time they were created. Since handleClick() closes over bigData, bigData will be referenced by this context object. This means, bigData will never get garbage collected as long as handleEvent() is being referenced. This reference will hold until count changes and handleEvent() is recreated.
+
+![Big object capture](https://schiener.io/assets/img/react-closures-bigObjectCapture.png)
+
+

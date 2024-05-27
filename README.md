@@ -1,3 +1,4 @@
+- [`isEmpty` in Lodash](#isempty-in-lodash)
 - [Default value and non-null operator](#default-value-and-non-null-operator)
 - [Explanation for `align` in Flex layout](#explanation-for-align-in-flex-layout)
 - [Events in React NativeGesture Handler](#events-in-react-nativegesture-handler)
@@ -192,6 +193,24 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# `isEmpty` in Lodash
+
+```js
+console.log("[0]", _.isEmpty(0)); // true as no `length` props
+console.log("[1]", _.isEmpty(1)); // true as no `length` props
+console.log("[String]", _.isEmpty("Foo")); // false
+console.log("[Empty string]", _.isEmpty("")); // true
+console.log("True", _.isEmpty(true)); // true
+console.log("False", _.isEmpty(false)); // true
+console.log("Undefined", _.isEmpty(undefined)); // true
+console.log("Null", _.isEmpty(null)); // true
+console.log("[]", _.isEmpty([])); // true
+console.log(
+  "Fn",
+  _.isEmpty(() => undefined)
+); // true
+```
 
 # Default value and non-null operator
 
