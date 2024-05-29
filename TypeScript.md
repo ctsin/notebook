@@ -1,3 +1,4 @@
+- [confusion about import type](#confusion-about-import-type)
 - [ban-types](#ban-types)
 - [hack `map` / `filter` with `flatMap`](#hack-map--filter-with-flatmap)
 - [Object argument in function](#object-argument-in-function)
@@ -34,6 +35,12 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# confusion about import type
+
+https://x.com/mattpocockuk/status/1795040643963555859
+
+![What's the difference between import statement](https://pbs.twimg.com/media/GOlDjibW4AASXBh?format=jpg&name=medium)
 
 # ban-types
 

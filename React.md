@@ -14,7 +14,7 @@ https://dev.to/headwayio/react-optimize-components-with-react-memo-usememo-and-u
 **Heads up**
 
 ```js
-const Header = React.memo(({title}) => <h1>{title}</h1>, []);
+const Header = React.memo(({ title }) => <h1>{title}</h1>, []);
 export default Header;
 ```
 
@@ -56,18 +56,19 @@ https://dmitripavlutin.com/react-forwardref/#6-forwardref-in-typescript
 `useRef<V>()` hook in TypeScript has one argument type `V`: denoting the value type stored in the ref. If you store DOM elements in the ref, `V` can be HTMLDivElement or HTMLInputElement.
 
 Now let's annotate the parent and child components:
+
 ```ts
-import { useRef, forwardRef } from "react"
+import { useRef, forwardRef } from "react";
 
 export function Parent() {
-  const elementRef = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null);
 
-  return <Child ref={elementRef} />
+  return <Child ref={elementRef} />;
 }
 
 const Child = forwardRef<HTMLDivElement>(function (props, ref) {
-  return <div ref={ref}>Hello, World!</div>
-})
+  return <div ref={ref}>Hello, World!</div>;
+});
 ```
 
 # React Memory Leaks: How useCallback and closures can bite you
@@ -108,4 +109,45 @@ All closures share a common context object from the time they were created. Sinc
 
 ![Big object capture](https://schiener.io/assets/img/react-closures-bigObjectCapture.png)
 
+# Snappy UI Optimization with useDeferredValue
 
+- https://www.joshwcomeau.com/react/use-deferred-value/
+- https://react.dev/reference/react/useDeferredValue
+- https://react.dev/blog/2024/04/25/react-19#use-deferred-value-initial-value
+
+# memoization required
+
+An important thing to note: useDeferredValue only works when the slow / low-priority component has been wrapped with React.memo():
+
+```js
+import React from 'react';
+function SlowComponent({ count }) {}
+
+export default React.memo(SlowComponent);
+```
+
+## Working with multiple state variables
+
+Don't:
+
+```js
+const deferredOomph = React.useDeferredValue(oomph);
+const deferredCrispy = React.useDeferredValue(crispy);
+const deferredBg = React.useDeferredValue(backgroundColor);
+const deferredTint = React.useDeferredValue(tint);
+const deferredResolution = React.useDeferredValue(resolution);
+const deferredLight = React.useDeferredValue(lightPosition);
+```
+
+Do:
+
+```js
+const cssCode = generateShadows(oomph, crispy, backgroundColor, tint, resolution, lightPosition);
+const deferredCssCode = React.useDeferredValue(cssCode);
+return (
+  <>
+    {/* Other stuff omitted for brevity */}
+    <CodeSnippet lang="css" code={deferredCssCode} />
+  </>
+);
+```
