@@ -1,3 +1,4 @@
+- [Define Promise returned type](#define-promise-returned-type)
 - [confusion about import type](#confusion-about-import-type)
 - [ban-types](#ban-types)
 - [hack `map` / `filter` with `flatMap`](#hack-map--filter-with-flatmap)
@@ -35,6 +36,16 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# Define Promise returned type
+
+https://www.apollographql.com/tutorials/intro-typescript/10-query-arguments
+
+```js
+getPlaylist(playlistId: string): Promise<Playlist> /* 👈 */ {
+  return this.get(`playlists/${playlistId}`);
+}
+```
 
 # confusion about import type
 
