@@ -1,3 +1,4 @@
+- [isBooleanTooLongAndComplex](#isbooleantoolongandcomplex)
 - [Define Promise returned type](#define-promise-returned-type)
 - [confusion about import type](#confusion-about-import-type)
 - [ban-types](#ban-types)
@@ -36,6 +37,28 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# isBooleanTooLongAndComplex
+
+https://testing.googleblog.com/2024/04/isbooleantoolongandcomplex.html
+
+```js
+// Option 1 breakdown the conditions
+const hasGoodMeat = !pepperoniService.empty() || sausages.size() > 0;
+const hasGoodVeggies = useOnionFlag.get() || hasMushroom(ENOKI, PORTOBELLO);
+const isPizzaFantastic = hasGoodMeat && hasGoodVeggies && hasCheese();
+
+// Option 2 create a method to handle conditions
+const isPizzaFantastic = () => {
+  if (!hasCheese()) {
+    return false;
+  }
+  if (pepperoniService.empty() && sausages.size() == 0) {
+    return false;
+  }
+  return useOnionFlag.get() || hasMushroom(ENOKI, PORTOBELLO);
+}
+```
 
 # Define Promise returned type
 
