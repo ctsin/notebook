@@ -1,3 +1,4 @@
+- [Attach type to function](#attach-type-to-function)
 - [isBooleanTooLongAndComplex](#isbooleantoolongandcomplex)
 - [Define Promise returned type](#define-promise-returned-type)
 - [confusion about import type](#confusion-about-import-type)
@@ -37,6 +38,29 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# Attach type to function
+
+https://x.com/mattpocockuk/status/1805186401408778549
+
+```js
+namespace MyComponent {
+  export interface Props {
+    id: string;
+  }
+}
+
+export function MyComponent(
+  props: MyComponent.Props,
+) {
+  return <div />
+}
+
+// the consumer don't need to import a separate interface, it's already there.
+const WrapperComponent = (
+  props: MyComponent.Props
+) => <MyComponent {...props} />
+```
 
 # isBooleanTooLongAndComplex
 
