@@ -1,3 +1,4 @@
+- [使用 `in` 操作符来检查对象是否具有特定属性](#使用-in-操作符来检查对象是否具有特定属性)
 - [`isEmpty` in Lodash](#isempty-in-lodash)
 - [Default value and non-null operator](#default-value-and-non-null-operator)
 - [Explanation for `align` in Flex layout](#explanation-for-align-in-flex-layout)
@@ -194,6 +195,33 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+# 使用 `in` 操作符来检查对象是否具有特定属性
+
+https://www.apollographql.com/tutorials/intro-typescript/13-using-models
+
+```js
+// not work
+{
+  tracks: ({ tracks, id }, _, { dataSources }) => {
+    return tracks.items
+      ? tracks.items.map(({ track }) => track)
+      : dataSources.spotifyAPI.getTracks(id);
+  },
+}
+
+// work
+
+{
+  tracks: ({ tracks, id }, _, { dataSources }) => {
+    if ("items" in 🚀 tracks) {
+      return tracks.items.map(({ track }) => track);
+    }
+
+    return dataSources.spotifyAPI.getTracks(id);
+  },
+}
+```
+
 # `isEmpty` in Lodash
 
 ```js
@@ -219,7 +247,9 @@ console.log(
 const foo = null ?? 9;
 const foo = undefined ?? 9;
 
-function foo (props = 9) { return foo};
+function foo(props = 9) {
+  return foo;
+}
 
 // return null
 foo(null);
@@ -227,8 +257,8 @@ foo(null);
 // return 9
 foo(undefined);
 
-const o = {a: null, b: undefined, c: 9};
-const {a = 0, b = 0, c = 0} = o;
+const o = { a: null, b: undefined, c: 9 };
+const { a = 0, b = 0, c = 0 } = o;
 a; // null
 b; // 0
 c; // 9
@@ -367,7 +397,7 @@ https://es6.ruanyifeng.com/#docs/object#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%
 
 ```ts
 const obj = {
-  ...(x > 1 ? {a: 1} : {}),
+  ...(x > 1 ? { a: 1 } : {}),
   b: 2,
 };
 ```
@@ -377,16 +407,13 @@ It also works on Array.
 扩展运算符后面还可以放置表达式。
 
 ```ts
-const arr = [
-  ...(x > 0 ? ['a'] : []),
-  'b',
-];
+const arr = [...(x > 0 ? ["a"] : []), "b"];
 ```
 
 如果扩展运算符后面是一个空数组，则不产生任何效果。
 
 ```ts
-[...[], 1]
+[...[], 1];
 // [1]
 ```
 
