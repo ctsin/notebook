@@ -1,3 +1,4 @@
+- [`accent-color` in CSS](#accent-color-in-css)
 - [使用 `in` 操作符来检查对象是否具有特定属性](#使用-in-操作符来检查对象是否具有特定属性)
 - [`isEmpty` in Lodash](#isempty-in-lodash)
 - [Default value and non-null operator](#default-value-and-non-null-operator)
@@ -194,6 +195,17 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# `accent-color` in CSS
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color
+
+Setting `accent-color` for HTML controls, support the following elements:
+
+- \<input type="checkbox"\>
+- \<input type="radio"\>
+- \<input type="range"\>
+- \<progress\>
 
 # 使用 `in` 操作符来检查对象是否具有特定属性
 
