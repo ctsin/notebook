@@ -1,3 +1,28 @@
+#  How To Debug React Apps Like A Senior Developer
+
+## Show Hooks name
+![](./assets/show-hooks-name.jpeg)
+
+## Debug `Suspend`
+
+https://youtu.be/l8knG0BPr-o?t=645
+
+![](./assets/wrap-with-suspend.jpeg)
+
+![](./assets/toggle-on-suspend.jpeg)
+
+![](./assets/suspend-status.jpeg)
+
+## Debug `ErrorBoundary`
+
+https://youtu.be/l8knG0BPr-o?t=786
+
+![](./assets/error-boundary.jpeg)
+
+![](./assets/error-boundary-on.jpeg)
+
+# Perf in React
+
 https://dev.to/headwayio/react-optimize-components-with-react-memo-usememo-and-usecallback-39h8
 
 **Class Components**
