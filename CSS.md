@@ -1,3 +1,11 @@
+# `min-width: fit-content`
+
+https://youtu.be/3ugXM3ZDUuE?t=162
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content
+
+![](./assets/A%20flexbox%20trick%20to%20improve%20text%20wrapping.jpeg)
+
 # Define CSS style type in React
 
 ```js
