@@ -1,3 +1,28 @@
+# plain text in Enum of TypeScript
+
+> The answer is offered by Google Gemini
+
+```js
+export enum CtaLinkTypes {
+  INTERNAL = "internal",
+  EXTERNAL = "external",
+  NONE = "none",
+}
+
+  // Type "internal" is not assignable to type 'CtaLinkTypes'.ts(2322)
+const mockCards: TSpecificFaq = {
+  ctaLink: { linkType: "internal", link: "/ttfaq", openInNewTab: false },
+}
+```
+
+The error message "Type '"internal"' is not assignable to type 'CtaLinkTypes'" tells us that you're trying to assign the string "internal" to a variable or property that expects a different type, specifically a type called CtaLinkTypes.
+
+`CtaLinkTypes` is an enum, you'll need to use the enum value instead of the string:
+
+```js
+const ctaLink = { linkType: CtaLinkTypes.Internal /* 💯 */, link: "/ttfaq", openInNewTab: false };
+```
+
 # Mock module if it is re-exported from `index`
 
 ```js
