@@ -1,3 +1,4 @@
+- [Abort a browser event with `signal`](#abort-a-browser-event-with-signal)
 - [使用 `in` 操作符来检查对象是否具有特定属性](#使用-in-操作符来检查对象是否具有特定属性)
 - [`isEmpty` in Lodash](#isempty-in-lodash)
 - [Default value and non-null operator](#default-value-and-non-null-operator)
@@ -194,6 +195,13 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Abort a browser event with `signal`
+
+```js
+  const {signal} = new AbortController();
+  document.addEventListener("click", () => {}, { signal });
+```
 
 # 使用 `in` 操作符来检查对象是否具有特定属性
 
