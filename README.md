@@ -1,3 +1,4 @@
+- [How to use pnpm](#how-to-use-pnpm)
 - [Abort a browser event with `signal`](#abort-a-browser-event-with-signal)
 - [使用 `in` 操作符来检查对象是否具有特定属性](#使用-in-操作符来检查对象是否具有特定属性)
 - [`isEmpty` in Lodash](#isempty-in-lodash)
@@ -195,6 +196,66 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# How to use pnpm
+
+https://www.freecodecamp.org/news/how-to-use-pnpm/
+
+Set up an alias
+
+```sh
+# .bashrc, .zshrc, or config.fish
+
+alias pn=pnpm
+```
+
+Setup Tab-Completion
+
+Method 1:
+
+```sh
+pnpm install-completion
+```
+
+Usage
+
+```sh
+pnpm init
+pnpm add PACKAGE
+pnpm add -D PACKAGE
+pnpm add -g PACKAGE
+
+# Same
+pnpm install
+pnpm i
+
+# Same
+pnpm run build
+pnpm build
+
+# Same
+pnpm exec tsc --init
+pnpm tsc --init
+
+pnpm up
+pnpm up --latest
+pnpm rm express
+pnpm rm -g nodemon
+```
+
+How pnpm \<command\> Works
+
+pnpm \<command\> works like this:
+
+- If \<command\> is a pnpm command (that is add, install and so on), execute that command.
+- Else if \<command\> is a script found in package.json, execute pnpm run \<command\>.
+- Else execute pnpm exec \<command\>.
+
+`npx` Alternative
+
+```sh
+pnpm dlx
+```
 
 # Abort a browser event with `signal`
 
