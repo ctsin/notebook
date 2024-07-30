@@ -1,3 +1,30 @@
+# Media Query range support
+
+https://caniuse.com/css-media-range-syntax
+
+https://www.youtube.com/shorts/mrzA2B5gUmI
+
+```css
+/* Before */
+
+/* if the width === 600px, both background and font-size applies */
+/* so need to set it as 599px */
+@media (max-width: 600px) {
+  article { background: red; }
+}
+@media (min-width: 600px) {
+  article { font-size: 2rem; }
+}
+
+/* After */
+@media (max-width < 600px) {
+  article { background: red; }
+}
+@media (min-width >= 600px) {
+  article { font-size: 2rem; }
+}
+```
+
 # `min-width: fit-content`
 
 https://youtu.be/3ugXM3ZDUuE?t=162
