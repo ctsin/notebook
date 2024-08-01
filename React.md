@@ -1,3 +1,13 @@
+Adding a CSS Reset in CRA
+
+https://create-react-app.dev/docs/adding-css-reset/
+
+```css
+@import-normalize; /* bring in normalize.css styles */
+
+/* rest of app styles */
+```
+
 #  How To Debug React Apps Like A Senior Developer
 
 ## Show Hooks name
