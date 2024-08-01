@@ -1,3 +1,17 @@
+# CSS pro tips
+
+https://www.youtube.com/watch?v=SuqU904ZHA4
+
+#### `clamp()` in CSS
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+
+![](./assets/clamp-in-css.jpeg)
+
+#### RGBA shortcut
+
+![](./assets/RGBA-shortcut.jpeg)
+
 # Media Query range support
 
 https://caniuse.com/css-media-range-syntax
