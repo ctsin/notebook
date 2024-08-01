@@ -105,6 +105,10 @@ const Email = () => {
 
 # Type-safe on HTML elements
 
+https://x.com/mattpocockuk/status/1818675230207782929
+
+![](https://pbs.twimg.com/media/GT07e6KWQAAugtz?format=jpg&name=small)
+
 https://www.youtube.com/watch?v=4GchlC06ca0
 
 ```js
