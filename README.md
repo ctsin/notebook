@@ -197,6 +197,20 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+## Set up VS Code for React
+
+#### Emmet for JavaScript
+
+https://youtu.be/LyNEHVzJ24U?t=221
+
+![](./assets/emmet-in-javascript.jpeg)
+
+#### Inlay hints
+
+https://youtu.be/LyNEHVzJ24U?t=570
+
+![](./assets/inlay-hints.jpeg)
+
 # How to use pnpm
 
 https://www.freecodecamp.org/news/how-to-use-pnpm/
