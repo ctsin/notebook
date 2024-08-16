@@ -1,3 +1,9 @@
+# Arrow shape background image
+
+https://www.strikingly.com/
+
+![](assets/arrow-shape-with-pseudo-element.png)
+
 # `before` and `after` in EmotionJS
 
 The `content` property of `before` and `after` pseudo element must be wrapped by double quote `""` or single quote `''`. 
