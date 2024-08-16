@@ -102,6 +102,7 @@
 - [React 17 adds support for KeyboardEvent.code property to SyntheticEvent](#react-17-adds-support-for-keyboardeventcode-property-to-syntheticevent)
 - [Yarn WorkSpace](#yarn-workspace)
 - [Emotion Official Docs](#emotion-official-docs)
+- [`before` and `after` in EmotionJS](#before-and-after-in-emotionjs)
 - [Object Styles](#object-styles)
 - [`keyframes` in Emotion with AntDesign overwrite](#keyframes-in-emotion-with-antdesign-overwrite)
 - [Pass `props` to the children](#pass-props-to-the-children)
@@ -2199,6 +2200,21 @@ yarn add -D -W typescript // -W to install the dependency in WorkSpace root
 Support default props, even with different default value.
 
 ---
+
+# `before` and `after` in EmotionJS
+
+The `content` property of `before` and `after` pseudo element must be wrapped by double quote `""` or single quote `''`. 
+
+```js
+const X = styled.div`
+  &::before {
+    content: ${() => (true ? '"oo"' : `"ff"`)};
+
+    // DOES NOT WORK
+    content: ${() => (true ? '`oo`' : "`ff`")};
+  }
+`;
+```
 
 Use function API
 

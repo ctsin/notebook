@@ -4,21 +4,6 @@ https://www.strikingly.com/
 
 ![](assets/arrow-shape-with-pseudo-element.png)
 
-# `before` and `after` in EmotionJS
-
-The `content` property of `before` and `after` pseudo element must be wrapped by double quote `""` or single quote `''`. 
-
-```js
-const X = styled.div`
-  &::before {
-    content: ${() => (true ? '"oo"' : `"ff"`)};
-
-    // DOES NOT WORK
-    content: ${() => (true ? '`oo`' : "`ff`")};
-  }
-`;
-```
-
 # Popover in CSS only
 
 https://x.com/i/status/1823009673777127426
