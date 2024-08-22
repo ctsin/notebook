@@ -1,3 +1,15 @@
+# SVG stroke animation trick
+
+https://css-tricks.com/a-trick-that-makes-drawing-svg-lines-way-easier/
+
+https://codepen.io/tsing/pen/RwwZeGQ
+
+You don’t have to measure the length of the path, because you can set it. 
+
+```svg
+<path d="M66.039,133.545 ... " pathLength="1" 👈 />
+```
+
 # Property inheriting in Framer Motion
 
 https://blog.noelcserepy.com/how-to-animate-svg-paths-with-framer-motion#heading-explanations-1
