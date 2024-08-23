@@ -1,3 +1,13 @@
+# A new CSS property: `align-content`
+
+https://build-your-own.org/blog/20240813_css_vertical_center/
+
+```html
+<div style="align-content: center; height: 100px;">
+  <code>align-content</code> just works!
+</div>
+```
+
 # Arrow shape background image
 
 https://www.strikingly.com/
