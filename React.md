@@ -1,3 +1,12 @@
+# Use `data-` attr in React
+
+```jsx
+<Option data-name="data set name" />
+```
+
+See more https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+```
+
 Adding a CSS Reset in CRA
 
 https://create-react-app.dev/docs/adding-css-reset/
