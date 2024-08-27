@@ -1,4 +1,11 @@
-Tagged Template Literals
+# CSS dark / light mode
+
+https://x.com/stackblitz/status/1828082068632588613
+
+- Use `light-dark()` CSS function to define the colors without having to write media queries
+- Switch between the light/dark modes conveniently using DevTools
+
+# Tagged Template Literals
 
 ![](https://pbs.twimg.com/media/ExFO6hSWQAsn-VF?format=jpg&name=4096x4096)
 
