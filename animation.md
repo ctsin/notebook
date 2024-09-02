@@ -1,3 +1,7 @@
+# 《JavaScript网页动画设计》
+
+> 避免影响到临近元素的解决办法是尽可能设置CSS的transform属性（translateX、translateY、scaleX、scaleY、rotateZ、rotateX和rotateY）的动画。transform属性的特殊之处在于它们将目标元素提升至一个单的层，这个层可以独立于页面其他内容单独渲染（通过GPU加速提升性能），因此相邻的元素不会受到影响。
+
 # SVG stroke animation trick
 
 https://css-tricks.com/a-trick-that-makes-drawing-svg-lines-way-easier/
