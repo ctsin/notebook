@@ -1,3 +1,4 @@
+- [Why Unknown Types Are Useful](#why-unknown-types-are-useful)
 - [Attach type to function](#attach-type-to-function)
 - [isBooleanTooLongAndComplex](#isbooleantoolongandcomplex)
 - [Define Promise returned type](#define-promise-returned-type)
@@ -38,6 +39,26 @@
 - [Use TypeScript's `never` to enforce "one or the other" properties on a type](#use-typescripts-never-to-enforce-one-or-the-other-properties-on-a-type)
 - [Object literal may only specify known properties](#object-literal-may-only-specify-known-properties)
 - [Being more specific with the type of the values](#being-more-specific-with-the-type-of-the-values)
+
+# Why Unknown Types Are Useful
+
+https://michaeluloth.com/programming-types-unknown-why-useful/
+
+Verify explicitly the `data` type before it is used.
+
+```js
+const getUserInput = (): unknown => {/*...*/}
+ 
+const safe = () => {
+  const data = getUserInput()
+  
+  if (typeof data === 'string') {
+    data.toUpperCase() // confirmed safe
+  } else {
+    // handle invalid input
+  }
+}
+```
 
 # Attach type to function
 
