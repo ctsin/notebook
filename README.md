@@ -1,3 +1,7 @@
+- [`Set` operation](#set-operation)
+  - [Set up VS Code for React](#set-up-vs-code-for-react)
+      - [Emmet for JavaScript](#emmet-for-javascript)
+      - [Inlay hints](#inlay-hints)
 - [How to use pnpm](#how-to-use-pnpm)
 - [Abort a browser event with `signal`](#abort-a-browser-event-with-signal)
 - [使用 `in` 操作符来检查对象是否具有特定属性](#使用-in-操作符来检查对象是否具有特定属性)
@@ -197,6 +201,49 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# `Set` operation
+
+https://www.sonarsource.com/blog/union-intersection-difference-javascript-sets/
+
+```js
+const frontEndLanguages = new Set(["JavaScript", "HTML", "CSS"]);
+const backEndLanguages = new Set(["Python", "Java", "JavaScript"]);
+
+const allLanguages = frontEndLanguages.union(backEndLanguages);
+// => Set {"JavaScript", "HTML", "CSS", "Python", "Java"}
+```
+
+```js
+const frontEndLanguages = new Set(["JavaScript", "HTML", "CSS"]);
+const backEndLanguages = new Set(["Python", "Java", "JavaScript"]);
+
+const frontAndBackEnd = frontEndLanguages.intersection(backEndLanguages);
+// => Set {"JavaScript"} 
+```
+
+```js
+const frontEndLanguages = new Set(["JavaScript", "HTML", "CSS"]);
+const backEndLanguages = new Set(["Python", "Java", "JavaScript"]);
+
+const onlyFrontEnd = frontEndLanguages.difference(backEndLanguages);
+// => Set {"HTML", "CSS"} 
+
+const onlyBackEnd = backEndLanguages.difference(frontEndLanguages);
+// => Set {"Python", "Java"}
+```
+
+```js
+const frontEndLanguages = new Set(["JavaScript", "HTML", "CSS"]);
+const interpretedLanguages = new Set(["JavaScript", "Ruby", "Python"]);
+const compiledLanguages = new Set(["Java", "C++", "TypeScript"]);
+
+interpretedLanguages.isDisjointFrom(compiledLanguages);
+// => true
+
+frontEndLanguages.isDisjointFrom(interpretedLanguages);
+// => false
+```
 
 ## Set up VS Code for React
 
