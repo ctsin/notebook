@@ -1,4 +1,46 @@
-# Path morphing in Framer Motion
+# Framer Motion
+
+https://www.framer.com/motion/examples/#line-drawing
+
+```jsx
+<motion.circle
+  initial={{ pathLength: 0 }}
+  animate={{ pathLength: 1 }}
+/>
+```
+
+---
+
+https://www.framer.com/motion/examples/#animating-gradients
+
+```jsx
+const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
+const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
+
+function Image({ id }: { id: number }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+
+  return (
+    <section>
+      <motion.div
+        initial={false}
+        animate={
+          isLoaded && isInView
+            ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
+            : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
+        }
+        transition={{ duration: 1, delay: 1 }}
+        viewport={{ once: true }}
+        onViewportEnter={() => setIsInView(true)}
+      >
+        <img src={`/${id}.jpg`} alt="" onLoad={() => setIsLoaded(true)} />
+      </motion.div>
+    </section>
+  );
+}
+```
+---
 
 https://www.framer.com/motion/examples/#path-morphing
 
@@ -11,6 +53,21 @@ See also:
 - [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path) - a D3 interpolator to interpolate between two unclosed lines, for things like line chart transitions with mismatched data
 - [Wilderness](https://github.com/colinmeinke/wilderness) - an SVG manipulation and animation library
 - [Cirque](https://github.com/two-n/cirque) - JS utility for morphing between circles and polygons
+
+---
+
+More ways to transform objects
+
+https://www.remotion.dev/docs/transforms#more-ways-to-transform-objects
+
+* The height and width of a <div>
+* The rounded edges of an element using border-radius
+* The shadow of an element using box-shadow
+* The color of something using color and interpolateColors()
+* The evolution of a SVG path using evolvePath()
+* The weight and slant of a dynamic font
+* The stops of a linear-gradient
+* The values of a CSS filter()
 
 # 《JavaScript网页动画设计》
 
