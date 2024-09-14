@@ -1,3 +1,4 @@
+- [Manage clipboard in JavaScript](#manage-clipboard-in-javascript)
 - [`Set` operation](#set-operation)
   - [Set up VS Code for React](#set-up-vs-code-for-react)
       - [Emmet for JavaScript](#emmet-for-javascript)
@@ -201,6 +202,21 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Manage clipboard in JavaScript
+
+https://alexharri.com/blog/clipboard
+
+```js
+document.addEventListener("copy", (e) => {
+  e.preventDefault();
+  e.clipboardData.setData("text/plain", "Hello");
+});
+
+document.dispatchEvent(new ClipboardEvent("copy", {
+  clipboardData: new DataTransfer(),
+}));
+```
 
 # `Set` operation
 
