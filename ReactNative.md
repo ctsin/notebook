@@ -59,3 +59,11 @@ handleOnPress() {
 # Slow navigator transitions
 
 Use `React Navigation` library. The views in React Navigation use native components and the `Animated` library to deliver 60 FPS animations that are run on the native thread.
+
+# React Native New Architecture by default
+
+https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#react-native-new-architecture-by-default
+
+# Box Shadow and Filter style props
+
+https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#box-shadow-and-filter-style-props
