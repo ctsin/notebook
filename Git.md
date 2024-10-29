@@ -1,3 +1,21 @@
+# Git commands encounters incompatible NodeJS version
+
+As invoking `Git: discard changes` in VSCode will cause the following error:
+
+```sh
+> git checkout -q -- /Users/chris_xing/Projects/rn_esub20/src/screens/CreateApplication/validation/BasicInfo.ts
+error ReactNativeStarter@0.0.1: The engine "node" is incompatible with this module. Expected version ">=18". Got "17.9.1"
+error Commands cannot run with an incompatible environment.
+```
+
+**Solution**
+
+```sh
+nvm uninstall 17
+
+nvm alias default 18
+```
+
 # Cherry-pick
 
 ```sh
