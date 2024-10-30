@@ -1,3 +1,9 @@
+# Set VSCode as default editor
+
+```sh
+git config --global core.editor "code --wait"
+```
+
 # Git commands encounters incompatible NodeJS version
 
 As invoking `Git: discard changes` in VSCode will cause the following error:
