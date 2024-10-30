@@ -1,3 +1,43 @@
+# Fish shell aliases for Git
+
+```sh
+alias use="nvm use 18"
+alias 18="use"
+
+alias s="git status"
+alias dot="git add ."
+alias amend="git commit --amend --no-edit "
+alias amenda="git commit --amend --no-edit -a"
+alias c="git commit -m "
+alias ac="git commit -am "
+alias force="git push --force-with-lease"
+alias push="git push"
+alias i="git rebase -i "
+alias go="git rebase --continue"
+alias abort="git rebase --abort"
+alias -="git checkout -"
+alias start="npm start"
+alias remotion="npm run remotion"
+
+function up
+    # Extract the current branch name
+    set -l current_branch (git branch --show-current)
+    
+    # Push the current branch to the remote named 'origin'
+    git push -u origin $current_branch
+end
+
+alias pub="up"
+alias publish="up"
+```
+
+# Update user name in commits
+
+```sh
+# https://www.git-tower.com/learn/git/faq/change-author-name-email/
+git commit --amend --author="John Doe <john@doe.org>"
+```
+
 # Set VSCode as default editor
 
 ```sh
