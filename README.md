@@ -1,3 +1,4 @@
+- [`console.log`](#consolelog)
 - [Manage clipboard in JavaScript](#manage-clipboard-in-javascript)
 - [`Set` operation](#set-operation)
   - [Set up VS Code for React](#set-up-vs-code-for-react)
@@ -202,6 +203,19 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# `console.log`
+
+https://www.youtube.com/watch?v=Ozg5UqaD5fg
+
+```js
+// 
+console.log(obj);
+
+console.dir(obj, {
+  depth: Infinity,
+})
+```
 
 # Manage clipboard in JavaScript
 
