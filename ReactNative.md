@@ -1,3 +1,12 @@
+# shortcuts
+
+**iOS**
+
+- `fn + D` to toggle [devtools](https://reactnative.dev/docs/debugging)
+- `fn + R` to reload
+
+# React native performance
+
 https://reactnative.dev/docs/performance
 
 - JS frame - JavaScript thread
