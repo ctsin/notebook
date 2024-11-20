@@ -403,7 +403,7 @@ console.log(
 
 # Default value and non-null operator
 
-```ts
+```js
 // both produces 9
 const foo = null ?? 9;
 const foo = undefined ?? 9;
@@ -531,7 +531,7 @@ https://es6.ruanyifeng.com/#docs/object#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%
 
 如果扩展运算符后面不是对象，则会自动将其转为对象。
 
-```ts
+```js
 // 等同于 {...Object(1)}
 {...1} // {}
 ```
@@ -540,7 +540,7 @@ https://es6.ruanyifeng.com/#docs/object#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%
 
 下面的例子都是类似的道理。
 
-```ts
+```js
 // 等同于 {...Object(1)}
 {...1} // {}
 
@@ -556,7 +556,7 @@ https://es6.ruanyifeng.com/#docs/object#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%
 
 与数组的扩展运算符一样，对象的扩展运算符后面可以跟表达式。
 
-```ts
+```js
 const obj = {
   ...(x > 1 ? { a: 1 } : {}),
   b: 2,
@@ -567,20 +567,20 @@ It also works on Array.
 
 扩展运算符后面还可以放置表达式。
 
-```ts
+```js
 const arr = [...(x > 0 ? ["a"] : []), "b"];
 ```
 
 如果扩展运算符后面是一个空数组，则不产生任何效果。
 
-```ts
+```js
 [...[], 1];
 // [1]
 ```
 
 注意，只有函数调用时，扩展运算符才可以放在圆括号中，否则会报错。
 
-```ts
+```js
 (...[1, 2])
 // Uncaught SyntaxError: Unexpected number
 
@@ -621,7 +621,7 @@ Use a Node version manager like [Volta](https://volta.sh/) or [nvm](https://gith
 
 Array find from last
 
-```ts
+```js
 const isEven = (number) => number % 2 === 0;
 const numbers = [1, 2, 3, 4];
 
@@ -640,7 +640,7 @@ console.log(numbers.findLastIndex(isEven));
 
 Symbols as WeakMap keys
 
-```ts
+```js
 const weak = new WeakMap();
 const key = Symbol("ref");
 weak.set(key, "ECMAScript 2023");
@@ -651,7 +651,7 @@ console.log(weak.get(key));
 
 Change Array by Copy
 
-```ts
+```js
 const original = [1, 2, 3, 4];
 const reversed = original.toReversed();
 
@@ -695,7 +695,7 @@ https://ant.design/docs/react/customize-theme
 
 Customize theme with ConfigProvider
 
-```ts
+```js
 import { Button, ConfigProvider } from "antd";
 import React from "react";
 
@@ -716,7 +716,7 @@ export default App;
 
 Customize Component Token
 
-```ts
+```js
 import { Checkbox, ConfigProvider, Radio } from "antd";
 import React from "react";
 
@@ -774,7 +774,7 @@ https://github.com/jquense/yup#schematypeerrormessage-string-schema
 
 For a custom message to number type you should call the typeError() function:
 
-```ts
+```js
 numberField: Yup.number().typeError(numberErrorMessage).required(requiredErrorMessage),
 ```
 
@@ -847,7 +847,7 @@ Now we can start using these type parameters in a simple example: an API like GE
 
 The API client might look like:
 
-```ts
+```js
 // client/api/users.ts
 import axios from "axios";
 
@@ -873,7 +873,7 @@ On the express side, it’s a little more complicated. But not much.
 
 Consider:
 
-```ts
+```js
 // server/routes/users.ts
 type User = {
   userId: number;
@@ -910,7 +910,7 @@ alias ...="cd ../.."
 
 # Destruct dynamic property from an object
 
-```ts
+```js
 const deleteUser = (id) =>
   new Promise((resolve, reject) => {
     //     👇👇👇👇
@@ -930,7 +930,7 @@ const deleteUser = (id) =>
 
 https://usehooks.com/useToggle/
 
-```ts
+```js
 const useToggle = (initialState = false) => {
   // Initialize the state
   const [state, setState] = useState(initialState);
@@ -997,7 +997,7 @@ Ref: https://dev.to/s2engineers/how-to-make-eslint-work-with-prettier-avoiding-c
 
 https://www.robinwieruch.de/react-router-private-routes/
 
-```ts
+```js
 import {
   Routes,
   Route,
@@ -1045,7 +1045,7 @@ The `for..in` loop iterates over the object's enumerable properties.
 
 `for..of`, on the other hand, iterates over an iterable. In Javascript, an iterable is any object that defines a `[Symbol.iterator]` function that returns a conforming iterator. This lets the object define how to return its elements.
 
-```ts
+```js
 const iterable = {
   [Symbol.iterator]: function* () {
     yield 5;
@@ -1080,7 +1080,7 @@ https://h3manth.com/posts/unicode-segmentation-in-javascript/
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 
-```ts
+```js
 let segmenter = new Intl.Segmenter("kn-IN", { granularity: "word" });
 let input = "ಆವು ಈವಿನ ನಾವು ನೀವಿಗೆ ಆನು ತಾನದ ತನನನಾ";
 let segments = segmenter.segment(input);
@@ -1125,7 +1125,7 @@ the whitespace is any character from the following list:
 
 https://www.amitmerchant.com/how-to-convert-arrays-to-human-readable-lists-in-javascript/
 
-```ts
+```js
 const books = [
   "Harry Potter",
   "Bhagavad Gita",
@@ -1180,7 +1180,7 @@ https://shkspr.mobi/blog/2021/08/to-download-this-page-click-here/
 
 # A `setTimeout` demo in create-snowpack-app
 
-```ts
+```js
 const [count, setCount] = useState(0);
 
 useEffect(() => {
@@ -1191,7 +1191,7 @@ useEffect(() => {
 
 # A snippet of `useContext`
 
-```ts
+```js
 export const useAuth = () => useContext(AuthContext);
 ```
 
@@ -1215,7 +1215,7 @@ YouTube: https://www.youtube.com/watch?v=Y0-qdp-XBJg
 
 CodeSandBox: https://codesandbox.io/s/react-protected-routes-forked-vrpc7?file=/src/protected.route.js
 
-```ts
+```js
 function App() {
   return (
     <div className="App">
@@ -1319,7 +1319,7 @@ By default, the type of input's value is `string`.
 
 Accessing `valueAsDate` and `valueAsNumber`, it will return intended type directly.
 
-```ts
+```js
 <input
   onChange={(event) => console.log(event.target.valueAsDate)}
   onChange={(event) => console.log(event.target.valueAsNumber)}
@@ -1385,7 +1385,7 @@ https://stackoverflow.com/questions/45194598/using-process-env-in-typescript
 
 > There's no guarantee of what (if any) environment variables are going to be available in a Node process - the NODE_ENV variable is just a convention that was popularised by Express, rather than something built in to Node itself. As such, it wouldn't really make sense for it to be included in the type definitions. Instead, they define process.env like this:
 
-```ts
+```js
 export interface ProcessEnv {
   [key: string]: string | undefined;
 }
@@ -1393,7 +1393,7 @@ export interface ProcessEnv {
 
 > Which means that process.env can be indexed with a string in order to get a string back (or undefined, if the variable isn't set). To fix your error, you'll have to use the index syntax:
 
-```ts
+```js
 let env = process.env["NODE_ENV"]; // 👈 That's it.
 ```
 
@@ -1456,7 +1456,7 @@ Key points: AVIF & WebP
 
 https://dmitripavlutin.com/ecmascript-modules-dynamic-import/
 
-```ts
+```js
 // namedConcat.js
 export const concat = (paramA, paramB) => paramA + paramB;
 
@@ -1466,7 +1466,7 @@ async function loadMyModule() {
 }
 ```
 
-```ts
+```js
 // defaultConcat.js
 export default (paramA, paramB) => paramA + paramB;
 
@@ -1482,7 +1482,7 @@ https://h3manth.com/ES2021/
 
 Logical Assignment Operators
 
-```ts
+```js
 //"Or Or Equals"
 x ||= y;
 x || (x = y);
@@ -1516,7 +1516,7 @@ setOpts({ cat: "meow" });
 
 Numeric Separators
 
-```ts
+```js
 1_000_000_000; // Ah, so a billion
 101_475_938.38; // And this is hundreds of millions
 
@@ -1533,7 +1533,7 @@ let amount = 1_234_500; // 1,234,500
 
 Promise.any and AggregateError
 
-```ts
+```js
 Promise.any([
   fetch("https://v8.dev/").then(() => "home"),
   fetch("https://v8.dev/blog").then(() => "blog"),
@@ -1552,7 +1552,7 @@ Promise.any([
 
 String.prototype.replaceAll
 
-```ts
+```js
 // String.prototype.replaceAll(searchValue, replaceValue)
 
 "x".replace("", "_");
@@ -1567,7 +1567,7 @@ String.prototype.replaceAll
 
 WeakRefs and FinalizationRegistry Objects
 
-```ts
+```js
 let target = {};
 let wr = new WeakRef(target);
 
@@ -1587,13 +1587,13 @@ registry.unregister(myObject);
 
 https://swizec.com/blog/a-surprising-feature-of-javascript-optional-chaining/
 
-```ts
+```js
 object?.deepProp?.[console.log("runs if deepProp defined")];
 ```
 
 # The extended types can be narrower than its parent ones only
 
-```ts
+```js
 interface Base {
   common: string; // 👉 string | boolean will makes the Ex works
 }
@@ -1614,7 +1614,7 @@ https://spin.atomicobject.com/2021/05/11/3-useful-typescript-patterns/
 
 ## Pattern 1: Mapped Types 👍
 
-```ts
+```js
 type Names = "Bob" | "Bill" | "Ben";
 type JobTitles = "Welder" | "Carpenter" | "Plumber";
 
@@ -1627,7 +1627,7 @@ const JobAssignments: { [Key in Names]: JobTitles } = {
 
 ## Pattern 2: Function Overloading
 
-```ts
+```js
 function inputDoubler(input: string): string;
 function inputDoubler(input: number): number;
 
@@ -1642,7 +1642,7 @@ function inputDoubler(input: string | number) {
 
 ## Pattern 3: Custom Type Guards
 
-```ts
+```js
 function isPizza(food: Pizza | Burrito): food is Pizza {
   return (<Pizza>food).ingredients.topping !== undefined;
   // Or
@@ -1664,7 +1664,7 @@ Specifying the value prop on a controlled component prevents the user from chang
 
 The following code demonstrates this. (The input is locked at first but becomes editable after a short delay.)
 
-```ts
+```js
 ReactDOM.render(<input value="hi" />, mountNode);
 
 setTimeout(function () {
@@ -1684,7 +1684,7 @@ https://www.typescriptlang.org/docs/handbook/enums.html#enums-at-compile-time
 
 Even though Enums are real objects that exist at runtime, the `keyof` keyword works differently than you might expect for typical objects. Instead, use `keyof typeof` to get a Type that represents all Enum keys as strings.
 
-```ts
+```js
 enum LogLevel {
   ERROR,
   WARN,
@@ -1713,7 +1713,7 @@ printImportant("ERROR", "This is a message");
 
 https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings
 
-```ts
+```js
 enum Enum {
   A,
 }
@@ -1724,7 +1724,7 @@ let nameOfA = Enum[a]; // "A"
 
 TypeScript compiles this down to the following JavaScript:
 
-```ts
+```js
 "use strict";
 var Enum;
 (function (Enum) {
@@ -1742,7 +1742,7 @@ https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums
 
 In modern TypeScript, you may not need an enum when an object with as const could suffice:
 
-```ts
+```js
 const enum EDirection {
   Up,
   Down,
@@ -1795,7 +1795,7 @@ run(ODirection.Right);
 
 > The biggest idea is not only to differentiate object and enum, but also to explain how `typeof`and `keyof` works.
 
-```ts
+```js
 const people = {
   name: "Peter",
   age: 9,
@@ -1820,13 +1820,13 @@ https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url
 
 The above configuration makes:
 
-```ts
+```js
 import { Actions, Summary } from "./src/components";
 ```
 
 as
 
-```ts
+```js
 import { Actions, Summary } from "components";
 ```
 
@@ -2089,7 +2089,7 @@ https://medium.com/technogise/journey-of-improving-react-app-performance-by-10x-
 
 ### Remove all Inline Functions
 
-```ts
+```js
 class Parent extends Component {
   render() {
     return <Child onClick={() => console.log("You clicked!")} />;
@@ -2102,7 +2102,7 @@ class Parent extends Component {
 
 ### Conditional rendering of the components
 
-```ts
+```js
 class Parent extends Component {
   render() {
     return (
@@ -2124,7 +2124,7 @@ This decreased the memory footprint from 500Mb to 150Mb. 😄
 
 Improving above example as below:
 
-```ts
+```js
 class Parent extends Component {
   render() {
     return (
@@ -2142,7 +2142,7 @@ class Parent extends Component {
 
 ### Remove unnecessary awaits and use Promise.all() wherever applicable
 
-```ts
+```js
 const userSubscription = getUserSubscription();
 const userDetails = getUserDetails();
 const userNotifications = getUserNotifications();
@@ -2152,7 +2152,7 @@ Solution: We identified that most of the API calls can be made to execute in par
 
 This decreased the initial page load time and other pages by 30%.
 
-```ts
+```js
 const [userSubscription, userDetails, userNotifications] = await Promise.all([
   getUserSubscription(),
   getUserDetails(),
@@ -2172,7 +2172,7 @@ https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell
 
 https://blog.saeloun.com/2021/04/23/react-keyboard-event-code
 
-```ts
+```js
 // Before
 const handleKeyDown = (event) => {
   const key = event.nativeEvent.code;
@@ -2381,7 +2381,7 @@ render(
 
 # `keyframes` in Emotion with AntDesign overwrite
 
-```ts
+```js
 export const ButtonStyled = styled(Button)`
   &.ant-btn {
     @keyframes waveEffect {
@@ -2431,7 +2431,7 @@ const Component: FC<StyledComponentProps> = ({
 - [Youtube Tutorial](https://www.youtube.com/watch?v=ngVU74daJ8Y)
 - ["types" config in TypeScript](https://www.typescriptlang.org/tsconfig#types)
 
-```ts
+```js
 import {
   createGlobalStyle,
   DefaultTheme,
@@ -2465,7 +2465,7 @@ const Root = () => (
 }
 ```
 
-```ts
+```js
 // src/types/defaultTheme.d.ts
 import "styled-components";
 
@@ -2567,7 +2567,7 @@ body[data-theme="dark"] {
 }
 ```
 
-```ts
+```js
 const PrimaryText = styled.div({
   padding: 20,
   color: "var(--colors-primary)",
@@ -2593,13 +2593,13 @@ https://jestjs.io/docs/webpack#handling-static-assets
 
 And the mock files themselves:
 
-```ts
+```js
 // __mocks__/styleMock.js
 
 module.exports = {};
 ```
 
-```ts
+```js
 // __mocks__/fileMock.js
 
 module.exports = "test-file-stub";
@@ -2621,13 +2621,13 @@ Logical assignment operators work differently from other compound assignment ope
 
 Why is `a||= b` equivalent to the following expression?
 
-```ts
+```js
 a || (a = b);
 ```
 
 Why not to this expression?
 
-```ts
+```js
 a = a || b;
 ```
 
@@ -2643,7 +2643,7 @@ In LaunchPad, holding <kbd>Option</kbd> key can uninstall apps instantly.
 
 Before:
 
-```ts
+```js
 import { MyFunction } from "my-module";
 
 const MyComponent = (props) => {
@@ -2655,7 +2655,7 @@ const MyComponent = (props) => {
 
 After:
 
-```ts
+```js
 const MyComponent = (props) => {
   const result = require("my-module").MyFunction();
 
@@ -2680,7 +2680,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#pa
 
 https://jakearchibald.com/2021/function-callback-risks/
 
-```ts
+```js
 const controller = new AbortController();
 const { signal } = controller;
 
@@ -2712,13 +2712,13 @@ React Native uses CocoaPods to manage iOS project dependencies and most React Na
 
 Run `pod install` in our ios directory in order to link it to our native iOS project. A shortcut for doing this without switching to the ios directory is to run:
 
-```ts
+```js
 npx pod-install
 ```
 
 Once this is complete, re-build the app binary to start using your new library:
 
-```ts
+```js
 npx react-native run-ios
 ```
 
@@ -2726,7 +2726,7 @@ npx react-native run-ios
 
 React Native uses Gradle to manage Android project dependencies. After you install a library with native dependencies, you will need to re-build the app binary to use your new library:
 
-```ts
+```js
 npx react-native run-android
 ```
 
@@ -2734,7 +2734,7 @@ npx react-native run-android
 
 In DevTools, `$$` is shorthand for
 
-```ts
+```js
 Array.from(document.querySelectorAll());
 ```
 
@@ -2750,7 +2750,7 @@ What we need first is React.Children.toArray(children) to always handle children
 
 https://reactjs.org/docs/code-splitting.html#named-exports
 
-```ts
+```js
 // ManyComponents.js
 export const MyComponent = /* ... */;
 export const MyUnusedComponent = /* ... */;
@@ -2763,7 +2763,7 @@ export { MyComponent as default 👈 } from "./ManyComponents.js";
 
 https://www.smashingmagazine.com/2021/01/dynamic-static-typing-typescript/
 
-```ts
+```js
 type ServerRequest<Met extends Methods, Par extends string = string> = {
   method: Met;
   params: Record<Par, string>;
@@ -2776,7 +2776,7 @@ As a bonus and because `Intl` is part of `ECMAScript`, it is also available in N
 
 # Static property for both class component & function component
 
-```ts
+```js
 class C extents Component {
   static sharedElement = (route, otherRoute, showing) => {}
 }
@@ -2787,7 +2787,7 @@ C.sharedElement = (route, otherRoute, showing) => {}
 
 # Use derived types
 
-```ts
+```js
 const theme = {
   color: {},
   spacing: {},
@@ -2870,7 +2870,7 @@ https://reactnative.dev/docs/scrollview#contentcontainerstyle
 
 While designing customer component, we can use `contentContainerStyle` to define the component's container style.
 
-````ts
+````js
 export const C = ({ contentContainerStyle, style }) => (
   <View style={[styles.container, ...contentContainerStyle 👈]}>
     <Text style={[styles.content, ...styles 👈]}>Hello</Text>
@@ -2881,7 +2881,7 @@ export const C = ({ contentContainerStyle, style }) => (
 
 https://reactnative.dev/docs/text
 
-```ts
+```js
 const TextInANest = () => {
   const titleText = useState("Bird's Nest"); // 👈 useful if need value only,
   const bodyText = useState("This is not really a bird nest.");
@@ -2903,9 +2903,10 @@ Views are designed to be used with StyleSheet for clarity and performance, altho
 
 # `useRef` and `setTimeout` in TypeScript
 
-```ts
-                          👇                          👇
-const timer = useRef<ReturnType<typeof setTimeout>>(null!);
+> It's also a demonstration of how to use `setTimeout` instead of `setInterval`.
+
+```js
+const timer = useRef<ReturnType<typeof setTimeout> 👈 >(null!);
 
 useEffect(() => {
   timer.current = setTimeout(function updater() {
@@ -2927,7 +2928,7 @@ https://stackoverflow.com/questions/25797990/capture-ios-simulator-video-for-app
 
 In Android, the following code will print `undefined`.
 
-```ts
+```js
 const onFocus = ({ nativeEvent: { text } }) => console.log(text);
 const onBlur = ({ nativeEvent: { text } }) => console.log(text);
 ```
@@ -2936,7 +2937,7 @@ How to fix
 
 1️⃣ access the value from some kind of store.
 
-```ts
+```js
 const [value, setValue] = useState("");
 
 const onChangeText = (text) => setValue(text);
@@ -2960,7 +2961,7 @@ All the variables which effect the query should be listed in the query keys.
 
 2️⃣ The first string type item is ❓ optional, the variables are enough to make the cache invalidate.
 
-```ts
+```js
 export const useTransferWiseQuote = (initialParams) => {
   const { data: TransferWiseUser } = useQuery(queryKeys.twUser, getTwId);
 
@@ -3039,7 +3040,7 @@ Try to avoid use inline arrow function, or wrap it with `useCallback`
 
 # Destructuring Object conditionally
 
-```ts
+```js
 const conditionallyProperty = { ...(bool ? { foo: "Foo" } : {}) };
 ```
 
@@ -3047,7 +3048,7 @@ const conditionallyProperty = { ...(bool ? { foo: "Foo" } : {}) };
 
 https://stackoverflow.com/questions/19093935/how-to-document-a-string-type-in-jsdoc-with-limited-possible-values
 
-```ts
+```js
 /**
  * @typedef {"keyvalue" | "bar" | "timeseries" | "pie" | "table"} MetricFormat
  */
@@ -3064,7 +3065,7 @@ export function fetchMetric(format) {
 
 https://www.typescriptlang.org/docs/handbook/enums.html#enums-at-compile-time
 
-```ts
+```js
 enum LogLevel {
   ERROR,
   WARN,
@@ -3111,7 +3112,7 @@ Component will be styled with height and box shadow(Android only)
 
 Although TypeScript complains that those two props are not available
 
-```ts
+```js
 <View
   height={100} 👈
   elevation={10} 👈
@@ -3122,7 +3123,7 @@ Although TypeScript complains that those two props are not available
 
 # Use React Native build-in style types
 
-```ts
+```js
 type ContainerProps = {
   // available options: ViewStyle | TextStyle | ImageStyle
   contentContainerStyle: ViewStyle; 👈
@@ -3138,7 +3139,7 @@ const Container = styled.FlatList<ContainerProps>`
 
 ### `attrs` method DO NOT support `style` props
 
-```ts
+```js
 type ViewStyledProps = {
   x?: number;
 };
@@ -3151,7 +3152,7 @@ const ViewStyled = styled.View.attrs({x}) => ({
 
 ### How to define additional props
 
-```ts
+```js
 type ViewStyledProps = {
   elevation?: number;
 };
@@ -3165,7 +3166,7 @@ const AnimatedViewStyled = styled(Animated.View)
 
 # customize component display name
 
-```ts
+```js
 AnimatedViewStyled.displayName = "Hello";
 ```
 
@@ -3173,7 +3174,7 @@ AnimatedViewStyled.displayName = "Hello";
 
 # A code style
 
-```ts
+```js
 export const renderReactions = (
   reactions,
   supportedReactions,
@@ -3220,7 +3221,7 @@ https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-nat
 
 - create `react-native.config.js` in root of project.
 
-  ```ts
+  ```js
   module.exports = {
     assets: ["./assets/fonts/"],
   };
@@ -3230,7 +3231,7 @@ https://dev.to/vishalnarkhede/tutorial-how-to-build-a-slack-clone-with-react-nat
 - run `npx react-native link`.
 - apply font in style
 
-  ```ts
+  ```js
   const styles = StyleSheet.create({
     title: {
       fontFamily: "Lato-Regular",
@@ -3347,7 +3348,7 @@ Learned from GitHub's repository initial tips: `git branch -M main`.
 
 # ContextAPI Initiative in twilio-video-app-react
 
-```ts
+```js
 export const VideoContext = createContext<IVideoContext>(null!); // without 'as'
 ```
 
@@ -3413,7 +3414,7 @@ https://docs.expo.io/versions/latest/sdk/safe-area-context/
 expo install react-native-safe-area-context
 ```
 
-```ts
+```js
 import { SafeAreaView } from "react-native-safe-area-context";
 
 function SomeComponent() {
@@ -3487,7 +3488,7 @@ h1 {
 
 # How Array sort works in JavaScript
 
-```ts
+```js
 const arr = [1, 5, 2, 7, 0];
 
 const result = arr.sort((a, b) => b - a); // [ 7, 5, 2, 1, 0 ]
@@ -3513,7 +3514,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://gist.run/?id=da57950803bf00ce555752da6bd7147e&mc_cid=5fa9352dcf&mc_eid=afaf576ce2
 
-```ts
+```js
 Promise.all([asyncFunc1(), asyncFunc2()]).then((results) => {
   console.log(results);
 });
@@ -3525,7 +3526,7 @@ const [result1, result2] = await Promise.all([asyncFunc1(), asyncFunc2()]);
 
 # Set `const` variable as `readonly`
 
-```ts
+```js
 const arr = [1, 5, 2, 7, 0] as const 👈;
 
 // Property 'sort' does not exist on type 'readonly [1, 5, 2, 7, 0]'.(2339)
@@ -3534,7 +3535,7 @@ const result = arr.sort((a, b) => b - a)
 
 # Catch error in `async / await`
 
-```ts
+```js
 const fn = async () => {
   throw new Error("Error Happened");
 };
@@ -3546,7 +3547,7 @@ fn().catch((err) => {
 
 # Make sure property exist
 
-```ts
+```js
 export class X {
     id! 👈: string; // JavaScript will not complain: "property id do not exist"
 
@@ -3588,7 +3589,7 @@ https://www.30secondsofcode.org/blog/s/testing-async-react-components
 
 # Avoid unnecessary function invoking
 
-```ts
+```js
 const [updating, setUpdating] = useState(false);
 
 const onRefresh = useCallback(() => {
@@ -3628,7 +3629,7 @@ https://github.com/styled-components/styled-components/issues/1858#issuecomment-
 
 https://blog.alispit.tel/create-a-git-diff-in-markdown/
 
-````ts
+````js
 ```diff 👈 use "diff" as language indicator
  function addTwoNumbers (num1, num2) {
 -  return 1 + 2
