@@ -76,3 +76,18 @@ https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#react-nati
 # Box Shadow and Filter style props
 
 https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#box-shadow-and-filter-style-props
+
+# type style props in React Native
+
+```jsx
+import {
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+
+interface PrimaryButtonProps {
+  buttonStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+}
+```
