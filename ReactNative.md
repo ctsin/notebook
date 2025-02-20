@@ -91,3 +91,15 @@ interface PrimaryButtonProps {
   labelStyle?: StyleProp<TextStyle>;
 }
 ```
+
+# `children` Props in default project with React 19
+
+This is the way how React Native default project define `children` props.
+
+```ts
+import type {PropsWithChildren} from 'react';
+
+type SectionProps = PropsWithChildren<{
+  title: string;
+}>;
+```
