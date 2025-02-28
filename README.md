@@ -1,3 +1,4 @@
+- [`try...catch`](#trycatch)
 - [`console.log`](#consolelog)
 - [Manage clipboard in JavaScript](#manage-clipboard-in-javascript)
 - [`Set` operation](#set-operation)
@@ -204,14 +205,35 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+# `try...catch`
+
+The exception can be handled in-place of occurred
+
+https://youtu.be/xNaGYGDZ2JU?t=3404
+
+```jsx
+const takePicture = async () => {
+  try {
+    if (!camera) {
+      throw new Error("No camera");
+    }
+    
+    // take a picture
+  } catch (e) {
+    console.log(e);
+  }
+}
+```
+
 # `console.log`
 
 https://www.youtube.com/watch?v=Ozg5UqaD5fg
 
 ```js
-// 
+// before
 console.log(obj);
 
+// after
 console.dir(obj, {
   depth: Infinity,
 })

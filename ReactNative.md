@@ -1,3 +1,32 @@
+# Safe area
+
+```jsx
+import {SafeAreaView} from'react-native';
+
+<SafeAreaView style={styles.container}></SafeAreaView>
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+});
+```
+
+# ComponentProps and StyleProps
+
+```jsx
+interface ObscuraButtonProps {
+  iconName?: ComponentProps<typeof Ionicons> ["name"]; 
+  containerStyle?: StyleProp<ViewStyle>; 
+}
+```
+
+# Open Xcode project
+
+```bash
+open obscuraclone.xcworkspace
+```
+
 # shortcuts
 
 **iOS**
