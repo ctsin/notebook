@@ -1,3 +1,4 @@
+- [Booleans Are a Trap](#booleans-are-a-trap)
 - [`try...catch`](#trycatch)
 - [`console.log`](#consolelog)
 - [Manage clipboard in JavaScript](#manage-clipboard-in-javascript)
@@ -204,6 +205,12 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Booleans Are a Trap
+
+https://katafrakt.me/2024/11/09/booleans-are-a-trap/
+
+> keep booleans usage to technical parts, not to business logic or domain modeling.
 
 # `try...catch`
 
