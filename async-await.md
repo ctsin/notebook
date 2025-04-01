@@ -63,3 +63,25 @@ try {
   handleError(error);
 }
 ```
+
+# Async function resolve matters
+
+The following code will print 'Resolve Bar', but not 'Return Bar'.
+
+```js
+const foo = async () => {
+  const bar = new Promise((resolve, reject) => {
+    resolve("Resolve Bar");
+
+    return "Return Bar";
+  });
+
+  return bar;
+};
+
+(async () => {
+  await foo().then((result) => {
+    console.log("🚀  ~ result:", result);
+  });
+})();
+```
