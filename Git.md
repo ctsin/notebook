@@ -1,3 +1,43 @@
+```
+# Setting your global username/email configuration
+
+https://support.atlassian.com/bitbucket-cloud/docs/configure-your-dvcs-username-for-commits/
+
+Open the command line.
+
+Set your username:
+
+```sh
+git config --global user.name "FIRST_NAME LAST_NAME"
+```
+
+Set your email address:
+
+```sh
+git config --global user.email "MY_NAME@example.com"
+```
+
+To set repository-specific username/email configuration:
+From the command line, change into the repository directory.
+
+Set your username:
+
+```sh
+git config user.name "FIRST_NAME LAST_NAME"
+```
+
+Set your email address:
+
+```sh
+git config user.email "MY_NAME@example.com"
+```
+
+Verify your configuration by displaying your configuration file:
+
+```sh
+cat .git/config
+```
+
 # Fish shell aliases for Git
 
 ```sh
