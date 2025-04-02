@@ -1,3 +1,4 @@
+- [Role based access control](#role-based-access-control)
 - [Booleans Are a Trap](#booleans-are-a-trap)
 - [`try...catch`](#trycatch)
 - [`console.log`](#consolelog)
@@ -205,6 +206,47 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Role based access control
+
+https://www.youtube.com/watch?v=5GG-VUvruzE
+
+> Read more about [Indexed access type](./TypeScript.md#indexed-access-types)
+
+```js
+const ROLES = {
+  admin: [
+    "view:comments",
+    "create:comments",
+    "update:comments",
+    "delete:comments",
+  ],
+  moderator: ["view:comments", "create:comments", "update:comments"],
+  user: ["view:comments", "create:comments"],
+} as const;
+
+type Role = keyof typeof ROLES;
+
+// The break down of the Permission
+type A = keyof typeof ROLES;
+type B = (typeof ROLES)[A];
+type C = B[number];
+type Permission = (typeof ROLES)[Role][number];
+
+const hasPermission = (role: Role, permission: Permission): boolean =>
+  (ROLES[role] as readonly Permission[]).includes(permission);
+
+console.log(hasPermission("admin", "view:comments")); // true
+
+// Try to understand the types
+const x1 = ['A', 'AB', 'ABCD', 'D', 'D'] as const;
+type X1 = typeof x1[number]; // "A" | "AB" | "ABCD" | "D"
+
+const x2 = {propertyA: ['A'], propertyAB: ['A', 'B'], propertyABCD: ['A', 'B', 'C', 'D']} as const;
+type X21 = keyof typeof x2; // "propertyA" | "propertyAB" | "propertyABCD"
+type X22 = typeof x2[keyof typeof x2]; // readonly ["A"] | readonly ["A", "B"] | readonly ["A", "B", "C", "D"]
+type X2 = typeof x2[keyof typeof x2][number]; // "A" | "B" | "C" | "D"
+```
 
 # Booleans Are a Trap
 

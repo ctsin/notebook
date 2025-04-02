@@ -575,6 +575,8 @@ type Dog<T> = T extends { legs: number } ? Animal : never;
 
 # Indexed access types
 
+https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
+
 ```js
 interface ColorType {
   primary: "red";
