@@ -1,3 +1,13 @@
+# Debug React Native project
+
+https://www.youtube.com/watch?v=7wzqN2G8dfU
+
+1. enable `remote deubg` on app simulator or device https://youtu.be/7wzqN2G8dfU?t=11. By default, an Chrome debug console will launch on `19001` port.
+2. change React Native Tools port setting into `19001` in VS Code setting. The default port, 8081, doesn't work.
+3. create `launch.json` with `attach packager` option
+4. as start to debug, the debug console reports `there is another packager is running`. Terminating the Chrome debug console to resolve this issue.
+5. relaod app to make the debug work. If the packager disconnected, the app need to reload again.
+
 # Safe area
 
 ```jsx
