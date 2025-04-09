@@ -1,4 +1,12 @@
+# Auto stash uncommitted changes
+
+https://lqk9511.github.io/blog/share/git-pull--rebase--autostash.html
+
+```sh
+git config pull.rebase true
+git config rebase.autoStash true
 ```
+
 # Setting your global username/email configuration
 
 https://support.atlassian.com/bitbucket-cloud/docs/configure-your-dvcs-username-for-commits/
