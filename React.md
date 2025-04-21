@@ -1,3 +1,15 @@
+# Challenges on `useEffect`
+
+https://react.dev/learn/synchronizing-with-effects#challenges
+
+1. for timer, it's necessary to clear it in cleanup function
+2. for fetching data, it's the best practice to set a explicit flag, like `ignore`, to fix this type of problem.
+3. [When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering.](https://react.dev/learn/you-might-not-need-an-effect#updating-state-based-on-props-or-state)
+4. [the component state can be reset by offering a `key` props](https://react.dev/learn/you-might-not-need-an-effect#resetting-all-state-when-a-prop-changes)
+5. [Update parent and children state in a single pass, but not `useEffect`](https://react.dev/learn/you-might-not-need-an-effect#notifying-parent-components-about-state-changes). React [batches updates](https://react.dev/learn/queueing-a-series-of-state-updates) from different components together, so there will only be one render pass.
+6. 
+
+
 # Use `data-` attr in React
 
 ```jsx
