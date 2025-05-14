@@ -1,3 +1,9 @@
+# React Modal navigation
+
+https://www.youtube.com/watch?v=42RKqciqjV0
+
+https://reactnavigation.org/docs/stack-navigator/#presentation
+
 # Challenges on `useEffect`
 
 https://react.dev/learn/synchronizing-with-effects#challenges
