@@ -207,7 +207,7 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
-# How To Handle Permissions Like A Senior Dev
+# How To Handle Permissions Like A Senior Dev**
 
 **Role based access control(RBAC)
 
