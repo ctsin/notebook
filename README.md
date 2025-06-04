@@ -1,4 +1,6 @@
-- [Role based access control](#role-based-access-control)
+- [Caution style in Markdown file in Github](#caution-style-in-markdown-file-in-github)
+- [You can style alt text like any other text](#you-can-style-alt-text-like-any-other-text)
+- [How To Handle Permissions Like A Senior Dev](#how-to-handle-permissions-like-a-senior-dev)
 - [Booleans Are a Trap](#booleans-are-a-trap)
 - [`try...catch`](#trycatch)
 - [`console.log`](#consolelog)
@@ -206,6 +208,33 @@
 - [`npm list -g`](#npm-list--g)
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
+
+# Caution style in Markdown file in Github
+
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+![](./assets/markdown-caution.png)
+
+# You can style alt text like any other text
+
+https://piccalil.li/blog/you-can-style-alt-text-like-any-other-text/
+
+
 
 # How To Handle Permissions Like A Senior Dev
 

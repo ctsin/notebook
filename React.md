@@ -1,3 +1,26 @@
+- [`useEffect`](#useeffect)
+- [React Modal navigation](#react-modal-navigation)
+- [Challenges on `useEffect`](#challenges-on-useeffect)
+- [Use `data-` attr in React](#use-data--attr-in-react)
+- [How To Debug React Apps Like A Senior Developer](#how-to-debug-react-apps-like-a-senior-developer)
+  - [Show Hooks name](#show-hooks-name)
+  - [Debug `Suspend`](#debug-suspend)
+  - [Debug `ErrorBoundary`](#debug-errorboundary)
+- [Perf in React](#perf-in-react)
+- [What’s New in React 18](#whats-new-in-react-18)
+- [React `forwardRef()`: How to Pass Refs to Child Components](#react-forwardref-how-to-pass-refs-to-child-components)
+- [React Memory Leaks: How useCallback and closures can bite you](#react-memory-leaks-how-usecallback-and-closures-can-bite-you)
+  - [Closures and `useCallback`](#closures-and-usecallback)
+- [Snappy UI Optimization with useDeferredValue](#snappy-ui-optimization-with-usedeferredvalue)
+- [memoization required](#memoization-required)
+  - [Working with multiple state variables](#working-with-multiple-state-variables)
+
+# `useEffect`
+
+https://react.gg/visualized#managing-effects
+
+`useEffect` takes place after render, but `useLayoutEffect` takes place before render.
+
 # React Modal navigation
 
 https://www.youtube.com/watch?v=42RKqciqjV0
@@ -13,8 +36,6 @@ https://react.dev/learn/synchronizing-with-effects#challenges
 3. [When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering.](https://react.dev/learn/you-might-not-need-an-effect#updating-state-based-on-props-or-state)
 4. [the component state can be reset by offering a `key` props](https://react.dev/learn/you-might-not-need-an-effect#resetting-all-state-when-a-prop-changes)
 5. [Update parent and children state in a single pass, but not `useEffect`](https://react.dev/learn/you-might-not-need-an-effect#notifying-parent-components-about-state-changes). React [batches updates](https://react.dev/learn/queueing-a-series-of-state-updates) from different components together, so there will only be one render pass.
-6. 
-
 
 # Use `data-` attr in React
 
@@ -22,8 +43,7 @@ https://react.dev/learn/synchronizing-with-effects#challenges
 <Option data-name="data set name" />
 ```
 
-See more https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
-```
+> See more https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 
 Adding a CSS Reset in CRA
 
@@ -33,11 +53,12 @@ https://create-react-app.dev/docs/adding-css-reset/
 @import-normalize; /* bring in normalize.css styles */
 
 /* rest of app styles */
-```
+````
 
-#  How To Debug React Apps Like A Senior Developer
+# How To Debug React Apps Like A Senior Developer
 
 ## Show Hooks name
+
 ![](./assets/show-hooks-name.jpeg)
 
 ## Debug `Suspend`
@@ -182,7 +203,7 @@ All closures share a common context object from the time they were created. Sinc
 An important thing to note: useDeferredValue only works when the slow / low-priority component has been wrapped with React.memo():
 
 ```js
-import React from 'react';
+import React from "react";
 function SlowComponent({ count }) {}
 
 export default React.memo(SlowComponent);
@@ -204,7 +225,14 @@ const deferredLight = React.useDeferredValue(lightPosition);
 Do:
 
 ```js
-const cssCode = generateShadows(oomph, crispy, backgroundColor, tint, resolution, lightPosition);
+const cssCode = generateShadows(
+  oomph,
+  crispy,
+  backgroundColor,
+  tint,
+  resolution,
+  lightPosition
+);
 const deferredCssCode = React.useDeferredValue(cssCode);
 return (
   <>
