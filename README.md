@@ -209,6 +209,12 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
+# Node enviroment variables
+
+- Expo doc on env https://docs.expo.dev/guides/environment-variables/
+- `.env` files format https://github.com/bkeepers/dotenv/blob/c6e583a/README.md#what-other-env-files-can-i-use
+- use different env https://docs.expo.dev/guides/environment-variables/#environment-variables-and-node_env
+
 # Caution style in Markdown file in Github
 
 https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
