@@ -234,9 +234,6 @@ https://docs.github.com/en/get-started/writing-on-github/getting-started-with-wr
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
-> [!CAUTION] Danger
-> The label can be customized
-
 ![](./assets/markdown-caution.png)
 
 # You can style alt text like any other text
