@@ -1,3 +1,6 @@
+- [Checking network connectivity](#checking-network-connectivity)
+      - [Ping DNS](#ping-dns)
+      - [Checking HTTP status code `204`](#checking-http-status-code-204)
 - [Caution style in Markdown file in Github](#caution-style-in-markdown-file-in-github)
 - [You can style alt text like any other text](#you-can-style-alt-text-like-any-other-text)
 - [How To Handle Permissions Like A Senior Dev](#how-to-handle-permissions-like-a-senior-dev)
@@ -209,11 +212,47 @@
 - [Styled-Components issue in React Native](#styled-components-issue-in-react-native)
 - [Highlight Git diff in Markdown](#highlight-git-diff-in-markdown)
 
-# Node enviroment variables
+# Node environment variables
 
 - Expo doc on env https://docs.expo.dev/guides/environment-variables/
 - `.env` files format https://github.com/bkeepers/dotenv/blob/c6e583a/README.md#what-other-env-files-can-i-use
 - use different env https://docs.expo.dev/guides/environment-variables/#environment-variables-and-node_env
+
+# Checking network connectivity
+
+### Ping DNS
+
+ping `1.1.1.1` (Cloudflare) or `8.8.8.8` (Google)
+
+### Checking HTTP status code `204`
+
+> https://antonz.org/is-online/
+
+- http://google.com/generate_204
+- https://google.com/generate_204
+
+OR
+
+- http://www.gstatic.com/generate_204
+- http://clients3.google.com/generate_204
+
+> They are served by the same backend as the one on google.com.
+
+Other companies provide similar URLs to check for connectivity:
+
+- http://cp.cloudflare.com/generate_204 (Cloudflare)
+- http://edge-http.microsoft.com/captiveportal/generate_204 (Microsoft)
+- http://connectivity-check.ubuntu.com (Ubuntu)
+- http://connect.rom.miui.com/generate_204 (Xiaomi)
+
+### Checking `200` OK
+
+- http://spectrum.s3.amazonaws.com/kindle-wifi/wifistub.html (Amazon)
+- http://captive.apple.com/hotspot-detect.html (Apple)
+- http://network-test.debian.org/nm (Debian)
+- http://nmcheck.gnome.org/check_network_status.txt (Gnome)
+- http://www.msftncsi.com/ncsi.txt (Microsoft)
+- http://detectportal.firefox.com/success.txt (Mozilla)
 
 # Caution style in Markdown file in Github
 
