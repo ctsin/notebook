@@ -1,3 +1,4 @@
+- [Debounced pattern](#debounced-pattern)
 - [`useEffect`](#useeffect)
 - [React Modal navigation](#react-modal-navigation)
 - [Challenges on `useEffect`](#challenges-on-useeffect)
@@ -14,6 +15,45 @@
 - [Snappy UI Optimization with useDeferredValue](#snappy-ui-optimization-with-usedeferredvalue)
 - [memoization required](#memoization-required)
   - [Working with multiple state variables](#working-with-multiple-state-variables)
+
+# Debounced pattern
+
+Rule #1 the debounced callback must be memorized
+
+https://tanstack.com/pacer/latest/docs/framework/react/examples/debounce
+
+```js
+const debouncedSetCount = useCallback(
+  debounce(setDebouncedCount, {
+    wait: 500,
+  }),
+  [], // 🚨🚨🚨 must be memoized to avoid re-creating the debouncer on every render (consider using useDebouncer instead in react)
+)
+
+```
+
+Rule #2 use the debounced callback inside a state updater function
+
+```js
+function increment() {
+  // this pattern helps avoid common bugs with stale closures and state
+  setInstantCount((c) => {
+    const newInstantCount = c + 1;
+    debouncedSetCount(newInstantCount) // debounced state update
+    return newInstantCount // instant state update
+  })
+}
+```
+
+Rule #3 manage the instant value and debounced value separately
+
+```js
+// For UI
+const [instantCount, setInstantCount] = useState(0)
+
+// For API call
+const [debouncedCount, setDebouncedCount] = useState(0)
+```
 
 # `useEffect`
 
