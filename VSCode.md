@@ -32,3 +32,9 @@ Ctl + Opt + up/down => change property’s position in JSX/TSX
 # Install `code` in MacOS `PATH` environment variable
 
 <kbd>cmd + shift + P</kbd>Type `Shell Command: Install 'code' command in PATH` and select it.
+
+# Amazon Q issue
+
+Error: "unable to get local issuer certificate"
+
+Go to Settings → search "http.proxyStrictSSL" → set to false
