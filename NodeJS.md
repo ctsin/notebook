@@ -40,3 +40,37 @@ https://kashw1n.com/blog/nodejs-2025/
 5. Adopt Progressive Enhancement: Use permission models, diagnostics channels, and performance monitoring to build robust, observable applications
 6. Optimize for Developer Experience: Watch mode, built-in testing, and import maps create a more pleasant development workflow
 7. Plan for Distribution: Single executable applications and modern packaging make deployment simpler
+
+# The key differences between npm ci and npm install:
+
+## npm ci (Clean Install)
+- Faster: Designed for automated environments like CI/CD pipelines
+- Requires package-lock.json: Won't work without it
+- Exact versions: Installs exactly what's in package-lock.json, ignoring package.json version ranges
+- Deletes node_modules: Always removes existing node_modules folder first
+- Read-only: Never modifies package.json or package-lock.json
+- Fails on mismatch: Exits with error if package.json and package-lock.json are out of sync
+
+## npm install
+- Flexible: Can work with or without package-lock.json
+- Version resolution: Resolves versions based on package.json ranges
+- Incremental: Only installs missing packages by default
+- Updates lock file: Can modify package-lock.json if needed
+- Interactive: Can install new packages when you specify them
+
+## When to use which?
+**Use npm ci for:**
+
+- Production deployments
+- CI/CD pipelines
+- Docker builds
+- When you want guaranteed reproducible installs
+
+**Use npm install for:**
+
+- Local development
+- Adding new packages (npm install express)
+- When package-lock.json doesn't exist yet
+- Interactive development workflow
+
+The main takeaway: npm ci is all about speed and reproducibility, while npm install is more flexible for development work.
