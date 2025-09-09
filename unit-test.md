@@ -191,3 +191,29 @@ describe("", () => {
   });
 });
 ```
+
+# Mock `ReactNativeKeychain`
+
+```js
+import * as ReactNativeKeychain from 'react-native-keychain';
+import {save, load, reset} from '../../../src/utils/keychain/index';
+
+const mockKeychain = ReactNativeKeychain as jest.Mocked<typeof ReactNativeKeychain>;
+
+describe('Keychain Utils', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe('save', () => {
+    it('should save credentials when username is provided', async () => {
+      mockKeychain.setInternetCredentials.mockResolvedValue(undefined);
+
+      const result = await save('testUser', 'testPass', 'testData');
+
+      expect(mockKeychain.setInternetCredentials).toHaveBeenCalledWith('testUser', 'testData', 'testPass');
+      expect(result).toBe(true);
+    });
+  });
+})
+```
