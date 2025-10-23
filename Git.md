@@ -230,3 +230,15 @@ The reset command overwrites these three trees in a specific order, stopping whe
 **Squashing**
 
 ![squashing commits](https://git-scm.com/book/en/v2/images/reset-squash-r3.png)
+
+**Git 重写提交纪录**
+
+操作总结：
+
+1. 使用 git reset --soft master 将 HEAD 指针移回到 master 分支的最后一个提交，但保留所有更改在暂存区
+2. 使用 git commit -m "PHKLPARCOMMSPREAD-44 Implement Professional Investor feature" 创建新的合并提交
+
+`--force-with-lease` 是安全的强制推送方式，它会：
+- 检查远程分支是否有其他人的新提交
+- 如果有冲突会拒绝推送，避免覆盖他人的工作
+- 如果安全则执行强制推送
