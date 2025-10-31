@@ -1,3 +1,23 @@
+- [Debug React Native project](#debug-react-native-project)
+- [Safe area](#safe-area)
+- [ComponentProps and StyleProps](#componentprops-and-styleprops)
+- [Open Xcode project](#open-xcode-project)
+- [shortcuts](#shortcuts)
+- [React native performance](#react-native-performance)
+- [Running in development mode (dev=true)](#running-in-development-mode-devtrue)
+- [Using `console.log` statements](#using-consolelog-statements)
+- [`ListView` initial rendering is too slow or scroll performance is bad for large lists](#listview-initial-rendering-is-too-slow-or-scroll-performance-is-bad-for-large-lists)
+- [Dropping JS thread FPS because of doing a lot of work on the JavaScript thread at the same time](#dropping-js-thread-fps-because-of-doing-a-lot-of-work-on-the-javascript-thread-at-the-same-time)
+- [Moving a view on the screen (scrolling, translating, rotating) drops UI thread FPS](#moving-a-view-on-the-screen-scrolling-translating-rotating-drops-ui-thread-fps)
+- [Animating the size of an image drops UI thread FPS](#animating-the-size-of-an-image-drops-ui-thread-fps)
+- [My TouchableX view isn't very responsive](#my-touchablex-view-isnt-very-responsive)
+- [Slow navigator transitions](#slow-navigator-transitions)
+- [Box Shadow and Filter style props](#box-shadow-and-filter-style-props)
+- [type style props in React Native](#type-style-props-in-react-native)
+- [`children` Props in default project with React 19](#children-props-in-default-project-with-react-19)
+- [How to make Expo apps faster](#how-to-make-expo-apps-faster)
+
+
 # Debug React Native project
 
 https://www.youtube.com/watch?v=7wzqN2G8dfU
@@ -108,10 +128,6 @@ handleOnPress() {
 
 Use `React Navigation` library. The views in React Navigation use native components and the `Animated` library to deliver 60 FPS animations that are run on the native thread.
 
-# React Native New Architecture by default
-
-https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#react-native-new-architecture-by-default
-
 # Box Shadow and Filter style props
 
 https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#box-shadow-and-filter-style-props
@@ -142,3 +158,12 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 ```
+
+# How to make Expo apps faster
+
+https://www.youtube.com/watch?v=vFbim_U1Lmc&t
+
+1. enable `React Compiler` in Project
+2. https://www.npmjs.com/package/react-compiler-healthcheck
+3. https://github.com/blazejkustra/react-compiler-marker
+4. worklet in React Native ✨ https://www.npmjs.com/package/react-native-worklets, and its [Document](https://docs.swmansion.com/react-native-worklets/docs/)
