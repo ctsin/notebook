@@ -28,3 +28,9 @@ onPanResponderMove: Animated.event(
   }, // Optional async listener
 )
 ```
+
+# use CSS animation in ReactNative
+
+![](./assets/animation-definition.png)
+
+![](./assets/animation-use.png)
